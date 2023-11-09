@@ -1,3 +1,7 @@
+.theme{
+    color: black !important;
+    background:-webkit-linear-gradient(top,#64B5F6 25%,#42A5F5 75%)}
+
 h1, h2, h3{
     font-family: Verdana, Geneva, Tahoma, sans-serif; color: white;
 }
