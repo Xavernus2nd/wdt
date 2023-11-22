@@ -1,0 +1,65 @@
+.theme{
+    color: black !important;
+    background:-webkit-linear-gradient(top,#64B5F6 25%,#42A5F5 75%)}
+
+h1, h2, h3{
+    font-family: Verdana, Geneva, Tahoma, sans-serif; color: white;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #64B5F6;
+}
+
+a {
+    text-decoration: none; color: #0095b1;
+}
+
+a:hover{
+    background-color: #baebf5;
+}
+
+hr{
+    border-top: 5px; border-style: dotted; border-color: #00785c;
+}
+
+ul.navigation{
+    list-style-type: none;
+}
+
+/*
+#table-container {
+    text-align: center;
+  } to center the table*/
+  
+  .tableset {
+    /*margin: 0 auto;*/
+    border-collapse: collapse;
+    width: 80%;
+  }
+  
+  .tableset th, .tableset td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .tableset th {
+    background-color: #f2f2f2;
+  }
+
+  .tableset #num {
+    width: 5%;
+  }
+
+  .tableset #setname {
+    width: 50%;
+  }
+
+  .tableset #quesnum {
+    width: 10%;
+  }
+
+  .tableset #mode {
+    width: 20%;
+  }
