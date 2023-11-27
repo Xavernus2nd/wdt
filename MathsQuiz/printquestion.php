@@ -12,6 +12,7 @@ include 'connection.php';
 //ok need to change 
 //question table has no student answer, the answer can just get from the input then compare
 //add new table - StudentAnswer table to save the progress lol - can save the answer there la
+//where to save the answer and print the saved answer? in here or answerprocess?
 
 $set = $_SESSION['setID'];
 $mode = $_SESSION['mode'];

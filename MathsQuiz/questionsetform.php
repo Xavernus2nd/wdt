@@ -6,6 +6,12 @@ $_SESSION['topicID'] = $topic;
 $SQLtopic = "SELECT TopicTitle FROM topic WHERE TopicID = '$topic';";
 $runtopic = mysqli_query($DBconn, $SQLtopic);
 $title = mysqli_fetch_array($runtopic);
+
+//count number of questions
+$SQLcount = "SELECT COUNT(QuestionID) AS NoOfQues FROM question INNER JOIN question_set ON question.SetID = question_set.SetID INNER JOIN topic ON question_set.TopicID = topic.TopicID where question_set.TopicID = '$topic';";
+$runcount = mysqli_query($DBconn, $SQLcount);
+$numques = mysqli_num_rows($runcount);
+
 echo $title['TopicTitle'];
 echo "
 <div id='table-container'>
@@ -22,7 +28,7 @@ while ($data = mysqli_fetch_array($run)) {
     $num++;
     $setname = $data['SetName'];
     $set = $data['SetID'];
-    $numques = $data['NoOfQuestions'];
+    //$numques = $data['NoOfQuestions'];
     echo "<tr><td>$num</td>
               <td>$setname</td>
               <td>$numques</td>

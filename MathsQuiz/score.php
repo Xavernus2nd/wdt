@@ -1,5 +1,6 @@
 <?php
 //calculate score and show results and show answers
+//have correct or wrong in student_answer table so can see from there only la
 include 'connection.php';
 $setID = $_GET['setID'];
 $username = $_SESSION['StudentUsername'];
