@@ -1,14 +1,10 @@
 h1{
-    font-family: Verdana, Geneva, Tahoma, sans-serif; 
-    color: black;
-    margin-top: none;
+    height: 93px; 
+    background-color: #427ef5;
+    margin-top: 0;
+    margin-left: 94px;
     text-align: center;
-    margin-left: 100px;
-    background-color: aqua;
-}
-
-body{
-    margin: 0;
+    line-height: 93px; /* Set line-height equal to the height of the container */
 }
 
 nav {
@@ -58,6 +54,7 @@ nav {
     text-decoration:none ;
     color: black;
     border-left: 4px solid blue;
+    text-transform: uppercase;
 }
   
 #logo {
@@ -91,7 +88,6 @@ li.dropdown {
     position: absolute;
     background-color:white;
     min-width: 150px;
-
 }
     
 .dropdown-content a {
@@ -109,7 +105,7 @@ li.dropdown {
     display: block;
 }
 
-welcome {
+#welcome {
     color: rgb(45, 231, 95);
     margin-left: 100px;
     align-items: center;
@@ -117,10 +113,26 @@ welcome {
     text-align: center;
 }
 
-LoginTop{
+#LoginTop{
     margin-top: 0;
     text-align: center;
     margin-right: 20px;
     color: azure;
+}
 
+footer {
+    text-align: justify;
+    padding: 3px;
+    background-color: rgb(120, 117, 117);
+    color: white;
+    padding: 10px; /* Padding around the content inside the footer */
+    position: absolute;
+    width: 91%; /* Full width of the viewport */
+    bottom: 0; /* Stick to the bottom of the viewport */
+    margin-left: 100px;
+}
+
+body{
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    background-color: lightcyan;
 }
