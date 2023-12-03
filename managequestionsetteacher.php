@@ -34,28 +34,6 @@ $Topiclists = mysqli_fetch_all($TopicQuery, MYSQLI_ASSOC);
         border-collapse: collapse;
         }
     </style>
-    <script>
-        function deleteQuestionSet(){
-            var confirmDelete = confirm("Are you sure you want to delete this question set?");
-            if(confirmDelete){
-                return true;
-            }
-            else{
-                alert("No actions were performed.");
-                return false;
-            }
-        }
-        function editQuestionSetName(){
-            var confirmRename = confirm("Are you sure you want to rename this question set?");
-            if(confirmRename){
-                return true;
-            }
-            else{
-                alert("No actions were performed.");
-                return false;
-            }
-        }
-        </script>
 </head>
 <body>
     <h1>View/Manage Question Set</h1>
@@ -91,14 +69,14 @@ $Topiclists = mysqli_fetch_all($TopicQuery, MYSQLI_ASSOC);
                     <td>$questionSet[NoOfQuestions]</td>
                     <td>$questionSet[TeacherUsername]</td>
                     <td>
-                        <form action='' method='post' onsubmit='editQuestionSetName();'>
+                        <form action='' method='post' onsubmit='return confirm('Are you sure you want to rename this question set?');'>
                             <input type='hidden' name='EditSetID' value='$questionSet[SetID]'>
-                            <input type='text' name='NewSetName' placeholder='New Set Name'>
+                            <input type='text' name='NewSetName' placeholder='New Set Name' required>
                             <button type='submit' name='edit'>Edit Set Name</button>
                         </form>
                     </td>
                     <td>
-                        <form action='' method='post' onsubmit='deleteQuestionSet();'>
+                        <form action='' method='post' onsubmit='return confirm('Are you sure you want to delete this question set?');'>
                             <input type='hidden' name='DeleteSetID' value='$questionSet[SetID]'>   
                             <button type='submit' name='delete'>Delete Set</button>
                         </form>

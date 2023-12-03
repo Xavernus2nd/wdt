@@ -78,7 +78,7 @@ $Topiclists = mysqli_fetch_all($TopicQuery, MYSQLI_ASSOC);
                     <td>$questionSet[NoOfQuestions]</td>
                     <td>$questionSet[TeacherUsername]</td>
                     <td>
-                        <form action='' method='post' onsubmit='deleteQuestionSet();'>
+                        <form action='' method='post' onsubmit='return deleteQuestionSet();'>
                             <input type='hidden' name='DeleteSetID' value='$questionSet[SetID]'>   
                             <button type='submit' name='delete'>Delete</button>
                         </form>
