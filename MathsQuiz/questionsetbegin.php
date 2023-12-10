@@ -1,16 +1,21 @@
 <?php
 include 'connection.php';
-$set = $_SESSION['setID'];
-$mode = $_SESSION['mode'];
+$set = $_GET['setID'];
+$mode = $_GET['mode'];
 $quesnum = 1;
-$_SESSION['currentQuestionNum']=$quesnum;
+$_GET['currentQuestionNum']=$quesnum;
+$username = $_SESSION['StudentUsername'];
+$timestamp = date("Y-m-d h:i");
 
 $SQLset = "SELECT * FROM question_set INNER JOIN topic ON question_set.TopicID = topic.TopicID where question_set.SetID ='$set';";
 $run=mysqli_query($DBconn, $SQLset);
 $data=mysqli_fetch_array($run);
 
-$SQLempty = "UPDATE question SET StudentAnswer=NULL;";
-$emptying = mysqli_query($DBconn, $SQLempty);
+//generate trial id - here is generated everytime the user clicks the practice
+//must find way for when student exit the question without submitting, it gives a notice and if the student wants to leave, then delete the trial id
+$SQLinsert = "INSERT INTO trial (StudentUsername, SetID, QuizType, DateTime) VALUES ('$username', '$set', '$mode', '$timestamp');";
+$runinsert = mysqli_query($DBconn, $SQLinsert);
+$trialID = mysqli_insert_id($DBconn);
 
 ?>
 <table class="setinfo" border="0">
@@ -32,11 +37,14 @@ $emptying = mysqli_query($DBconn, $SQLempty);
     </tr>
 </table>
 <h3>Click BEGIN to start the quiz.</h3>
+
+<!--send the set id, trial id, mode, and question no to the url, need to change to POST-->
 <form method="get" action="quizquestion.php">
     <input type="hidden" name="setID" value="<?php echo $set;?>">
+    <input type="hidden" name="trialID" value="<?php echo $trialID;?>">
     <input type="hidden" name="mode" value="<?php echo $mode;?>">
-    <input type="hidden" name="quesNo" value="<?php echo $_SESSION['currentQuestionNum'];?>">
-    <button type="submit" name="beginquiz">BEGIN</button> <!--button to start quiz-->
+    <input type="hidden" name="quesNo" value="<?php echo $_GET['currentQuestionNum'];?>">
+    <button type="submit" name="beginquiz">BEGIN</button> <!--button to start quiz, send to question.php-->
 </form>
 
 <!--script to print instructions for each mode-->
