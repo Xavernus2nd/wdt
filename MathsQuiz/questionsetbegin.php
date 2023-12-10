@@ -1,9 +1,9 @@
 <?php
 include 'connection.php';
-$set = $_GET['setID'];
-$mode = $_GET['mode'];
+$set = $_POST['setID'];
+$mode = $_POST['mode'];
 $quesnum = 1;
-$_GET['currentQuestionNum']=$quesnum;
+$_POST['currentQuestionNum']=$quesnum;
 $username = $_SESSION['StudentUsername'];
 $timestamp = date("Y-m-d h:i");
 
@@ -39,11 +39,11 @@ $trialID = mysqli_insert_id($DBconn);
 <h3>Click BEGIN to start the quiz.</h3>
 
 <!--send the set id, trial id, mode, and question no to the url, need to change to POST-->
-<form method="get" action="quizquestion.php">
+<form method="post" action="quizquestion.php">
     <input type="hidden" name="setID" value="<?php echo $set;?>">
     <input type="hidden" name="trialID" value="<?php echo $trialID;?>">
     <input type="hidden" name="mode" value="<?php echo $mode;?>">
-    <input type="hidden" name="quesNo" value="<?php echo $_GET['currentQuestionNum'];?>">
+    <input type="hidden" name="quesNo" value="<?php echo $_POST['currentQuestionNum'];?>">
     <button type="submit" name="beginquiz">BEGIN</button> <!--button to start quiz, send to question.php-->
 </form>
 

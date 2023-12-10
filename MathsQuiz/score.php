@@ -3,12 +3,13 @@
 //this file is onlt to calculate the score, need to create new page just to show the results + answers
 //have correct or wrong in student_answer table so can see from there only la
 include 'connection.php';
-$setID = $_GET['setID'];
-$trialID = $_GET['trialID'];
+$setID = $_POST['setID'];
+$trialID = $_POST['trialID'];
 $username = $_SESSION['StudentUsername'];
 $count = 0;
 $i = 0;
-
+$timeRemaining = $_POST['timeRemaining'];
+echo $timeRemaining;
 //counting number of questions within the set
 $SQLnum = "SELECT COUNT(QuestionID) FROM question WHERE SetID = '$setID';";
 $runSQLnum = mysqli_query($DBconn, $SQLnum);

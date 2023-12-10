@@ -14,11 +14,13 @@ include 'connection.php';
 //add new table - StudentAnswer table to save the progress lol - can save the answer there la
 //where to save the answer and print the saved answer? in here or answerprocess?
 
-$set = $_GET['setID'];
-$mode = $_GET['mode'];
-$trialID = $_GET['trialID'];
-$currentQuestionNum = $_GET['quesNo'];
+$set = $_POST['setID'];
+$mode = $_POST['mode'];
+$trialID = $_POST['trialID'];
+$currentQuestionNum = $_POST['quesNo'];
 $username = $_SESSION['StudentUsername'];
+
+include 'counttime.php'; //timer 
 
 //getting the questions from question set
 $SQLquestion = "SELECT * FROM question INNER JOIN question_set ON question.SetID = question_set.SetID INNER JOIN topic ON question_set.TopicID = topic.TopicID WHERE question.SetID = '$set' AND question.QuestionNumber = '$currentQuestionNum';";
@@ -30,21 +32,25 @@ $SQLtotal = "SELECT COUNT(Question) as total FROM question WHERE SetID = '$set';
 $runSQLtotal = mysqli_query($DBconn, $SQLtotal);
 $totalques = mysqli_fetch_assoc($runSQLtotal)['total'];
 
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    if (isset($_GET['save'])){
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (isset($_POST['save'])){
         //when the student click save answer 
         include 'answerprocess.php';
-    } else if (isset($_GET['exit'])){
+    } else if (isset($_POST['exit'])){
         //when student click exit, go to begin quiz??
         echo '<script>alert (You have exited the quiz);</script>';
         //include 'question.php';
-    } else {
+    } 
+    else {
         //questions
         if(isset($data["Question"])) {
-            //include counttime.php for countdown 
+            if ($mode == 'Timed') {
+                //show timer
+                echo '<div id="timer" style="display: none;">Time remaining: '.gmdate("i:s, $quizDuration").'</div>';
+            }
 
             ?>
-            <form action="quizquestion.php" method="GET">
+            <form action="quizquestion.php" method="post">
                 Question: <?php echo $currentQuestionNum; ?><br>
                 <input type="hidden" name="quesNo" value="<?php echo $currentQuestionNum;?>">
                 <input type="hidden" name="trialID" value="<?php echo $trialID;?>">
@@ -75,24 +81,50 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 }
                 ?>
                 <button name="save">SAVE ANSWER</button> <!--save answer means they terus update student answer in table with this answer-->
-                <!--answerprocess.php masuk sini kot-->
-                <button name='answer'>SUBMIT</button> <!--when press this button, the button name is answer -> submit button meaning show the results terus (score.php). send to quizquestion.php-->
-                <button name='exit'>EXIT</button> <!--exit to begin quiz page ???, when exit -> delete that trial id-->
             </form>
+                <!--answerprocess.php masuk sini kot-->
+            <form action="quizquestion.php" method="post">
+                <input type="hidden" name="setID" value="<?php echo $set; ?>">
+                <input type="hidden" name="trialID" value="<?php echo $trialID; ?>">
+                <input type="hidden" name="timeRemaining" value="<?php echo $timeRemaining; ?>">
+                <button name='answer'>SUBMIT</button> <!--when press this button, the button name is answer -> submit button meaning show the results terus (score.php). send to quizquestion.php-->
+            </form>
+                <button name='exit'>EXIT</button> <!--exit to begin quiz page ???, when exit -> delete that trial id-->
             <?php
             //printing previous and next button
             $nextQuestionNum = $currentQuestionNum + 1;
             $prevQuestionNum = $currentQuestionNum - 1;
 
+            echo "<form id='navigationForm' method='post' action=''>";
             if ($prevQuestionNum > 0) {
-                echo "<button><a href = '?setID=$set&trialID=$trialID&mode=$mode&quesNo=$prevQuestionNum&beginquiz='>Previous</a></button>";
+                ?>
+                <input type="hidden" name="setID" value="<?php echo $set;?>">
+                <input type="hidden" name="trialID" value="<?php echo $trialID;?>">
+                <input type="hidden" name="mode" value="<?php echo $mode;?>">
+                <input type="hidden" name="quesNo" value="<?php echo $prevQuestionNum;?>">
+                <input type="hidden" name="beginquiz" value="">
+                <button onclick="submitForm()">Previous</button>
+                <?php
             }
             if ($nextQuestionNum <= $totalques ) {
-                echo "<button><a href = '?setID=$set&trialID=$trialID&mode=$mode&quesNo=$nextQuestionNum&beginquiz='>Next</a></button>";
+                ?>
+                <input type="hidden" name="setID" value="<?php echo $set;?>">
+                <input type="hidden" name="trialID" value="<?php echo $trialID;?>">
+                <input type="hidden" name="mode" value="<?php echo $mode;?>">
+                <input type="hidden" name="quesNo" value="<?php echo $nextQuestionNum;?>">
+                <input type="hidden" name="beginquiz" value="">
+                <button onclick="submitForm()">Next</button>
+                <?php
             }
             if ($currentQuestionNum == $totalques) {
                 echo "<br>You have reached the last question in this set.";
             }
+            echo "</form>";
+            //submit the form
+            echo "<script>
+                function submitForm() {
+                    document.getElementById('navigationForm').submit();
+            </script>";
         }
     }
 }

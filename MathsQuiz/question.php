@@ -43,10 +43,10 @@
     //printquestion.php
     session_start();
     $username = $_SESSION['StudentUsername'];
-    $set=$_GET['setID'];
-    $mode=$_GET['mode'];
+    $set=$_POST['setID'];
+    $mode=$_POST['mode'];
     include 'connection.php';
-        include 'questionsetbegin.php';
+    include 'questionsetbegin.php';
     ?>
     <footer>
     <p>Copyright 2023 © Group 12</p>

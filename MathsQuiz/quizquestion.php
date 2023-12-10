@@ -10,7 +10,7 @@
     <?php 
     session_start();
     $_SESSION['StudentUsername'] = 'alya';
-    if (isset($_GET['answer'])) {
+    if (isset($_POST['answer'])) {
         include 'score.php';
     } else {
         include 'printquestion.php';

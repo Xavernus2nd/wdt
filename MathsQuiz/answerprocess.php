@@ -1,12 +1,12 @@
 <?php
     //save answer into student answer table 
     include 'connection.php'; 
-    $quesnum = $_GET['quesNo'];
-    $quesID = $_GET['quesID'];
-    $mode = $_GET['mode'];
-    $trialID = $_GET['trialID'];
-    $set = $_GET['setID'];
-    $stdAns = $_GET['studAns'];
+    $quesnum = $_POST['quesNo'];
+    $quesID = $_POST['quesID'];
+    $mode = $_POST['mode'];
+    $trialID = $_POST['trialID'];
+    $set = $_POST['setID'];
+    $stdAns = $_POST['studAns'];
     $correct = 0;
     $username = $_SESSION['StudentUsername'];
     //get the correct answer from question table
@@ -38,13 +38,25 @@
         $run = mysqli_query($DBconn, $SQLinsertans);
         //must figure out how to do this by POST
         if($run) {
-            echo "<script>
-                    window.location.href = 'quizquestion.php?setID=$set&trialID=$trialID&mode=$mode&quesNo=$quesnum&beginquiz=';
-                </script>";
+            ?>
+            <form id="redirectForm" action="quizquestion.php" method="post">
+                <input type="hidden" name="setID" value="<?php echo $set; ?>">
+                <input type="hidden" name="trialID" value="<?php echo $trialID; ?>">
+                <input type="hidden" name="mode" value="<?php echo $mode; ?>">
+                <input type="hidden" name="quesNo" value="<?php echo $quesnum; ?>">
+                <input type="hidden" name="beginquiz" value="">
+            </form>
+
+            <script>
+                document.getElementById('redirectForm').submit();
+            </script>
+            <?php
         } else {
             echo "<script>
-                    window.location.href = 'quizquestion.php?setID=$set&trialID=$trialID&mode=$mode&quesNo=$quesnum&beginquiz=';
-                </script>";
+                alert('Unsuccessful save');
+                //window.location.href = 'index.php';
+                //tbh idk where to put it
+            </script>";
         }
     }
 
@@ -58,13 +70,25 @@
         $SQLupdate = "UPDATE student_answer SET StudentAnswer = $stdAns, IsCorrect = $correct WHERE TrialID = $trialID AND QuestionID = $quesID";
         $runSQLupdate = mysqli_query($DBconn, $SQLupdate);
         if($runSQLupdate) {
-            echo "<script>
-                    window.location.href = 'quizquestion.php?setID=$set&trialID=$trialID&mode=$mode&quesNo=$quesnum&beginquiz=';
-                </script>";
+            ?>
+            <form id="redirectForm" action="quizquestion.php" method="post">
+                <input type="hidden" name="setID" value="<?php echo $set; ?>">
+                <input type="hidden" name="trialID" value="<?php echo $trialID; ?>">
+                <input type="hidden" name="mode" value="<?php echo $mode; ?>">
+                <input type="hidden" name="quesNo" value="<?php echo $quesnum; ?>">
+                <input type="hidden" name="beginquiz" value="">
+            </form>
+
+            <script>
+                document.getElementById('redirectForm').submit();
+            </script>
+            <?php
         } else {
             echo "<script>
-                    window.location.href = 'quizquestion.php?setID=$set&trialID=$trialID&mode=$mode&quesNo=$quesnum&beginquiz=';
-                </script>";
+                alert('Unsuccessful save');
+                //window.location.href = 'index.php';
+                //tbh idk where to put it
+            </script>";
         }
     }
 

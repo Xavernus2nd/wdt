@@ -38,14 +38,29 @@ if ($numset > 0) {
         echo "<tr><td>$num</td>
                   <td>$setname</td>
                   <td>$numques</td>
-                  <td><a href='question.php?setID=".$set."&mode=Practice'><button>Practice</button></a></td>
-                  <td><a href='question.php?setID=".$set."&mode=Timed'><button>Timed</button></a></td>
+                  <td>
+                    <form action='question.php' method='post'>
+                        <input type='hidden' name='setID' value='$set'>
+                        <input type='hidden' name='mode' value='Practice'>
+                        <button>Practice</button>
+                    </form>
+                  </td>
+                  <td>
+                    <form action='question.php' method='post'>
+                        <input type='hidden' name='setID' value='$set'>
+                        <input type='hidden' name='mode' value='Timed'>
+                        <button>Timed</button>
+                    </form>
+                  </td>
             </tr>";
     }
     echo "<br><br></table></div>";
 } else {
     //if there is no question set in the topic, do i want alert or just echo
-    
+    echo "<script>
+        alert('No question sets');
+        window.location.href = 'index.php';
+    </script>";
 }
 
 ?>
