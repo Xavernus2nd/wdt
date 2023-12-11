@@ -1,10 +1,12 @@
-h1{
-    height: 93px; 
+h1 {
+    height: 92px; 
     background-color: #427ef5;
     margin-top: 0;
-    margin-left: 94px;
+    margin-left: 92px;
     text-align: center;
     line-height: 93px; /* Set line-height equal to the height of the container */
+    position: relative;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
 
 nav {
@@ -87,7 +89,8 @@ li.dropdown {
     display: none;
     position: absolute;
     background-color:white;
-    min-width: 150px;
+    min-width: 50px;
+    font-size: 15px;
 }
     
 .dropdown-content a {
@@ -105,19 +108,12 @@ li.dropdown {
     display: block;
 }
 
-#welcome {
+.welcome {
     color: rgb(45, 231, 95);
     margin-left: 100px;
     align-items: center;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     text-align: center;
-}
-
-#LoginTop{
-    margin-top: 0;
-    text-align: center;
-    margin-right: 20px;
-    color: azure;
 }
 
 footer {
@@ -133,6 +129,13 @@ footer {
 }
 
 body{
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
     background-color: lightcyan;
+
+}
+
+.loginTop, .profileTop{
+    position: absolute;
+    top: 50px; /* Adjust the top position as needed */
+    right: 60px; /* Adjust the right position as needed */
+    z-index: 1;
 }
