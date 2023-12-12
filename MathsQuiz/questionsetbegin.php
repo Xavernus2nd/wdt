@@ -5,6 +5,11 @@ $mode = $_POST['mode'];
 $quesnum = 1;
 $_POST['currentQuestionNum']=$quesnum;
 $username = $_SESSION['StudentUsername'];
+
+include 'counttime.php';
+
+//set timezone to KL
+date_default_timezone_set("Asia/Kuala_Lumpur");
 $timestamp = date("Y-m-d h:i");
 
 $SQLset = "SELECT * FROM question_set INNER JOIN topic ON question_set.TopicID = topic.TopicID where question_set.SetID ='$set';";
@@ -44,7 +49,7 @@ $trialID = mysqli_insert_id($DBconn);
     <input type="hidden" name="trialID" value="<?php echo $trialID;?>">
     <input type="hidden" name="mode" value="<?php echo $mode;?>">
     <input type="hidden" name="quesNo" value="<?php echo $_POST['currentQuestionNum'];?>">
-    <button type="submit" name="beginquiz">BEGIN</button> <!--button to start quiz, send to question.php-->
+    <button type="submit" name="beginquiz" id="beginButton">BEGIN</button> <!--button to start quiz, send to question.php, starts timer-->
 </form>
 
 <!--script to print instructions for each mode-->

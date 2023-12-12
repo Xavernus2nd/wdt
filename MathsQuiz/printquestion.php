@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if(isset($data["Question"])) {
             if ($mode == 'Timed') {
                 //show timer
-                echo '<div id="timer" style="display: none;">Time remaining: '.gmdate("i:s, $quizDuration").'</div>';
+                echo '<div id="timer">30:00</div>';
             }
 
             ?>
@@ -87,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <input type="hidden" name="setID" value="<?php echo $set; ?>">
                 <input type="hidden" name="trialID" value="<?php echo $trialID; ?>">
                 <input type="hidden" name="timeRemaining" value="<?php echo $timeRemaining; ?>">
-                <button name='answer'>SUBMIT</button> <!--when press this button, the button name is answer -> submit button meaning show the results terus (score.php). send to quizquestion.php-->
+                <button name='answer' onclick="stopTimer()">SUBMIT</button> <!--when press this button, the button name is answer -> submit button meaning show the results terus (score.php). send to quizquestion.php-->
             </form>
                 <button name='exit'>EXIT</button> <!--exit to begin quiz page ???, when exit -> delete that trial id-->
             <?php
@@ -124,6 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo "<script>
                 function submitForm() {
                     document.getElementById('navigationForm').submit();
+                }
             </script>";
         }
     }

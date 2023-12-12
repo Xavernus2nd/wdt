@@ -6,70 +6,50 @@
 
 //set duration in seconds = minute * second
 include 'connection.php';
-$trialID = $_POST['trialID'];
-$quizDuration  = 30 * 60;
-
-//sql to get timestamp of the trial
-$SQLtime = "SELECT DateTime FROM trial WHERE TrialID=$trialID;";
-$run = mysqli_query($DBconn, $SQLtime);
-$quizStartTime  = strtotime(mysqli_fetch_array($run)['DateTime']);
+date_default_timezone_set("Asia/Kuala_Lumpur");
 
 ?>
 
+
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var quizStartTime = <?php echo $quizStartTime; ?>;
-        var quizDuration = <?php echo $quizDuration; ?>;
-        var timeRemaining = Math.max(0, quizDuration - Math.floor((Date.now() / 1000) - quizStartTime));
+    var timer;
+    var timeRemaining;
 
-        function updateCountdown() {
-            var timerElement = document.getElementById('timer');
+    document.getElementById('beginButton').addEventListener('click', startTimer);
+    function startTimer() {
+        // Set the time remaining to 30 minutes
+        timeRemaining = 30 * 60;
 
-            if (timeRemaining > 0) {
-                timeRemaining--;
-                var minutes = Math.floor(timeRemaining / 60);
-                var seconds = timeRemaining % 60;
-                timerElement.innerHTML = 'Time remaining: ' + (minutes < 10 ? '0' : '') + minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
-            } else {
-                timerElement.innerHTML = 'Time expired';
-                clearInterval(timerInterval);
-            }
-        }
+        // Call updateTimer every second
+        timer = setInterval(updateTimer, 1000);
 
-        // Update the countdown every second
-        var timerInterval = setInterval(updateCountdown, 1000);
+        // Initial call to updateTimer to display the starting time
+        updateTimer();
+    }
 
-        // Initial call to set up the countdown
-        updateCountdown();
+    function updateTimer() {
+        // Calculate minutes and seconds
+        var minutes = Math.floor(timeRemaining / 60);
+        var seconds = timeRemaining % 60;
 
-        // Show the timer once it's set up
-        document.getElementById('timer').style.display = 'block';
-    });
-    // Add an event listener for the form submission
-    var submitButton = document.getElementsByName('answer')[0]; // Assuming 'answer' is the name of your submit button
-    submitButton.addEventListener('click', function () {
-        clearInterval(timerInterval); // Stop the timer when submitting
-        saveTimeTaken(quizDuration - timeRemaining); // Save time taken to a hidden input
-    });
-    // Function to save the time taken to a hidden input
-    function saveTimeTaken(timeTaken, submitButton) {
-        var form = findParentForm(submitButton);
-        if (form) {
-            var hiddenInput = document.createElement('input');
-            hiddenInput.type = 'hidden';
-            hiddenInput.name = 'timeTaken';
-            hiddenInput.value = timeTaken;
-            form.appendChild(hiddenInput);
+        // Add leading zeros if needed
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        // Update the timer display
+        document.getElementById("timer").innerText = minutes + ":" + seconds;
+
+        // Decrease the time remaining
+        timeRemaining--;
+
+        // Check if the timer has reached zero
+        if (timeRemaining < 0) {
+            stopTimer();
         }
     }
-    // Function to find the closest form element
-    function findParentForm(element) {
-        while (element) {
-            if (element.nodeName === 'FORM') {
-                return element;
-            }
-            element = element.parentElement;
-        }
-        return null; // If no form is found
+
+    function stopTimer() {
+        // Clear the interval to stop the timer
+        clearInterval(timer);
     }
 </script>

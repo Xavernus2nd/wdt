@@ -3,8 +3,10 @@
 //if can, i wanna highlight the wrong answers with red background yeah
 //show the information in a table bcs why not hahahahhahahha
 include 'connection.php';
-$trialID = $_GET['trialID'];
+$trialID = $_POST['trialID'];
+$timeRemaining = $_POST['timeRemaining'];
 echo $trialID;
+echo $timeRemaining;
 
 //present the answer in table form
 echo '

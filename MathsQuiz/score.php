@@ -8,8 +8,8 @@ $trialID = $_POST['trialID'];
 $username = $_SESSION['StudentUsername'];
 $count = 0;
 $i = 0;
-$timeRemaining = $_POST['timeRemaining'];
-echo $timeRemaining;
+//$timeRemaining = $_POST['timeRemaining'];
+//echo $timeRemaining;
 //counting number of questions within the set
 $SQLnum = "SELECT COUNT(QuestionID) FROM question WHERE SetID = '$setID';";
 $runSQLnum = mysqli_query($DBconn, $SQLnum);
@@ -35,7 +35,12 @@ $SQLupdate = "UPDATE trial SET Score = $score WHERE TrialID = $trialID;";
 $runSQLupdate = mysqli_query($DBconn, $SQLupdate);
 //formula = (count student answer/totalques) * 100 , see if can set decimal places
 
-//to results and answer history page yeah
-header("Location: resultanswer.php?trialID=$trialID");
-exit();  // Ensure that no further code is executed after the header
+//to results and answer history page yeah using post bcs why nottt
 ?>
+<form id="resultForm" action="resultanswer.php" method="POST">
+    <input type="hidden" name="trialID" value="<?php echo $trialID;?>">
+    <!--time remaining-->
+</form>
+<script>
+    document.getElementById("resultForm").submit();
+</script>
