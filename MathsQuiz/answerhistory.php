@@ -4,9 +4,9 @@
 //show the information in a table bcs why not hahahahhahahha
 include 'connection.php';
 $trialID = $_POST['trialID'];
-$timeRemaining = $_POST['timeRemaining'];
+//$timeRemaining = $_POST['timeRemaining'];
 echo $trialID;
-echo $timeRemaining;
+//echo $timeRemaining;
 
 //present the answer in table form
 echo '

@@ -5,7 +5,7 @@ include 'connection.php';
 //topic, set, question, previous next buttons, question number directory + scrollbar, save answer, submit, exit
 
 //goals:
-//1. show questions in practice mode first (no consider mode) + session + previous next button work
+//1. show questions in practice mode first (no consider mode) + session + previous next button work - DONE
 //2. code for both modes (if else)
 //3. countdown for timed - measure the time, show the time limit
 
@@ -16,11 +16,10 @@ include 'connection.php';
 
 $set = $_POST['setID'];
 $mode = $_POST['mode'];
-$trialID = $_POST['trialID'];
 $currentQuestionNum = $_POST['quesNo'];
-$username = $_SESSION['StudentUsername'];
+$trialID = $_POST['trialID'];
 
-include 'counttime.php'; //timer 
+$username = $_SESSION['StudentUsername'];
 
 //getting the questions from question set
 $SQLquestion = "SELECT * FROM question INNER JOIN question_set ON question.SetID = question_set.SetID INNER JOIN topic ON question_set.TopicID = topic.TopicID WHERE question.SetID = '$set' AND question.QuestionNumber = '$currentQuestionNum';";
@@ -82,38 +81,47 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 ?>
                 <button name="save">SAVE ANSWER</button> <!--save answer means they terus update student answer in table with this answer-->
             </form>
-                <!--answerprocess.php masuk sini kot-->
+            
+            <!--answerprocess.php masuk sini kot-->
             <form action="quizquestion.php" method="post">
                 <input type="hidden" name="setID" value="<?php echo $set; ?>">
                 <input type="hidden" name="trialID" value="<?php echo $trialID; ?>">
-                <input type="hidden" name="timeRemaining" value="<?php echo $timeRemaining; ?>">
-                <button name='answer' onclick="stopTimer()">SUBMIT</button> <!--when press this button, the button name is answer -> submit button meaning show the results terus (score.php). send to quizquestion.php-->
+                <!--timer-->
+                <button name='answer'>SUBMIT</button> <!--when press this button, the button name is answer -> submit button meaning show the results terus (score.php). send to quizquestion.php-->
             </form>
-                <button name='exit'>EXIT</button> <!--exit to begin quiz page ???, when exit -> delete that trial id-->
+            <button name='exit'>EXIT</button> <!--exit to begin quiz page ???, when exit -> delete that trial id-->
+
+
             <?php
             //printing previous and next button
             $nextQuestionNum = $currentQuestionNum + 1;
             $prevQuestionNum = $currentQuestionNum - 1;
 
+       
+
             echo "<form id='navigationForm' method='post' action=''>";
-            if ($prevQuestionNum > 0) {
+            if ($prevQuestionNum >= 1) {
                 ?>
+                <form id='navigationForm' method='post' action=''>
                 <input type="hidden" name="setID" value="<?php echo $set;?>">
                 <input type="hidden" name="trialID" value="<?php echo $trialID;?>">
                 <input type="hidden" name="mode" value="<?php echo $mode;?>">
                 <input type="hidden" name="quesNo" value="<?php echo $prevQuestionNum;?>">
                 <input type="hidden" name="beginquiz" value="">
                 <button onclick="submitForm()">Previous</button>
+                </form>
                 <?php
             }
             if ($nextQuestionNum <= $totalques ) {
                 ?>
+                <form id='navigationForm' method='post' action=''>
                 <input type="hidden" name="setID" value="<?php echo $set;?>">
                 <input type="hidden" name="trialID" value="<?php echo $trialID;?>">
                 <input type="hidden" name="mode" value="<?php echo $mode;?>">
                 <input type="hidden" name="quesNo" value="<?php echo $nextQuestionNum;?>">
                 <input type="hidden" name="beginquiz" value="">
                 <button onclick="submitForm()">Next</button>
+                <form id='navigationForm' method='post' action=''>
                 <?php
             }
             if ($currentQuestionNum == $totalques) {

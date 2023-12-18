@@ -6,8 +6,6 @@ $quesnum = 1;
 $_POST['currentQuestionNum']=$quesnum;
 $username = $_SESSION['StudentUsername'];
 
-include 'counttime.php';
-
 //set timezone to KL
 date_default_timezone_set("Asia/Kuala_Lumpur");
 $timestamp = date("Y-m-d h:i");

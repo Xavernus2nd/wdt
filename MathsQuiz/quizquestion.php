@@ -14,6 +14,7 @@
         include 'score.php';
     } else {
         include 'printquestion.php';
+        include 'quesdirectory.php'; //this is the directory of the questions - need to put it in div beside print question
     }
     ?>
 </body>
