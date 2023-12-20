@@ -139,3 +139,24 @@ body{
     right: 60px; /* Adjust the right position as needed */
     z-index: 1;
 }
+
+button{ 
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor:pointer;
+}
+
+button:hover{
+    background-color:#45a049;
+}
+
+select{
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+}
