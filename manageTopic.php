@@ -13,12 +13,6 @@ $topicResult = mysqli_fetch_all($topicQuery, MYSQLI_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Manage Topic</title>
     <link rel="stylesheet" href="layout.css">
-    <style>
-        table, th, td {
-        border: 1px solid black;
-        border-collapse: collapse;
-        }
-    </style>
 </head>
 <body>
     <h2>Manage Topics</h2>

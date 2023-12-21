@@ -12,12 +12,6 @@ $SetToBeApproved = mysqli_fetch_all(mysqli_query($DBconn, "SELECT * FROM Questio
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Approve Question Set</title>
     <link rel="stylesheet" href="layout.css">
-    <style>
-        table, th, td {
-        border: 1px solid black;
-        border-collapse: collapse;
-        }
-    </style>
 </head>
 <body>
     <h2>Approve Question Set</h2>
@@ -25,7 +19,7 @@ $SetToBeApproved = mysqli_fetch_all(mysqli_query($DBconn, "SELECT * FROM Questio
     // Dropdown to select question set to be approved
     echo "<label>Question Set:</label>
     <form action='' method='GET'>
-    <select name='QuestionSetID' onchange='this.form.submit()'>
+    <select name='QuestionSetID' class='select' onchange='this.form.submit()'>
     <option value=''>Select Question Set</option>";
     foreach($SetToBeApproved as $row){
         echo "<option value='$row[SetID]'>$row[SetName]</option>";
@@ -71,7 +65,7 @@ $SetToBeApproved = mysqli_fetch_all(mysqli_query($DBconn, "SELECT * FROM Questio
             echo "<div class='aqnav'><form action='' method='GET'>
             <input type='hidden' name='QuestionSetID' value='$QuestionSetID'>
             <label>Go to Question:</label>
-            <select name='QuestionNumber' onchange='this.form.submit()'>
+            <select name='QuestionNumber' class='select' onchange='this.form.submit()'>
             <option value=''>Select Question</option>
             ";
             foreach($QuestionsFromSet as $row){

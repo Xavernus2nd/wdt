@@ -21,7 +21,7 @@ $Topiclists = mysqli_fetch_all($TopicQuery, MYSQLI_ASSOC);
         <label name="QuestionSetName">Question Set Name:</label>
         <input type="text" name="QuestionSetName" required><br><br>
         <label name="TopicName">Topic:</label>
-        <select name="SelectedTopic" required>
+        <select name="SelectedTopic" class='select' required>
             <option value="Not Selected">Please select a topic</option>
         <?php 
         foreach ($Topiclists as $topic) {

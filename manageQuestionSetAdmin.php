@@ -26,12 +26,6 @@ $Topiclists = mysqli_fetch_all($TopicQuery, MYSQLI_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Manage Question Set</title>
-    <style>
-        table, th, td {
-        border: 1px solid black;
-        border-collapse: collapse;
-        }
-    </style>
     <link href='layout.css' rel='stylesheet'>
     <script>
         function deleteQuestionSet(){
@@ -51,7 +45,7 @@ $Topiclists = mysqli_fetch_all($TopicQuery, MYSQLI_ASSOC);
     <div id="container">
     <h2>View/Manage Question Set</h2>
     <form action="" method="post">
-        <select name="SelectedTopic">
+        <select name="SelectedTopic" class='select'>
             <option value="Not Selected">Please select a topic</option>
         <?php 
         foreach ($Topiclists as $topic) {
