@@ -4,7 +4,7 @@ if(isset($_POST['NewSetName'])){
     $NewSetName=$_POST['NewSetName'];
     $targetSetID=$_POST['EditSetID'];
     $TeacherUsername=$_SESSION['TeacherUsername'];
-    $checkTeacher = mysqli_fetch_assoc(mysqli_query($DBconn, "SELECT TeacherUsername FROM QuestionSet WHERE SetID = '$targetSetID'"));
+    $checkTeacher = mysqli_fetch_assoc(mysqli_query($DBconn, "SELECT TeacherUsername FROM Question_Set WHERE SetID = '$targetSetID'"));
     $targetSetTeacherName = $checkTeacher['TeacherUsername'];
     if ($TeacherUsername!=$targetSetTeacherName){
         echo "<script>alert('You are not allowed to edit this question set.');</script>";
