@@ -1,9 +1,9 @@
 <?php
 session_start();
 $_SESSION['TeacherUsername']="Teacher1";
-include 'conn.php';
+include 'connection.php';
 include 'importcsv.php';
-$TopicQuery = mysqli_query($conn, "SELECT TopicTitle FROM Topic");
+$TopicQuery = mysqli_query($DBconn, "SELECT TopicTitle FROM Topic");
 $Topiclists = mysqli_fetch_all($TopicQuery, MYSQLI_ASSOC);
 ?>
 <!DOCTYPE html>
@@ -12,24 +12,30 @@ $Topiclists = mysqli_fetch_all($TopicQuery, MYSQLI_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add New Question Set</title>
+    <link href='layout.css' rel='stylesheet'>
 </head>
 <body>
-    <h1>Add New Question Set</h1>
-    <h2>Submit your CSV file here for a new question set.</h2>
-    <form action="" method="post" name="uploadcsv" enctype="multipart/form-data">
+    <h2>Add New Question Set</h2>
+    <center><h3>Submit your CSV file here for a new question set.</h3></center>
+    <div class="csvinfo"><form action="" method="post" name="uploadcsv" enctype="multipart/form-data">
         <label name="QuestionSetName">Question Set Name:</label>
-        <input type="text" name="QuestionSetName" required><br>
+        <input type="text" name="QuestionSetName" required><br><br>
         <label name="TopicName">Topic:</label>
-        <select name="SelectedTopic">
+        <select name="SelectedTopic" required>
             <option value="Not Selected">Please select a topic</option>
         <?php 
         foreach ($Topiclists as $topic) {
-            echo "<option value='$topic[TopicTitle]'>$topic[TopicTitle]</option>";
+            if ($topic['TopicTitle'] == $_GET['topic']) {
+                echo "<option value='$topic[TopicTitle]' selected>$topic[TopicTitle]</option>";
+            }
+            else
+            echo "<option value='$topic[TopicTitle]' >$topic[TopicTitle]</option>";
         }
         ?>
-        </select><br>
+        </select><br><br>
         <label name="csvfile">Add CSV file:</label>
-        <input type="file" name="fileToUpload" required><br>
-        <button type="submit" name="import">Upload</button>
+        <input type="file" name="fileToUpload" required><br><br>
+        <button type="submit" name="import" class='button'>Upload</button>
+    </div>
 </body>
 </html>
