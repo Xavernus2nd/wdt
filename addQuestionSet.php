@@ -17,7 +17,8 @@ $Topiclists = mysqli_fetch_all($TopicQuery, MYSQLI_ASSOC);
 <body>
     <h2>Add New Question Set</h2>
     <center><h3>Submit your CSV file here for a new question set.</h3></center>
-    <div class="csvinfo"><form action="" method="post" name="uploadcsv" enctype="multipart/form-data">
+    <div class="csvinfo">
+        <form action="" method="post" name="uploadcsv" onsubmit="return confirm('Are you sure you want to submit this question set?')" enctype="multipart/form-data">
         <label name="QuestionSetName">Question Set Name:</label>
         <input type="text" name="QuestionSetName" required><br><br>
         <label name="TopicName">Topic:</label>
@@ -36,6 +37,7 @@ $Topiclists = mysqli_fetch_all($TopicQuery, MYSQLI_ASSOC);
         <label name="csvfile">Add CSV file:</label>
         <input type="file" name="fileToUpload" required><br><br>
         <button type="submit" name="import" class='button'>Upload</button>
+    </form>
     </div>
 </body>
 </html>

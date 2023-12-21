@@ -29,14 +29,14 @@ $topicResult = mysqli_fetch_all($topicQuery, MYSQLI_ASSOC);
                 <td>$topic[TopicID]</td>
                 <td>$topic[TopicTitle]</td>
                 <td>
-                    <form action='' method='post' onsubmit='return confirm('Are you sure you want to rename this topic?');'>
+                    <form action='' method='post' onsubmit='return confirm(\"Are you sure you want to rename this topic?\");'>
                         <input type='hidden' name='EditTopicID' value='$topic[TopicID]'>
                         <input type='text' name='EditTopicTitle' placeholder='New Topic Name' required>
                         <button type='submit' name='editTopic' class='button'>Edit</button>
                     </form>
                 </td>
                 <td>
-                    <form action='' method='post' onsubmit='return confirm('Are you sure you want to delete this topic? This action will also delete ALL QUESTION SETS under this topic');'> 
+                    <form action='' method='post' onsubmit='return confirm(\"Are you sure you want to delete this topic? This action will also delete ALL QUESTION SETS under this topic\");'> 
                         <input type='hidden' name='DeleteTopicID' value='$topic[TopicID]'>
                         <button type='submit' name='deleteTopic' class='button'>Delete</button>
                     </form>

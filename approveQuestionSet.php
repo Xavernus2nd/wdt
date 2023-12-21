@@ -30,6 +30,7 @@ $SetToBeApproved = mysqli_fetch_all(mysqli_query($DBconn, "SELECT * FROM Questio
         $QuestionSetID = $_GET["QuestionSetID"];
         $QuestionsFromSet = mysqli_fetch_all(mysqli_query($DBconn, "SELECT * FROM Question WHERE SetID = '$QuestionSetID'"), MYSQLI_ASSOC);
         $QuestionSet = mysqli_fetch_assoc(mysqli_query($DBconn, "SELECT * FROM Question_Set WHERE SetID = '$QuestionSetID'"));
+        $QuestionSetTopic = mysqli_fetch_assoc(mysqli_query($DBconn, "SELECT TopicTitle FROM Topic WHERE TopicID = '$QuestionSet[TopicID]'"));
         $QuestionNumber = mysqli_fetch_assoc(mysqli_query($DBconn, "SELECT QuestionNumber FROM Question WHERE SetID = '$QuestionSetID'"));
         $currentQuestionIndex = isset($_GET['QuestionNumber']) ? $_GET['QuestionNumber'] : 0; //checks if current question number is set, if not set to 0   
         if(!empty($QuestionsFromSet)){
@@ -80,10 +81,10 @@ $SetToBeApproved = mysqli_fetch_all(mysqli_query($DBconn, "SELECT * FROM Questio
             <input type='submit' name='action' class='button' value='Next Question'>
             </form></div><br>";
             echo "<center><table class='approveinfotable'>
-            <td>Topic Name: $QuestionSet[TopicID]</td>
+            <td>Topic Name: $QuestionSetTopic[TopicTitle]</td>
             <td>Submitted By: $QuestionSet[TeacherUsername]</td>
             <table><br>";
-            echo "<form action='' method='POST'>
+            echo "<form action='' method='POST' onsubmit='return confirm(\"Are you sure?\")'>
             <input type='hidden' name='QuestionSetID' value='$QuestionSetID'>
             <input type='submit' name='Approve' class='approve' value='Approve Question Set'>
             <input type='submit' name='Reject' class='reject' value='Reject Question Set'>

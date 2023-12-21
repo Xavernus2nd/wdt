@@ -27,18 +27,6 @@ $Topiclists = mysqli_fetch_all($TopicQuery, MYSQLI_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Manage Question Set</title>
     <link href='layout.css' rel='stylesheet'>
-    <script>
-        function deleteQuestionSet(){
-            var confirmDelete = confirm("Are you sure you want to delete this question set?");
-            if(confirmDelete){
-                return true;
-            }
-            else{
-                alert("No actions were performed.");
-                return false;
-            }
-        }
-        </script>
 </head>
 <body>
 <?php //include 'Loginbutton.php' ?>
@@ -75,7 +63,7 @@ $Topiclists = mysqli_fetch_all($TopicQuery, MYSQLI_ASSOC);
                     <td>$questionSet[NoOfQuestions]</td>
                     <td>$questionSet[TeacherUsername]</td>
                     <td>
-                        <form action='' method='post' onsubmit='return deleteQuestionSet();'>
+                        <form action='' method='post' onsubmit='return confirm(\"Are you sure you want to delete this question set?\");'>
                             <input type='hidden' name='DeleteSetID' value='$questionSet[SetID]'>   
                             <button type='submit' name='delete' class='button'>Delete</button>
                         </form>

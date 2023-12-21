@@ -64,14 +64,14 @@ $Topiclists = mysqli_fetch_all($TopicQuery, MYSQLI_ASSOC);
                     <td>$questionSet[NoOfQuestions]</td>
                     <td>$questionSet[TeacherUsername]</td>
                     <td>
-                        <form action='' method='post' onsubmit='return confirm('Are you sure you want to rename this question set?');'>
+                        <form action='' method='post' onsubmit='return confirm(\"Are you sure you want to rename this question set?\");'>
                             <input type='hidden' name='EditSetID' value='$questionSet[SetID]'>
                             <input type='text' name='NewSetName' placeholder='New Set Name' required>
                             <button type='submit' name='edit' class='button'>Edit Set Name</button>
                         </form>
                     </td>
                     <td>
-                        <form action='' method='post' onsubmit='return confirm('Are you sure you want to delete this question set?');'>
+                        <form action='' method='post' onsubmit='return confirm(\"Are you sure you want to delete this question set?\");'>
                             <input type='hidden' name='DeleteSetID' value='$questionSet[SetID]'>   
                             <button type='submit' name='delete' class='button'>Delete Set</button>
                         </form>
