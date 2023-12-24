@@ -5,8 +5,7 @@
 include 'connection.php';
 $setID = $_POST['setID'];
 $trialID = $_POST['trialID'];
-$finalTime = $_POST['finalTime'];
-$timeTaken = 1800 - $finalTime;
+$timeTaken = $_POST['timeTaken'];
 $username = $_SESSION['StudentUsername'];
 $count = 0;
 $i = 0;

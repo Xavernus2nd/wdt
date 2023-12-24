@@ -122,9 +122,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         updateTimer();
                     });
                 </script>';
-                $finalTime = $countdown_timer;
+                $timeTaken = 1800 - $countdown_timer;
             } else {
-                $finalTime = null;
+                $timeTaken = null;
             }
 
             ?>
@@ -157,7 +157,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <form action="quizquestion.php" method="post">
                 <input type="hidden" name="setID" value="<?php echo $set; ?>">
                 <input type="hidden" name="trialID" value="<?php echo $trialID; ?>">
-                <input type="hidden" name="finalTime" value="<?php echo $finalTime; ?>">
+                <input type="hidden" name="timeTaken" value="<?php echo $timeTaken; ?>">
                 
                 <button name='answer' id='submit'>SUBMIT</button> <!--when press this button, the button name is answer -> submit button meaning show the results terus (score.php). send to quizquestion.php-->
                 <!--when all questions havent answered, it disables this button-->
