@@ -5,6 +5,8 @@
 include 'connection.php';
 $setID = $_POST['setID'];
 $trialID = $_POST['trialID'];
+$finalTime = $_POST['finalTime'];
+$timeTaken = 1800 - $finalTime;
 $username = $_SESSION['StudentUsername'];
 $count = 0;
 $i = 0;
@@ -31,7 +33,7 @@ $score = round(($count/$totalques) *100);
 
 //storing score into trial table
 //need to see if got time or not
-$SQLupdate = "UPDATE trial SET Score = $score WHERE TrialID = $trialID;";
+$SQLupdate = "UPDATE trial SET Score = $score, TimeTaken = '$timeTaken' WHERE TrialID = $trialID;";
 $runSQLupdate = mysqli_query($DBconn, $SQLupdate);
 //formula = (count student answer/totalques) * 100 , see if can set decimal places
 

@@ -8,7 +8,13 @@ $username = $_SESSION['StudentUsername'];
 
 //set timezone to KL
 date_default_timezone_set("Asia/Kuala_Lumpur");
-$timestamp = date("Y-m-d h:i");
+$_SESSION['quiz'] = date("Y-m-d h:i:s");
+$timestamp = $_SESSION['quiz'];
+
+//reset timer for timed mode
+if (isset($_SESSION['countdown_timer'])) {
+    unset($_SESSION['countdown_timer']);
+}
 
 $SQLset = "SELECT * FROM question_set INNER JOIN topic ON question_set.TopicID = topic.TopicID where question_set.SetID ='$set';";
 $run=mysqli_query($DBconn, $SQLset);
@@ -34,6 +40,15 @@ $trialID = mysqli_insert_id($DBconn);
         <td>Mode:</td>
         <td><?php echo $mode;?></td>
     </tr>
+
+    <?php
+    if ($mode === 'Timed') {
+        echo "<tr>
+                <td>Total Time:</td> 
+                <td>35 minutes</td>
+            </tr>";
+    }
+    ?>
     <tr>
         <td>Instruction:</td>
         <td><div id="instruction"></div></td>
@@ -50,6 +65,13 @@ $trialID = mysqli_insert_id($DBconn);
     <button type="submit" name="beginquiz" id="beginButton">BEGIN</button> <!--button to start quiz, send to question.php, starts timer-->
 </form>
 
+<!--send the set id, trial id to POST-->
+<form method="post" action="quizquestion.php">
+    <input type="hidden" name="setID" value="<?php echo $set;?>">
+    <input type="hidden" name="trialID" value="<?php echo $trialID;?>">
+    <button type="submit" name="exit" id="beginButton">EXIT</button> <!--button to delete trial, send to question.php-->
+</form>
+
 <!--script to print instructions for each mode-->
 <script>
     instruct('<?php echo $mode;?>');
@@ -58,7 +80,7 @@ $trialID = mysqli_insert_id($DBconn);
         if(mode==='Practice') {
             instructions = 'Answer all questions. You may take your time in answering.';
         } else if (mode==='Timed') {
-            instructions = 'Answer all questions within 30 minutes.';
+            instructions = 'You are given 5 minutes to read the questions. You may begin answering the quiz after the reading time. Answer all questions within 30 minutes.';
         }
         document.getElementById("instruction").innerHTML = instructions;
     }

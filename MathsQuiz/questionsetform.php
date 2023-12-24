@@ -9,12 +9,17 @@ $title = mysqli_fetch_array($runtopic);
 
 echo $title['TopicTitle'].'<br>';
 
+//empties out previous session for quiz
+if (!empty($_SESSION['quiz'])) {
+    unset($_SESSION['quiz']);
+    header("Location: questionset.php?topicID=".$topic);
+}
+
+//SQL to get question set information
 $SQLset = "SELECT * FROM question_set INNER JOIN topic ON question_set.TopicID = topic.TopicID where question_set.TopicID='$topic' AND SetApprovalStatus='ACCEPTED';";
 $run=mysqli_query($DBconn, $SQLset);
 $num = 0;
 $numset = mysqli_num_rows($run);
-
-//put if statement here if no question set from the topic then say no question set available ok if no probrem
 
 if ($numset > 0) {
     //if there are question sets in the topic

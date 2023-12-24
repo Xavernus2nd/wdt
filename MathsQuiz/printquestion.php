@@ -1,18 +1,14 @@
 <?php
 include 'connection.php';
+date_default_timezone_set('Asia/Kuala_Lumpur');
 //javascript to add timer or not (if timed, add)
 //need to figure out how to insert into result table for the time -> if no time, time=NULL
-//topic, set, question, previous next buttons, question number directory + scrollbar, save answer, submit, exit
+//topic, set, question, previous next buttons, question number directory + scrollbar, save answer, submit, exit - DONE
 
 //goals:
 //1. show questions in practice mode first (no consider mode) + session + previous next button work - DONE
 //2. code for both modes (if else)
 //3. countdown for timed - measure the time, show the time limit
-
-//ok need to change 
-//question table has no student answer, the answer can just get from the input then compare
-//add new table - StudentAnswer table to save the progress lol - can save the answer there la
-//where to save the answer and print the saved answer? in here or answerprocess?
 
 $set = $_POST['setID'];
 $mode = $_POST['mode'];
@@ -31,21 +27,104 @@ $SQLtotal = "SELECT COUNT(Question) as total FROM question WHERE SetID = '$set';
 $runSQLtotal = mysqli_query($DBconn, $SQLtotal);
 $totalques = mysqli_fetch_assoc($runSQLtotal)['total'];
 
+//count current number of questions answered
+$SQLcount = "SELECT COUNT(StudentAnswer) as count FROM student_answer WHERE TrialID = '$trialID';";
+$runSQLcount = mysqli_query($DBconn, $SQLcount);
+$count = mysqli_fetch_assoc($runSQLcount)['count'];
+
+//get answer from student_answer table
+$SQLanswer = "SELECT * FROM student_answer WHERE TrialID=$trialID AND QuestionID=$data[QuestionID];";
+$runanswer = mysqli_query($DBconn, $SQLanswer);
+if (mysqli_num_rows($runanswer) > 0) {
+    $answerData = mysqli_fetch_array($runanswer);
+    $answer = $answerData['StudentAnswer'];
+} else {
+    $answer = null;
+}
+
+//printing topic and set name
+echo "Topic: ".$data['TopicTitle'].'<br>';
+echo "Question Set: ".$data['SetName'].'<br><br>';
+
+?>
+
+<script>
+    function checkAnsweredQues() {
+        var answeredQues = <?php echo $count;?>;
+        var totalQues = <?php echo $totalques;?>;
+        var submitButton = document.getElementById('submit');
+        
+        if (answeredQues === totalQues) {
+            submitButton.disabled = false; // enable submit button
+        } else {
+            submitButton.disabled = true; // disable submit button
+        }
+    }
+    
+    // Call the function to check answered questions on page load
+    window.onload = checkAnsweredQues;
+</script>
+
+<?php
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['save'])){
         //when the student click save answer 
         include 'answerprocess.php';
-    } else if (isset($_POST['exit'])){
-        //when student click exit, go to begin quiz??
-        echo '<script>alert (You have exited the quiz);</script>';
-        //include 'question.php';
+
     } 
     else {
         //questions
         if(isset($data["Question"])) {
             if ($mode == 'Timed') {
-                //show timer
                 echo '<div id="timer">30:00</div>';
+                $countdown_timer = isset($_SESSION['countdown_timer']) ? $_SESSION['countdown_timer'] : 1800;
+    
+                echo '<script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        var remainingTime = ' . $countdown_timer . ';
+            
+                        function updateTimer() {
+                            var minutes = Math.floor(remainingTime / 60);
+                            var seconds = remainingTime % 60;
+            
+                            var timerElement = document.getElementById("timer");
+            
+                            if (timerElement) {
+                                timerElement.innerHTML = minutes + ":" + seconds;
+            
+                                if (remainingTime > 0) {
+                                    setTimeout(updateTimer, 1000); // Update every second
+                                    remainingTime--;
+                                    // Update the session variable with the latest countdown value
+                                    fetch("counttime.php", {
+                                        method: "POST",
+                                        headers: {
+                                            "Content-Type": "application/x-www-form-urlencoded",
+                                        },
+                                        body: "countdown_timer=" + remainingTime,
+                                    });
+                                } else {
+                                    timerElement.innerHTML = "Time\'s up!";
+                                    // Update the session variable with the latest countdown value (when times up)
+                                    fetch("counttime.php", {
+                                        method: "POST",
+                                        headers: {
+                                            "Content-Type": "application/x-www-form-urlencoded",
+                                        },
+                                        body: "countdown_timer=0",
+                                    });
+                                }
+                            }
+                        }
+            
+                        // Initial call to start the countdown
+                        updateTimer();
+                    });
+                </script>';
+                $finalTime = $countdown_timer;
+            } else {
+                $finalTime = null;
             }
 
             ?>
@@ -58,39 +137,38 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <input type="hidden" name="mode" value="<?php echo $mode;?>">
                 <?php echo $data['Question'];?> <br>
         
-                <input type="radio" name="studAns" value="<?php echo $data['OptionA'];?>">
+                <input type="radio" name="studAns" <?php if ($answer == $data['OptionA']) {?> checked="checked" <?php } ?> value="<?php echo $data['OptionA'];?>">
                 <?php echo $data['OptionA'];?><br>
-                <input type="radio" name="studAns" value="<?php echo $data['OptionB'];?>">
+                <input type="radio" name="studAns" <?php if ($answer == $data['OptionB']) {?> checked="checked" <?php } ?> value="<?php echo $data['OptionB'];?>">
                 <?php echo $data['OptionB'];?><br>
-                <input type="radio" name="studAns" value="<?php echo $data['OptionC'];?>">
+                <input type="radio" name="studAns" <?php if ($answer == $data['OptionC']) {?> checked="checked" <?php } ?> value="<?php echo $data['OptionC'];?>">
                 <?php echo $data['OptionC'];?><br>
-                <input type="radio" name="studAns" value="<?php echo $data['OptionD'];?>">
+                <input type="radio" name="studAns" <?php if ($answer == $data['OptionD']) {?> checked="checked" <?php } ?> value="<?php echo $data['OptionD'];?>">
                 <?php echo $data['OptionD'];?><br>
                 <?php //if got saved answer (need to see trial id, question id)
                 //sql to find whether the answer alrdy exist?? - got error - bcs they run this when havent saved answer
-                $SQLanswer = "SELECT * FROM student_answer WHERE TrialID=$trialID AND QuestionID=$data[QuestionID];";
-                $runanswer = mysqli_query($DBconn, $SQLanswer);
-                //when no answer submitted yet, it wont show the error of warning offset
-                if (mysqli_num_rows($runanswer) > 0) {
-                    $answerData = mysqli_fetch_array($runanswer);
-                    $answer = $answerData['StudentAnswer'];
-                    echo "Answer saved: " . $answer . "<br>";
-                } else {
-                    $answer = null;
-                }
+                
+                //if got answer alrdy, check/tick the answer yeahhh - maybe sql answer before form
                 ?>
-                <button name="save">SAVE ANSWER</button> <!--save answer means they terus update student answer in table with this answer-->
+                <button name="save" onclick="checkAnsweredQues()">SAVE ANSWER</button> <!--save answer means they terus update student answer in table with this answer-->
             </form>
             
             <!--answerprocess.php masuk sini kot-->
             <form action="quizquestion.php" method="post">
                 <input type="hidden" name="setID" value="<?php echo $set; ?>">
                 <input type="hidden" name="trialID" value="<?php echo $trialID; ?>">
-                <!--timer-->
-                <button name='answer'>SUBMIT</button> <!--when press this button, the button name is answer -> submit button meaning show the results terus (score.php). send to quizquestion.php-->
+                <input type="hidden" name="finalTime" value="<?php echo $finalTime; ?>">
+                
+                <button name='answer' id='submit'>SUBMIT</button> <!--when press this button, the button name is answer -> submit button meaning show the results terus (score.php). send to quizquestion.php-->
+                <!--when all questions havent answered, it disables this button-->
+                <!--need to calculate number of questions answered, so need sql to count number of questions answered where student_answer ques id == question ques id-->
             </form>
-            <button name='exit'>EXIT</button> <!--exit to begin quiz page ???, when exit -> delete that trial id-->
-
+            <!--send the set id, trial id to POST-->
+            <form method="post" action="quizquestion.php">
+                <input type="hidden" name="setID" value="<?php echo $set;?>">
+                <input type="hidden" name="trialID" value="<?php echo $trialID;?>">
+                <button type="submit" name="exit">EXIT</button> <!--button to delete trial, send to question.php-->
+            </form>
 
             <?php
             //printing previous and next button

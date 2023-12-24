@@ -1,55 +1,23 @@
 <?php
-//time taken for student
-//or show time left for student?? AHHHH
-
-//if time left, then can send time left to score.php as time taken = 30 mins - time left yeah
-
-//set duration in seconds = minute * second
 include 'connection.php';
 date_default_timezone_set("Asia/Kuala_Lumpur");
+//$trial = $_POST['trialID'];
 
+session_start();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['countdown_timer'])) {
+    $_SESSION['countdown_timer'] = max(0, (int)$_POST['countdown_timer']);
+}
+
+//1. when quiz starts, time taken duration is initialized as time taken = 00:00 or wtv
+//2. display timer = 30:00 - time taken
+//3. when student clicks save, next, previous, question directory, the time taken is updated in the trial table as time taken
+//4. when student clicks submit, timer is stopped and recorded in trial table
+//5. when student clicks exit, timer just stops
+
+//1. when quiz starts, timer duration is initialized
+//2. when student clicks save, next, previous, question directory, the timer is updated in the trial table as time taken (shud change to time remaining)
+//3. time duration now becomes the time remaining
+//4. when student clicks submit, the timer is stopped and recorded in the trial table yeh
+//when student clicks exit, timer just stops
 ?>
-
-
-<script>
-    var timer;
-    var timeRemaining;
-
-    document.getElementById('beginButton').addEventListener('click', startTimer);
-    function startTimer() {
-        // Set the time remaining to 30 minutes
-        timeRemaining = 30 * 60;
-
-        // Call updateTimer every second
-        timer = setInterval(updateTimer, 1000);
-
-        // Initial call to updateTimer to display the starting time
-        updateTimer();
-    }
-
-    function updateTimer() {
-        // Calculate minutes and seconds
-        var minutes = Math.floor(timeRemaining / 60);
-        var seconds = timeRemaining % 60;
-
-        // Add leading zeros if needed
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-
-        // Update the timer display
-        document.getElementById("timer").innerText = minutes + ":" + seconds;
-
-        // Decrease the time remaining
-        timeRemaining--;
-
-        // Check if the timer has reached zero
-        if (timeRemaining < 0) {
-            stopTimer();
-        }
-    }
-
-    function stopTimer() {
-        // Clear the interval to stop the timer
-        clearInterval(timer);
-    }
-</script>
