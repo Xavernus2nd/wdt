@@ -36,7 +36,6 @@
         }
         $SQLinsertans="INSERT INTO student_answer(TrialID, QuestionID, StudentAnswer, IsCorrect) VALUES ($trialID, $quesID, $stdAns, $correct)";
         $run = mysqli_query($DBconn, $SQLinsertans);
-        //must figure out how to do this by POST
         if($run) {
             ?>
             <form id="redirectForm" action="quizquestion.php" method="post">
@@ -91,11 +90,6 @@
             </script>";
         }
     }
-
-    //logic:
-    //  if the student didnt answer yet, become insert
-    //  else if the student alrdy answered and want to change the answer, become update ??
-    //  need to use 3 different sqls kah 1- view the student answer table, 2-insert into student answer table, 3-update in student answer table AA
 
     //to view the answer if it is existing or not
     $SQLanswer = "SELECT * FROM student_answer WHERE TrialID=$trialID AND QuestionID=$quesID;";

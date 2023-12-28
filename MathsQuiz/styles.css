@@ -12,7 +12,7 @@ body{
 }
 
 a {
-  text-decoration: none; color: #0095b1;
+  text-decoration: none; color: #111111;
 }
 
 a:hover{
@@ -72,3 +72,19 @@ ul.navigation{
 .correct {
   background-color: rgba(0, 120, 92, 0.75);
 } 
+
+.no-answer {
+  background-color: rgba(128, 126, 121, 0.75);
+}
+
+.question-container {
+  background-color: rgba(0, 120, 92, 0.75);
+}
+
+/*print question.php*/
+.answer-container tr td{
+  height: 50px;
+  width: 100px;
+  padding: auto;
+  margin: auto;
+}

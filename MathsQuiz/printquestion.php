@@ -1,14 +1,6 @@
 <?php
 include 'connection.php';
 date_default_timezone_set('Asia/Kuala_Lumpur');
-//javascript to add timer or not (if timed, add)
-//need to figure out how to insert into result table for the time -> if no time, time=NULL
-//topic, set, question, previous next buttons, question number directory + scrollbar, save answer, submit, exit - DONE
-
-//goals:
-//1. show questions in practice mode first (no consider mode) + session + previous next button work - DONE
-//2. code for both modes (if else)
-//3. countdown for timed - measure the time, show the time limit
 
 $set = $_POST['setID'];
 $mode = $_POST['mode'];
@@ -78,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if(isset($data["Question"])) {
             if ($mode == 'Timed') {
                 echo '<div id="timer">30:00</div>';
-                $countdown_timer = isset($_SESSION['countdown_timer']) ? $_SESSION['countdown_timer'] : 1800;
+                $countdown_timer = isset($_SESSION['countdown_timer']) ? $_SESSION['countdown_timer'] : 1800; //1800 is 30 mins
     
                 echo '<script>
                     document.addEventListener("DOMContentLoaded", function() {
@@ -104,8 +96,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                         },
                                         body: "countdown_timer=" + remainingTime,
                                     });
-                                } else {
-                                    timerElement.innerHTML = "Time\'s up!";
+                                } else {                                
+                                    alert ("Time is up! Your answers will be submitted automatically.");
                                     // Update the session variable with the latest countdown value (when times up)
                                     fetch("counttime.php", {
                                         method: "POST",
@@ -114,12 +106,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                         },
                                         body: "countdown_timer=0",
                                     });
+                                    //automatically submit the form
+                                    document.getElementById("submit").disabled = false;
+                                    document.getElementById("submit").click();
                                 }
                             }
                         }
             
                         // Initial call to start the countdown
-                        updateTimer();
+                        updateTimer();                    
                     });
                 </script>';
                 $timeTaken = 1800 - $countdown_timer;
@@ -137,23 +132,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <input type="hidden" name="mode" value="<?php echo $mode;?>">
                 <?php echo $data['Question'];?> <br>
         
-                <input type="radio" name="studAns" <?php if ($answer == $data['OptionA']) {?> checked="checked" <?php } ?> value="<?php echo $data['OptionA'];?>">
-                <?php echo $data['OptionA'];?><br>
-                <input type="radio" name="studAns" <?php if ($answer == $data['OptionB']) {?> checked="checked" <?php } ?> value="<?php echo $data['OptionB'];?>">
-                <?php echo $data['OptionB'];?><br>
-                <input type="radio" name="studAns" <?php if ($answer == $data['OptionC']) {?> checked="checked" <?php } ?> value="<?php echo $data['OptionC'];?>">
-                <?php echo $data['OptionC'];?><br>
-                <input type="radio" name="studAns" <?php if ($answer == $data['OptionD']) {?> checked="checked" <?php } ?> value="<?php echo $data['OptionD'];?>">
-                <?php echo $data['OptionD'];?><br>
-                <?php //if got saved answer (need to see trial id, question id)
-                //sql to find whether the answer alrdy exist?? - got error - bcs they run this when havent saved answer
-                
-                //if got answer alrdy, check/tick the answer yeahhh - maybe sql answer before form
-                ?>
+                <table class="answer-container">
+                    <tr>
+                        <td><input type="radio" name="studAns" <?php if ($answer == $data['OptionA']) {?> checked="checked" <?php } ?> value="<?php echo $data['OptionA'];?>" required="required">
+                        a. <?php echo $data['OptionA'];?><br></td>
+                        <td><input type="radio" name="studAns" <?php if ($answer == $data['OptionB']) {?> checked="checked" <?php } ?> value="<?php echo $data['OptionB'];?>" required="required">
+                        b. <?php echo $data['OptionB'];?><br></td>
+                    </tr>
+                    <tr>
+                        <td><input type="radio" name="studAns" <?php if ($answer == $data['OptionC']) {?> checked="checked" <?php } ?> value="<?php echo $data['OptionC'];?>" required="required">
+                        c. <?php echo $data['OptionC'];?><br></td>
+                        <td><input type="radio" name="studAns" <?php if ($answer == $data['OptionD']) {?> checked="checked" <?php } ?> value="<?php echo $data['OptionD'];?>" required="required">
+                        d. <?php echo $data['OptionD'];?><br></td>
+                    </tr>
+                </table>
                 <button name="save" onclick="checkAnsweredQues()">SAVE ANSWER</button> <!--save answer means they terus update student answer in table with this answer-->
             </form>
             
-            <!--answerprocess.php masuk sini kot-->
             <form action="quizquestion.php" method="post">
                 <input type="hidden" name="setID" value="<?php echo $set; ?>">
                 <input type="hidden" name="trialID" value="<?php echo $trialID; ?>">
@@ -174,7 +169,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //printing previous and next button
             $nextQuestionNum = $currentQuestionNum + 1;
             $prevQuestionNum = $currentQuestionNum - 1;
-
        
 
             echo "<form id='navigationForm' method='post' action=''>";

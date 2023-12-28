@@ -9,7 +9,7 @@
 <body>
     <?php 
     //here is to print out the results and the answer
-    //shud be similar to results in outsider's part
+    //include 'result.php' (the code for result information)
     include 'answerhistory.php';
     ?>
 </body>

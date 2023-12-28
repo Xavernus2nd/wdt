@@ -1,5 +1,4 @@
 <?php
-//show topic title, show question set name, num of questions, mode in table
 include 'connection.php';
 $topic = $_GET['topicID'];
 $_SESSION['topicID'] = $topic;
@@ -39,7 +38,6 @@ if ($numset > 0) {
         $numques = mysqli_num_rows($runcount);
         $num++;
         $setname = $data['SetName'];
-        //when no num ques, then dont show the table - by right, shudnt happen bcs question sets r approved and must have the questions la
         echo "<tr><td>$num</td>
                   <td>$setname</td>
                   <td>$numques</td>
@@ -61,11 +59,9 @@ if ($numset > 0) {
     }
     echo "<br><br></table></div>";
 } else {
-    //if there is no question set in the topic, do i want alert or just echo
     echo "<script>
         alert('No question sets');
         window.location.href = 'index.php';
     </script>";
 }
-
 ?>

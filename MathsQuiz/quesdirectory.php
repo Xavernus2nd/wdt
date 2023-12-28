@@ -1,7 +1,4 @@
 <?php
-//in quizquestion.php, need to make this a scrollable division
-//print list of questions
-//if the question is answered, the question number will be checked orr add a tick 
 $set = $_POST['setID'];
 $trialID = $_POST['trialID'];
 $mode = $_POST['mode'];
@@ -14,7 +11,6 @@ $runSQLnumques = mysqli_query($DBconn, $SQLnumques);
 <table class="ques-directory" border="1">
     <?php
     while ($data = mysqli_fetch_array($runSQLnumques)) {
-        //i want to print this in a list
         $quesID = $data['QuestionID'];
         $quesnum = $data['QuestionNumber'];
 
@@ -32,7 +28,6 @@ $runSQLnumques = mysqli_query($DBconn, $SQLnumques);
         <input type="hidden" name="beginquiz" value="">
         <button onclick="directForm()">
         <?php
-        //make this as hyperlink? can hyperlink be a post?
         if ($num > 0) {
             //if the question is answered
             echo "Question ".$quesnum."&check;";
@@ -46,13 +41,8 @@ $runSQLnumques = mysqli_query($DBconn, $SQLnumques);
 </table>
 
 <script>
+    //submit form automatically
     function submitForm() {
         document.getElementById('directoryForm').submit();
     }
 </script>
-<?php
-
-//logic = example Q1: 
-//1. Q1
-//2. check if student_answer questionid = question questionid where trial trialid = student_answer trialid and trial set id = question set id then add a tick
-?>

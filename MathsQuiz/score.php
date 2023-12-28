@@ -1,7 +1,4 @@
 <?php
-//calculate score and show results and show answers
-//this file is onlt to calculate the score, need to create new page just to show the results + answers
-//have correct or wrong in student_answer table so can see from there only la
 include 'connection.php';
 $setID = $_POST['setID'];
 $trialID = $_POST['trialID'];
@@ -9,8 +6,7 @@ $timeTaken = $_POST['timeTaken'];
 $username = $_SESSION['StudentUsername'];
 $count = 0;
 $i = 0;
-//$timeRemaining = $_POST['timeRemaining'];
-//echo $timeRemaining;
+
 //counting number of questions within the set
 $SQLnum = "SELECT COUNT(QuestionID) FROM question WHERE SetID = '$setID';";
 $runSQLnum = mysqli_query($DBconn, $SQLnum);
@@ -30,18 +26,14 @@ while($result = mysqli_fetch_array($runSQLcorrect)) {
 
 $score = round(($count/$totalques) *100);
 
-//storing score into trial table
-//need to see if got time or not
+//storing score and time taken into trial table 
 $SQLupdate = "UPDATE trial SET Score = $score, TimeTaken = '$timeTaken' WHERE TrialID = $trialID;";
 $runSQLupdate = mysqli_query($DBconn, $SQLupdate);
-//formula = (count student answer/totalques) * 100 , see if can set decimal places
-
-//to results and answer history page yeah using post bcs why nottt
 ?>
 <form id="resultForm" action="resultanswer.php" method="POST">
     <input type="hidden" name="trialID" value="<?php echo $trialID;?>">
-    <!--time remaining-->
 </form>
 <script>
+    //submit form automatically
     document.getElementById("resultForm").submit();
 </script>

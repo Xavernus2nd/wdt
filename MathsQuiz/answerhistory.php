@@ -1,12 +1,12 @@
 <?php
-//showing question, answer and the correct answer
-//if can, i wanna highlight the wrong answers with red background yeah
-//show the information in a table bcs why not hahahahhahahha
 include 'connection.php';
 $trialID = $_POST['trialID'];
-//$timeRemaining = $_POST['timeRemaining'];
-echo $trialID;
-//echo $timeRemaining;
+$num = 0;
+
+//fetch data - if student didn't answer the question, then the student answer will be null
+$sql = "SELECT * FROM question LEFT JOIN student_answer ON question.QuestionID = student_answer.QuestionID AND student_answer.TrialID = $trialID 
+        WHERE question.SetID IN (SELECT SetID FROM trial WHERE TrialID = $trialID);";
+$run = mysqli_query($DBconn, $sql);
 
 //present the answer in table form
 echo '
@@ -18,29 +18,29 @@ echo '
             <th id="stdAns">Student Answer</th>
             <th id="correctAns">Correct Answer</th>
         </tr>';
-//fetch data from student answer and question table
-$SQLanswer = "SELECT * FROM student_answer INNER JOIN question ON student_answer.QuestionID=question.QuestionID WHERE TrialID=$trialID;";
-$run = mysqli_query($DBconn, $SQLanswer);
 
-$num = 0;
 while ($data = mysqli_fetch_assoc($run)) {
     $question = $data['Question'];
     $stdAns = $data['StudentAnswer'];
     $correctAns = $data['Answer'];
-    $valid = $data['IsCorrect']; //need to find another variable name la bcs valid macam not it
+    $valid = $data['IsCorrect']; 
     $num++;
 
-    //add css class for when the answer is wrong
-    $rowClass = $valid ? 'correct' : 'wrong';
+    //add css class for the table row
+    $rowClass = ($stdAns === NULL) ? 'no-answer' : ($valid ? 'correct' : 'wrong');
 
     echo "<tr class='$rowClass'><td>$num</td>
               <td>$question</td>
-              <td>$stdAns</td>
+              <td>";
+              if ($stdAns === NULL) {
+                echo "-";
+              } else {
+                echo "$stdAns";
+              }
+    echo "    </td>
               <td>$correctAns</td>
           </tr>";
 }
-echo '        
-    </table>
+echo '</table>
 </div>';
-
 ?>

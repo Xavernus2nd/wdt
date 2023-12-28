@@ -18,8 +18,6 @@
         include "connection.php";
         $SQLselect = "SELECT * FROM topic;";
         $run = mysqli_query($DBconn, $SQLselect);
-        //to test out the sql and printing the right thing or not
-        //next step: connecting to question page
         if (mysqli_num_rows($run) > 0) {
             //echo '<ul class="navlist">';
             while ($data = mysqli_fetch_array($run)) {
@@ -47,9 +45,6 @@
         </script>
         <?php
     }
-    //choose topic -> *choose question set and choose mode* -> begin -> answer question -> show result and answers
-    //if isset, it will process it, if not then form
-    //to show form to choose question set je kot lol
     include 'questionsetform.php';
     ?>
     <footer>

@@ -16,12 +16,12 @@ if (isset($_SESSION['countdown_timer'])) {
     unset($_SESSION['countdown_timer']);
 }
 
+//fetch set information
 $SQLset = "SELECT * FROM question_set INNER JOIN topic ON question_set.TopicID = topic.TopicID where question_set.SetID ='$set';";
 $run=mysqli_query($DBconn, $SQLset);
 $data=mysqli_fetch_array($run);
 
-//generate trial id - here is generated everytime the user clicks the practice
-//must find way for when student exit the question without submitting, it gives a notice and if the student wants to leave, then delete the trial id
+//insert trial information into trial table
 $SQLinsert = "INSERT INTO trial (StudentUsername, SetID, QuizType, DateTime) VALUES ('$username', '$set', '$mode', '$timestamp');";
 $runinsert = mysqli_query($DBconn, $SQLinsert);
 $trialID = mysqli_insert_id($DBconn);
@@ -45,7 +45,7 @@ $trialID = mysqli_insert_id($DBconn);
     if ($mode === 'Timed') {
         echo "<tr>
                 <td>Total Time:</td> 
-                <td>35 minutes</td>
+                <td>30 minutes</td>
             </tr>";
     }
     ?>
@@ -56,7 +56,6 @@ $trialID = mysqli_insert_id($DBconn);
 </table>
 <h3>Click BEGIN to start the quiz.</h3>
 
-<!--send the set id, trial id, mode, and question no to the url, need to change to POST-->
 <form method="post" action="quizquestion.php">
     <input type="hidden" name="setID" value="<?php echo $set;?>">
     <input type="hidden" name="trialID" value="<?php echo $trialID;?>">
@@ -65,7 +64,6 @@ $trialID = mysqli_insert_id($DBconn);
     <button type="submit" name="beginquiz" id="beginButton">BEGIN</button> <!--button to start quiz, send to question.php, starts timer-->
 </form>
 
-<!--send the set id, trial id to POST-->
 <form method="post" action="quizquestion.php">
     <input type="hidden" name="setID" value="<?php echo $set;?>">
     <input type="hidden" name="trialID" value="<?php echo $trialID;?>">
@@ -80,7 +78,7 @@ $trialID = mysqli_insert_id($DBconn);
         if(mode==='Practice') {
             instructions = 'Answer all questions. You may take your time in answering.';
         } else if (mode==='Timed') {
-            instructions = 'You are given 5 minutes to read the questions. You may begin answering the quiz after the reading time. Answer all questions within 30 minutes.';
+            instructions = 'Answer all questions within 30 minutes.';
         }
         document.getElementById("instruction").innerHTML = instructions;
     }

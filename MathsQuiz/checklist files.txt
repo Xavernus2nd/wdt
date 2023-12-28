@@ -1,19 +1,46 @@
-printquestion.php - showing the questions / answering them
+1. choose topic on navigation bar - DONE
 
-questionsetform.php - form to choose the set and mode
+2. choose set and quiz mode - DONE
 
-questionset.php - linking navigation and questionsetform.php
+2.1 if topic has no question set = make an alert and bring the user back to home page? - DONE
+2.2 if question set has no question = dont show - by right, should not happen bcs the  question sets are all approved
 
-quizquestion.php - page connecting questions and saving answers
+3. begin question set - DONE
+3.1 if practice, got instructions for practice, no time is shown - DONE
+3.2 if timed, got instructions for timed, time total is shown (30 minutes) - DONE
 
-counttime.php - to measure time taken
+4. question page
+4.1 topic, set, question, answer in basic form shown - DONE
+4.1.1 question's answer option in table of 2 rows (like centered) - DONE
+4.1.2 timer is shown only for timed quiz - DONE
+4.1.3 ensure time is not started for practice quiz - DONE
+4.1.4 when timer ends, set an alert of time finish, submit answer automatically - DONE
 
-answerprocess.php - saving student's answer
+4.2 question directory 
+4.2.1 can navigate using directory - DONE
+4.2.2 has checkmarks when it is done - DONE
+4.2.3 be put into a division with a scrollbar
 
-questionsetbegin.php - show all info about the question set, button to start answer
+4.3 save, exit, next, prev, submit buttons
+4.3.1 all working - DONE
+4.3.2 arranged like in figma
+4.3.3 submit button disable when not all answered yet - DONE
+4.3.4 must choose answer first then can click save answer - required je - DONE
+4.3.5 when exitted, trial record is deleted along with any student answer - DONE
 
-tempnav.php - testing codes for topics navigation
+4.4 arrange all in divisions - all with their own heights
+4.4.1 topic, set, timer
+4.4.2 question and answers
+4.4.3 nextto Q A is directory division
+4.4.4 buttons for save, exit, next, prev, button
 
-question.php - link question set begin and questions yeah
+5. result page
+5.1 result - can either wait for outsider 2 or i make myself (if i have time hehee)
+5.2 answer history
+5.2.1 ques, stud answer and correct ans shown - DONE
+5.2.2 color coded based on correct or wrong - DONE 
+5.2.3 if some question is not answered (due to not enough time) show in grey and "-", still show the correct ans - DONE
 
-questionsnav.php - navigating questions
+6. try to break the pages lmaooo
+
+7. try to shorten the codes deadass
