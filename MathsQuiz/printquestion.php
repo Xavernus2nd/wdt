@@ -58,14 +58,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         //printing topic and set name
         echo "<div class='topic-container'>";
-        echo "<h2>".$data['TopicTitle'].'</h2><br>';
-        echo "<h4>".$data['SetName'].'</h4><br>';
+        echo "<p style='font-size: 32px; font-weight: bold;'>".$data['TopicTitle'].'</p><br>';
+        echo "<p style='font-size: 24px;'>".$data['SetName'].'</p><br>';
         echo "</div>";
         //questions
         if(isset($data["Question"])) {
             if ($mode == 'Timed') {
-                echo '<div class="topic-container" id="timer">Timer: 30:00</div>';
-                $countdown_timer = isset($_SESSION['countdown_timer']) ? $_SESSION['countdown_timer'] : 1800; //1800 is 30 mins
+                echo '<div class="topic-container" id="timer" style="font-size: 22px;">Timer: 30:00</div>';
+                $countdown_timer = isset($_SESSION['countdown_timer']) ? $_SESSION['countdown_timer'] : 10; //1800 is 30 mins
 
                 echo '<script>
                     document.addEventListener("DOMContentLoaded", function() {
@@ -142,7 +142,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             </tr>
                         </table>
                         <br>
-                        <button name="save" onclick="checkAnsweredQues()">SAVE ANSWER</button>
+                        <button class="save-button" name="save" onclick="checkAnsweredQues()">SAVE ANSWER</button>
                     </form>
                 </div>
                 <div class="directory-container">
@@ -204,8 +204,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <input type="hidden" name="setID" value="<?php echo $set; ?>">
                             <input type="hidden" name="trialID" value="<?php echo $trialID; ?>">
                             <input type="hidden" name="timeTaken" value="<?php echo $timeTaken; ?>">
+                            <input type="hidden" name="mode" value="<?php echo $mode; ?>">
                             
-                            <td><button name='answer' id='submit'>SUBMIT</button></td> <!--when press this button, the button name is answer -> submit button meaning show the results terus (score.php). send to quizquestion.php-->
+                            <button name='answer' id='submit'>SUBMIT</button> <!--when press this button, the button name is answer -> submit button meaning show the results terus (score.php). send to quizquestion.php-->
                             <!--when all questions havent answered, it disables this button-->
                             <!--need to calculate number of questions answered, so need sql to count number of questions answered where student_answer ques id == question ques id-->
                         </form>
@@ -213,7 +214,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <form method="post" action="quizquestion.php">
                             <input type="hidden" name="setID" value="<?php echo $set;?>">
                             <input type="hidden" name="trialID" value="<?php echo $trialID;?>">
-                            <td><button type="submit" name="exit">EXIT</button></td> <!--button to delete trial, send to question.php-->
+                            <button type="submit" name="exit">EXIT</button> <!--button to delete trial, send to question.php-->
                         </form>
                 </div>
                 <?php

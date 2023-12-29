@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mathematics Quiz</title>
     <link rel="stylesheet" href="layout.css">
 </head>
 <body>
@@ -18,18 +18,11 @@
         include "connection.php";
         $SQLselect = "SELECT * FROM topic;";
         $run = mysqli_query($DBconn, $SQLselect);
-        //to test out the sql and printing the right thing or not
-        //next step: connecting to question page
         if (mysqli_num_rows($run) > 0) {
-            //echo '<ul class="navlist">';
             while ($data = mysqli_fetch_array($run)) {
                 echo '<a href="questionset.php?topicID='.$data['TopicID'].'">'.$data['TopicTitle'].'</a>';
-                //posts the url with topic id into questionset
-                }
-        //echo '</ul>';
-        }
-        ?>
-        
+                }        
+        } ?>
         </div>
     </li>
     <li><a href="#Result">News</a></li>

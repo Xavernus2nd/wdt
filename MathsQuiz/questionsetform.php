@@ -6,7 +6,7 @@ $SQLtopic = "SELECT TopicTitle FROM topic WHERE TopicID = '$topic';";
 $runtopic = mysqli_query($DBconn, $SQLtopic);
 $title = mysqli_fetch_array($runtopic);
 
-echo $title['TopicTitle'].'<br>';
+echo '<p style="font-size: 32px; font-weight: bold; margin: 0px;">'.$title['TopicTitle'].'</p>';
 
 //empties out previous session for quiz
 if (!empty($_SESSION['quiz'])) {
@@ -45,14 +45,14 @@ if ($numset > 0) {
                     <form action='question.php' method='post'>
                         <input type='hidden' name='setID' value='$set'>
                         <input type='hidden' name='mode' value='Practice'>
-                        <button>Practice</button>
+                        <button class='mode-button'>Practice</button>
                     </form>
                   </td>
                   <td>
                     <form action='question.php' method='post'>
                         <input type='hidden' name='setID' value='$set'>
                         <input type='hidden' name='mode' value='Timed'>
-                        <button>Timed</button>
+                        <button class='mode-button'>Timed</button>
                     </form>
                   </td>
             </tr>";

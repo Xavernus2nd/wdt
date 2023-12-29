@@ -20,7 +20,7 @@
 4.2.1 can navigate using directory - DONE
 4.2.2 has checkmarks when it is done - DONE
 4.2.3 be put into a division with a scrollbar - DONE
-4.2.4 if current question is 1, then question 1 in directory is blue or idk
+4.2.4 if current question is 1, then question 1 in directory is blue or idk - DONE
 
 4.3 save, exit, next, prev, submit buttons
 4.3.1 all working 
@@ -31,13 +31,13 @@
 4.3.5 when exitted, trial record is deleted along with any student answer - DONE
 
 4.4 arrange all in divisions - all with their own heights
-4.4.1 topic, set, timer
-4.4.2 question and answers
-4.4.3 nextto Q A is directory division
-4.4.4 buttons for save, exit, next, prev, button
+4.4.1 topic, set, timer - DONE
+4.4.2 question and answers - DONE
+4.4.3 nextto Q A is directory division - DONE
+4.4.4 buttons for save, exit, next, prev, button - DONE
 
 5. result page
-5.1 result - can either wait for outsider 2 or i make myself (if i have time hehee)
+5.1 result - can either wait for nathaniel's part or i make myself (if i have time hehee)
 5.2 answer history
 5.2.1 ques, stud answer and correct ans shown - DONE
 5.2.2 color coded based on correct or wrong - DONE 
@@ -45,4 +45,6 @@
 
 6. try to break the pages lmaooo
 
-7. try to shorten the codes deadass
+7. try to shorten the codes deadass (especially answerprocess.php)
+
+8. fit with main layout - DONE

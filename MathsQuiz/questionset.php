@@ -14,20 +14,16 @@
     <li class="dropdown">
         <a href="javascript:void(0)" class="dropbtn">Quiz</a>
         <div class="dropdown-content">
-        <?php //temporary navigation to choose topic
+        <?php 
         include "connection.php";
         $SQLselect = "SELECT * FROM topic;";
         $run = mysqli_query($DBconn, $SQLselect);
         if (mysqli_num_rows($run) > 0) {
-            //echo '<ul class="navlist">';
             while ($data = mysqli_fetch_array($run)) {
                 echo '<a href="questionset.php?topicID='.$data['TopicID'].'">'.$data['TopicTitle'].'</a>';
-                //posts the url with topic id into questionset
-                }
-        //echo '</ul>';
+                }        
         }
         ?>
-        
         </div>
     </li>
     <li><a href="#Result">News</a></li>
@@ -45,8 +41,13 @@
         </script>
         <?php
     }
+    ?>
+    <!--to separate navigation and main body-->
+    <section class="body-container">
+    <?php
     include 'questionsetform.php';
     ?>
+    </section>
     <footer>
     <p>Copyright 2023 © Group 12</p>
     <p>Disclaimer: We are not responsible for any damages.</p>

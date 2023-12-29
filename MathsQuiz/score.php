@@ -3,6 +3,7 @@ include 'connection.php';
 $setID = $_POST['setID'];
 $trialID = $_POST['trialID'];
 $timeTaken = $_POST['timeTaken'];
+$mode = $_POST['mode'];
 $username = $_SESSION['StudentUsername'];
 $count = 0;
 $i = 0;
@@ -32,6 +33,8 @@ $runSQLupdate = mysqli_query($DBconn, $SQLupdate);
 ?>
 <form id="resultForm" action="resultanswer.php" method="POST">
     <input type="hidden" name="trialID" value="<?php echo $trialID;?>">
+    <input type="hidden" name="setID" value="<?php echo $setID;?>">
+    <input type="hidden" name="mode" value="<?php echo $mode;?>">
 </form>
 <script>
     //submit form automatically

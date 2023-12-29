@@ -29,46 +29,48 @@ $trialID = mysqli_insert_id($DBconn);
 ?>
 <table class="setinfo" border="0">
     <tr>
-        <td>Topic:</td>
+        <th>Topic:</th>
         <td><?php echo $data['TopicTitle'];?></td>
     </tr>
     <tr>
-        <td>Question Set Name:</td>
+        <th>Question Set Name:</th>
         <td><?php echo $data['SetName'];?></td>
     </tr>
     <tr>
-        <td>Mode:</td>
+        <th>Mode:</th>
         <td><?php echo $mode;?></td>
     </tr>
 
     <?php
     if ($mode === 'Timed') {
         echo "<tr>
-                <td>Total Time:</td> 
+                <th>Total Time:</th> 
                 <td>30 minutes</td>
             </tr>";
     }
     ?>
     <tr>
-        <td>Instruction:</td>
+        <th>Instruction:</th>
         <td><div id="instruction"></div></td>
     </tr>
 </table>
 <h3>Click BEGIN to start the quiz.</h3>
 
+<div class="beginbutton-container">
 <form method="post" action="quizquestion.php">
     <input type="hidden" name="setID" value="<?php echo $set;?>">
     <input type="hidden" name="trialID" value="<?php echo $trialID;?>">
     <input type="hidden" name="mode" value="<?php echo $mode;?>">
     <input type="hidden" name="quesNo" value="<?php echo $_POST['currentQuestionNum'];?>">
-    <button type="submit" name="beginquiz" id="beginButton">BEGIN</button> <!--button to start quiz, send to question.php, starts timer-->
+    <button type="submit" name="beginquiz" class="button2" id="beginButton">BEGIN</button> <!--button to start quiz-->
 </form>
 
 <form method="post" action="quizquestion.php">
     <input type="hidden" name="setID" value="<?php echo $set;?>">
     <input type="hidden" name="trialID" value="<?php echo $trialID;?>">
-    <button type="submit" name="exit" id="beginButton">EXIT</button> <!--button to delete trial, send to question.php-->
+    <button type="submit" name="exit" class="button2" id="beginButton">EXIT</button> <!--button to delete trial-->
 </form>
+</div>
 
 <!--script to print instructions for each mode-->
 <script>

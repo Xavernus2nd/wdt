@@ -1,6 +1,8 @@
 <?php
 include 'connection.php';
 $trialID = $_POST['trialID'];
+$setID = $_POST['setID'];
+$mode = $_POST['mode'];
 $num = 0;
 
 //fetch data - if student didn't answer the question, then the student answer will be null
@@ -10,7 +12,7 @@ $run = mysqli_query($DBconn, $sql);
 
 //present the answer in table form
 echo '
-<div id="table-container">
+<div class="result-container">
     <table class="tableset" border="1">
         <tr>
             <th id="num">No.</th>
@@ -44,3 +46,13 @@ while ($data = mysqli_fetch_assoc($run)) {
 echo '</table>
 </div>';
 ?>
+<div class="resultbutton-container">
+  <table class="resultbutton-table">
+    <form action='question.php' method='post'><tr>
+      <input type='hidden' name='setID' value='<?php echo $setID;?>'>
+      <input type='hidden' name='mode' value='<?php echo $mode;?>'>
+      <td><button class="button2">Retake</button></td>
+    </form>
+    <td><button class="button2">Home</button></td> <!-- link to student's homepage -->
+  </tr></table>
+</div>

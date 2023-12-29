@@ -2,6 +2,7 @@
 $set = $_POST['setID'];
 $trialID = $_POST['trialID'];
 $mode = $_POST['mode'];
+$currentQuestionNum = $_POST['quesNo'];
 
 //sql to get number questions - Q1, Q2, Q3
 $SQLnumques = "SELECT * FROM question WHERE SetID = '$set';";
@@ -26,7 +27,7 @@ $runSQLnumques = mysqli_query($DBconn, $SQLnumques);
         <input type="hidden" name="mode" value="<?php echo $mode;?>">
         <input type="hidden" name="quesNo" value="<?php echo $quesnum;?>">
         <input type="hidden" name="beginquiz" value="">
-        <button onclick="directForm()">
+        <button onclick="directForm()" <?php if ($quesnum == $currentQuestionNum) echo "style='background-color: rgba(71, 168, 237, 0.25); font-weight: bold; color: black;'"; ?>>
         <?php
         if ($num > 0) {
             //if the question is answered

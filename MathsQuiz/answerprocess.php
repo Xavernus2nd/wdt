@@ -14,7 +14,7 @@
     $runSQLcorrect = mysqli_query($DBconn, $SQLcorrect);
     $correctAns = mysqli_fetch_array($runSQLcorrect)['Answer'];
 
-    // Combine variables into array bcs im lazyyy
+    // Combine variables into array 
     $data = [
         'DBconn' => $DBconn,
         'trialID' => $trialID,
