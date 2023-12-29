@@ -8,7 +8,7 @@ $SQLnumques = "SELECT * FROM question WHERE SetID = '$set';";
 $runSQLnumques = mysqli_query($DBconn, $SQLnumques);
 
 ?>
-<table class="ques-directory" border="1">
+<table border="1">
     <?php
     while ($data = mysqli_fetch_array($runSQLnumques)) {
         $quesID = $data['QuestionID'];

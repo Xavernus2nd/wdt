@@ -3,7 +3,7 @@
   background:-webkit-linear-gradient(top,#64B5F6 25%,#42A5F5 75%)}
 
 h1, h2, h3{
-  font-family: Verdana, Geneva, Tahoma, sans-serif; color: white;
+  color: white;
 }
 
 body{
@@ -78,7 +78,12 @@ ul.navigation{
 }
 
 .question-container {
-  background-color: rgba(0, 120, 92, 0.75);
+  width: 1550px;
+}
+
+.question-object {
+  width: 91.8%;
+  height: 200px;
 }
 
 /*print question.php*/
@@ -87,4 +92,62 @@ ul.navigation{
   width: 100px;
   padding: auto;
   margin: auto;
+}
+
+/*quiz question php*/
+.body-container {
+  width: 1580px;
+  float: right;
+}
+
+.questiondirect-object {
+  height: 200px;
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.directory-container {
+  border-style: solid;
+  border-color: black;
+  width: 130px;
+  /*margin: 10%;*/
+  float: right;
+  height: 200px;
+}
+
+.directory-container button {
+  width: 100px;
+}
+.scroll-div {
+  width: 130px;
+  height: 200px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+
+.prevnext-object button, .empty-button{
+  width: 30px;
+  margin-left: 10px;
+}
+
+.prevnext-object {
+  display: flex;
+}
+
+.submitexit-object {
+  display: flex;
+  float: right;
+}
+
+.submitexit-object button {
+  margin-right: 10px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  margin-top: 10px;
 }
