@@ -32,12 +32,20 @@
 
     <h1>Form 4 SPM Mathematics Quiz</h1>
     
+    <!--question set begin menu-->
     <section class="body-container">
     <?php
     session_start();
     $username = $_SESSION['StudentUsername'];
-    include 'connection.php';
-    include 'questionsetbegin.php';
+    if(!isset($_SESSION['StudentUsername'])) {
+        ?> <script>
+            window.alert("Please log in to access this page.");
+            window.location.href = 'index.php'; //redirect to main homepage
+        </script>
+        <?php
+    } else {
+        include 'questionsetbegin.php';
+    }
     ?> </section>
     <footer>
     <p>Copyright 2023 © Group 12</p>

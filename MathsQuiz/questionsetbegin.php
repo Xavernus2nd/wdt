@@ -1,13 +1,12 @@
 <?php
 include 'connection.php';
+date_default_timezone_set("Asia/Kuala_Lumpur"); //Malaysia timezone
+
 $set = $_POST['setID'];
 $mode = $_POST['mode'];
 $quesnum = 1;
 $_POST['currentQuestionNum']=$quesnum;
 $username = $_SESSION['StudentUsername'];
-
-//set timezone to KL
-date_default_timezone_set("Asia/Kuala_Lumpur");
 $_SESSION['quiz'] = date("Y-m-d h:i:s");
 $timestamp = $_SESSION['quiz'];
 
@@ -27,6 +26,7 @@ $runinsert = mysqli_query($DBconn, $SQLinsert);
 $trialID = mysqli_insert_id($DBconn);
 
 ?>
+<!--display set information and instruction-->
 <table class="setinfo" border="0">
     <tr>
         <th>Topic:</th>
@@ -56,6 +56,7 @@ $trialID = mysqli_insert_id($DBconn);
 </table>
 <h3>Click BEGIN to start the quiz.</h3>
 
+<!--begin button-->
 <div class="beginbutton-container">
 <form method="post" action="quizquestion.php">
     <input type="hidden" name="setID" value="<?php echo $set;?>">
@@ -64,7 +65,7 @@ $trialID = mysqli_insert_id($DBconn);
     <input type="hidden" name="quesNo" value="<?php echo $_POST['currentQuestionNum'];?>">
     <button type="submit" name="beginquiz" class="button2" id="beginButton">BEGIN</button> <!--button to start quiz-->
 </form>
-
+<!--exit button-->
 <form method="post" action="quizquestion.php">
     <input type="hidden" name="setID" value="<?php echo $set;?>">
     <input type="hidden" name="trialID" value="<?php echo $trialID;?>">

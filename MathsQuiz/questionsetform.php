@@ -61,7 +61,7 @@ if ($numset > 0) {
 } else {
     echo "<script>
         alert('No question sets');
-        window.location.href = 'index.php';
+        window.location.href = 'index.php'; //redirect to homepage
     </script>";
 }
 ?>

@@ -37,18 +37,28 @@
     </nav>
 
     <h1>Form 4 SPM Mathematics Quiz</h1>
-    
+    <!--questions and answers, calculate score, delete trial-->
     <section class="body-container">
     <?php 
     session_start();
-    $_SESSION['StudentUsername'] = 'alya';
-    if (isset($_POST['answer'])) {
-        include 'score.php';
-    } if (isset($_POST['exit'])) {
-        include 'deletetrial.php';
-    }
-    else {
-        include 'printquestion.php';
+    $username = $_SESSION['StudentUsername'];
+    if(!isset($_SESSION['StudentUsername'])) {
+        //ensure user is logged in
+        ?> <script>
+            window.alert("Please log in to access this page.");
+            window.location.href = 'index.php'; //redirect to main homepage
+        </script>
+    <?php
+    } else {
+        if (isset($_POST['answer'])) {
+            include 'score.php';
+        } 
+        if (isset($_POST['exit'])) {
+            include 'deletetrial.php';
+        }
+        else {
+            include 'printquestion.php';
+        }
     }
     ?>
     </section>

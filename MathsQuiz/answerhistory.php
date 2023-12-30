@@ -28,10 +28,11 @@ while ($data = mysqli_fetch_assoc($run)) {
     $valid = $data['IsCorrect']; 
     $num++;
 
-    //add css class for the table row
+    //add css class for the table row according to the value of $valid or $stdAns
     $rowClass = ($stdAns === NULL) ? 'no-answer' : ($valid ? 'correct' : 'wrong');
 
-    echo "<tr class='$rowClass'><td>$num</td>
+    echo "<tr class='$rowClass'>
+              <td>$num</td>
               <td>$question</td>
               <td>";
               if ($stdAns === NULL) {
@@ -46,6 +47,7 @@ while ($data = mysqli_fetch_assoc($run)) {
 echo '</table>
 </div>';
 ?>
+<!--retake and home button-->
 <div class="resultbutton-container">
   <table class="resultbutton-table">
     <form action='question.php' method='post'><tr>

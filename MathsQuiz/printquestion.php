@@ -1,6 +1,6 @@
 <?php
 include 'connection.php';
-date_default_timezone_set('Asia/Kuala_Lumpur');
+date_default_timezone_set('Asia/Kuala_Lumpur'); //Malaysia timezone
 
 $set = $_POST['setID'];
 $mode = $_POST['mode'];
@@ -13,7 +13,7 @@ $SQLquestion = "SELECT * FROM question INNER JOIN question_set ON question.SetID
 $run=mysqli_query($DBconn, $SQLquestion);
 $data = mysqli_fetch_array($run);
 
-//find total question
+//count total question
 $SQLtotal = "SELECT COUNT(Question) as total FROM question WHERE SetID = '$set';";
 $runSQLtotal = mysqli_query($DBconn, $SQLtotal);
 $totalques = mysqli_fetch_assoc($runSQLtotal)['total'];
@@ -33,7 +33,6 @@ if (mysqli_num_rows($runanswer) > 0) {
     $answer = null;
 }
 ?>
-
 <script>
     function checkAnsweredQues() {
         var answeredQues = <?php echo $count;?>;
@@ -41,12 +40,12 @@ if (mysqli_num_rows($runanswer) > 0) {
         var submitButton = document.getElementById('submit');
         
         if (answeredQues === totalQues) {
-            submitButton.disabled = false; // enable submit button
+            submitButton.disabled = false; //enable submit button
         } else {
-            submitButton.disabled = true; // disable submit button
+            submitButton.disabled = true; //disable submit button
         }
     }
-    // Call the function to check answered questions on page load
+    //check answered questions when page loads
     window.onload = checkAnsweredQues;
 </script>
 
@@ -61,15 +60,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "<p style='font-size: 32px; font-weight: bold;'>".$data['TopicTitle'].'</p><br>';
         echo "<p style='font-size: 24px;'>".$data['SetName'].'</p><br>';
         echo "</div>";
-        //questions
+
+        //question, answer and question directory
         if(isset($data["Question"])) {
             if ($mode == 'Timed') {
-                echo '<div class="topic-container" id="timer" style="font-size: 22px;">Timer: 30:00</div>';
-                $countdown_timer = isset($_SESSION['countdown_timer']) ? $_SESSION['countdown_timer'] : 10; //1800 is 30 mins
+                //timer if mode is timed
+                echo '<div class="topic-container" id="timer" style="font-size: 22px;">Timer: </div>';
+                $countdown_timer = isset($_SESSION['countdown_timer']) ? $_SESSION['countdown_timer'] : 1800; //1800 is 30 mins
 
                 echo '<script>
                     document.addEventListener("DOMContentLoaded", function() {
-                        var remainingTime = ' . $countdown_timer . ';
+                        var remainingTime = ' . $countdown_timer . '; //get current session countdown time
             
                         function updateTimer() {
                             var minutes = Math.floor(remainingTime / 60);
@@ -77,13 +78,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             var timerElement = document.getElementById("timer");
             
                             if (timerElement) {
-                                var formatSeconds = seconds.toString().padStart(2, "0");
+                                var formatSeconds = seconds.toString().padStart(2, "0"); //format seconds to 2 digits 
                                 timerElement.innerHTML = "<b>Timer: " + minutes + ":" + formatSeconds + "</b>";
             
                                 if (remainingTime > 0) {
-                                    setTimeout(updateTimer, 1000); // Update every second
+                                    setTimeout(updateTimer, 1000); //update timer every 1 second
                                     remainingTime--;
-                                    // Update the session variable with the latest countdown value
+                                    //update session countdown timer value
                                     fetch("counttime.php", {
                                         method: "POST",
                                         headers: {
@@ -93,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     });
                                 } else {                                
                                     alert ("Time is up! Your answers will be submitted automatically.");
-                                    // Update the session variable with the latest countdown value (when times up)
+                                    //update session countdown timer value to 0 when time finishes
                                     fetch("counttime.php", {
                                         method: "POST",
                                         headers: {
@@ -107,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 }
                             }
                         }
-                        // Initial call to start the countdown
+                        //initial call to start countdown
                         updateTimer();                    
                     });
                 </script>';
@@ -115,7 +116,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             } else {
                 $timeTaken = null;
             } ?>
-
             <div class="questiondirect-object">
                 <div class="question-object">
                     <form action="quizquestion.php" method="post">
@@ -145,6 +145,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <button class="save-button" name="save" onclick="checkAnsweredQues()">SAVE ANSWER</button>
                     </form>
                 </div>
+
+                <!--question directory-->
                 <div class="directory-container">
                     <div class="scroll-div">
                         <?php
@@ -153,14 +155,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                 </div>
             </div>
+
+            <!--buttons-->
             <div class="button-container">
                 <div class="prevnext-object">
                     <tr>
                         <?php
-                        //printing previous and next button
+                        //previous and next button
                         $nextQuestionNum = $currentQuestionNum + 1;
                         $prevQuestionNum = $currentQuestionNum - 1;
                 
+                        //previous button
                         if ($prevQuestionNum >= 1) {
                             ?>
                             <form id='navigationForm' method='post' action=''>
@@ -175,6 +180,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         } else {
                             echo "<p class='empty-button'></p>";
                         }
+                        //next button
                         if ($nextQuestionNum <= $totalques ) {
                             ?>
                             <form id='navigationForm' method='post' action=''>
@@ -190,7 +196,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             echo "<p class='empty-button'></p>";
                         }
                         echo "</form>";
-                        //submit the form
+                        //submit the navigation form
                         echo "<script>
                             function submitForm() {
                                 document.getElementById('navigationForm').submit();
@@ -200,26 +206,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     ?>
                 </div>
                 <div class="submitexit-object">
-                        <form action="quizquestion.php" method="post">
-                            <input type="hidden" name="setID" value="<?php echo $set; ?>">
-                            <input type="hidden" name="trialID" value="<?php echo $trialID; ?>">
-                            <input type="hidden" name="timeTaken" value="<?php echo $timeTaken; ?>">
-                            <input type="hidden" name="mode" value="<?php echo $mode; ?>">
-                            
-                            <button name='answer' id='submit'>SUBMIT</button> <!--when press this button, the button name is answer -> submit button meaning show the results terus (score.php). send to quizquestion.php-->
-                            <!--when all questions havent answered, it disables this button-->
-                            <!--need to calculate number of questions answered, so need sql to count number of questions answered where student_answer ques id == question ques id-->
-                        </form>
-                        <!--send the set id, trial id to POST-->
-                        <form method="post" action="quizquestion.php">
-                            <input type="hidden" name="setID" value="<?php echo $set;?>">
-                            <input type="hidden" name="trialID" value="<?php echo $trialID;?>">
-                            <button type="submit" name="exit">EXIT</button> <!--button to delete trial, send to question.php-->
-                        </form>
+                    <!--submit button-->
+                    <form action="quizquestion.php" method="post">
+                        <input type="hidden" name="setID" value="<?php echo $set; ?>">
+                        <input type="hidden" name="trialID" value="<?php echo $trialID; ?>">
+                        <input type="hidden" name="timeTaken" value="<?php echo $timeTaken; ?>">
+                        <input type="hidden" name="mode" value="<?php echo $mode; ?>">                            
+                        <button name='answer' id='submit'>SUBMIT</button> 
+                        <!--when all questions havent answered, it disables this button-->
+                        <!--need to calculate number of questions answered, so need sql to count number of questions answered where student_answer ques id == question ques id-->
+                    </form>
+                    <!--exit button-->
+                    <form onsubmit="return confirm('Do you want to exit the quiz? \nYour attempt will not be saved.');" method="post" action="quizquestion.php">
+                        <input type="hidden" name="setID" value="<?php echo $set;?>">
+                        <input type="hidden" name="trialID" value="<?php echo $trialID;?>">
+                        <button type="submit" name="exit">EXIT</button>
+                    </form>
                 </div>
-                <?php
-            echo "</div>";
+            </div>
+            <?php
         }
     }
-}
+} 
 ?>

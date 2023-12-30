@@ -20,7 +20,6 @@ $runSQLcorrect = mysqli_query($DBconn, $SQLcorrect);
 
 while($result = mysqli_fetch_array($runSQLcorrect)) {
     if ($result['IsCorrect'] == 1) {
-        //when answer is correct
         $count++;
     }
 }

@@ -32,20 +32,21 @@
     </nav>
 
     <h1>Form 4 SPM Mathematics Quiz</h1>
+
+    <!--question set form-->
+    <section class="body-container">
     <?php
     session_start();
     $username = $_SESSION['StudentUsername'];
     if(!isset($_SESSION['StudentUsername'])) {
         ?> <script>
-            window.alert("maow");
+            window.alert("Please log in to access this page.");
+            window.location.href = 'index.php'; //redirect to main homepage
         </script>
         <?php
+    } else {
+        include 'questionsetform.php';
     }
-    ?>
-    <!--to separate navigation and main body-->
-    <section class="body-container">
-    <?php
-    include 'questionsetform.php';
     ?>
     </section>
     <footer>

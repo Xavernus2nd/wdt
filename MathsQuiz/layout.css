@@ -1,10 +1,12 @@
-h1{
-    height: 93px; 
+h1 {
+    height: 92px; 
     background-color: #427ef5;
     margin-top: 0;
-    margin-left: 94px;
+    margin-left: 92px;
     text-align: center;
     line-height: 93px; /* Set line-height equal to the height of the container */
+    position: relative;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
 
 nav {
@@ -87,7 +89,8 @@ li.dropdown {
     display: none;
     position: absolute;
     background-color:white;
-    min-width: 150px;
+    min-width: 50px;
+    font-size: 15px;
 }
     
 .dropdown-content a {
@@ -105,19 +108,12 @@ li.dropdown {
     display: block;
 }
 
-#welcome {
+.welcome {
     color: rgb(45, 231, 95);
     margin-left: 100px;
     align-items: center;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     text-align: center;
-}
-
-#LoginTop{
-    margin-top: 0;
-    text-align: center;
-    margin-right: 20px;
-    color: azure;
 }
 
 footer {
@@ -133,43 +129,369 @@ footer {
 }
 
 body{
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
     background-color: lightcyan;
+
 }
 
-/*
-#table-container {
+.loginTop, .profileTop{
+    position: absolute;
+    top: 50px; /* Adjust the top position as needed */
+    right: 60px; /* Adjust the right position as needed */
+    z-index: 1;
+}
+
+/*body container section yeah*/
+.body-container {
+    width: 1580px;
+    float: right;
+}
+
+/*these i added myself for my part u guys see if u want to use or not - reyes*/
+.table {
+    margin-left: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+    width: 90%;
+    border: 1px solid #000000;
+    font-size: 18px;
     text-align: center;
-  } to center the table*/
-  
-  .tableset {
+}
+
+.table th, .table td {
+    padding: 15px;
+    border: 1px solid #000000;  
+}
+
+.button{ /* buttons see u guys want to use this or not, can change the class if dw*/
+    background-color: #4c87af;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor:pointer;
+}
+
+.button:hover{
+    background-color:#417cbb;
+}
+
+.select{ /* this also*/
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+/*for approve qs, manage qs, add qs and manage topic*/
+.approve{ 
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 16px;
+    margin: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor:pointer;
+}
+
+.approve:hover{
+    background-color:#45a049;
+}
+
+.reject{
+    background-color: #af4c4c;
+    color: white;
+    padding: 8px 16px;
+    margin: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor:pointer;
+}
+
+.reject:hover{
+    background-color: #ac4141;
+}
+
+.aqset{
+    margin-left:100px;
+    margin-right:100px;
+    margin-bottom:20px;
+    width: 85%;
+    background-color: rgb(152, 238, 247);
+    border: 1px solid #000000;
+    padding: 10px;
+    font-size: 18px;
+}      
+
+.aqnav{
+    display:flex;
+    justify-content: end;
+    margin-bottom:10px;
+    margin-right:90px;
+    padding: 10px;
+}
+
+.aqnav form{
+    margin-left: 10px;
+}
+
+.approveinfotable{
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+    width: 85%;
+    border: 1px solid #5f5f5f;
+    font-size: 18px;
+    text-align: center;
+}
+.approveinfotable th, .approveinfotable td {
+    padding: 15px;  
+    border: 1px solid #5f5f5f;
+}
+
+.csvinfo{
+    display:flex;
+    justify-content: left;
+    width: 50%;
+    margin-left: 350px;
+    border: 2px solid #ddd;
+    padding: 20px;
+}
+
+.aqbox{
+    margin-left:100px;
+    margin-right:100px;
+    margin-bottom:20px;
+    width: 85%;
+    background-color: rgb(224, 255, 255);
+    border: 1px solid #000000;
+    padding: 10px;
+    font-size: 18px;
+}      
+/* end of approve qs, manage qs, add qs and manage topic*/
+
+/*choose quiz set, begin quiz, answer quiz, answer history*/
+/*question set form and answer history*/
+.tableset {
     /*margin: 0 auto;*/
     border-collapse: collapse;
-    width: 80%;
+    width: 95%;
   }
   
-  .tableset th, .tableset td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
-  }
+.tableset th, .tableset td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
   
-  .tableset th {
-    background-color: #f2f2f2;
-  }
+.tableset th {
+  background-color: #f2f2f2;
+  font-size: 24px;
+}
 
-  .tableset #num {
-    width: 5%;
-  }
+.tableset td {
+  font-size: 22px;
+}
+  
+.tableset #num {
+  width: 5%;
+}
+  
+.tableset #setname {
+  width: 50%;
+}
+  
+.tableset #quesnum, .tableset #stdAns, .tableset #correctAns {
+  width: 15%;
+}
+  
+.tableset #mode {
+  width: 15%;
+}
 
-  .tableset #setname {
-    width: 50%;
-  }
+.resultbutton-container {
+  width: 95%;
+  margin-top: 10px;
+}
 
-  .tableset #quesnum {
-    width: 10%;
-  }
+.resultbutton-table {
+  float: right;
+}
 
-  .tableset #mode {
-    width: 20%;
-  }
+/*question set begin*/
+.setinfo {
+  width: 70%;
+  font-size: 24px;
+}
+
+.setinfo th{
+  width: 20%;
+  text-align: left;
+}
+
+.beginbutton-container {
+  text-align: center;
+  width: 50%;
+  height: 20px;
+}
+
+.beginbutton-container button {
+  margin-right: 10px;
+  display: inline-block;
+}
+  
+/*setting background color for answer history */
+.wrong {
+  background-color: rgba(240, 26, 48, 0.75);
+}
+  
+.correct {
+  background-color: rgba(0, 120, 92, 0.75);
+} 
+
+.no-answer {
+  background-color: rgba(128, 126, 121, 0.75);
+}
+
+/*print question */
+.topic-container p {
+  margin: 0px;
+}
+
+.question-object {
+  width: 91.8%;
+  height: 290px;
+  font-size: 22px;
+  background-color: rgba(125, 217, 245, 0.5);
+  border: solid;
+  border-width: 2px;
+  padding: 5px;
+}
+
+.answer-container tr td{
+  height: 60px;
+  width: 300px;
+}
+
+.answer-container input {
+  cursor: pointer;
+}
+
+.answer-container {
+  padding: 10px;
+  margin: 10px;
+}
+
+.questiondirect-object {
+  height: 300px;
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.save-button {
+  width: 150px;
+  background-color: #4c87af;
+  margin: 5px;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor:pointer;
+}
+
+.directory-container {
+  border-style: solid;
+  border-color: #103147;
+  border-width: 2px;
+  width: 150px;
+  /*margin: 10%;*/
+  float: right;
+  height: 300px;
+}
+
+.directory-container button {
+  width: 120px;
+  background-color: #4c87af;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor:pointer;
+}
+
+.scroll-div {
+  width: 150px;
+  height: 300px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.prevnext-object button {
+  width: 40px;
+  margin-left: 10px;
+  background-color: #4c87af;
+  color: white;
+  padding: 8px 16px;
+  margin: 5px;
+  border: none;
+  border-radius: 4px;
+  cursor:pointer;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.prevnext-object button:hover, .directory-container button:hover, .save-button:hover, .submitexit-object button:hover, .button2:hover {
+  background-color: #47a8ed;
+}
+
+.empty-button {
+  margin: 5px;
+  width: 30px;
+  margin-left: 10px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+}
+
+.prevnext-object {
+  display: flex;
+}
+
+.submitexit-object {
+  display: flex;
+  float: right;
+}
+
+.submitexit-object button, .mode-button, .button2 {
+  margin: 5px;
+  width: 120px;
+  background-color: #4c87af;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor:pointer;
+}
+
+.submitexit-object button:disabled {
+  margin: 5px;
+  width: 120px;
+  background-color: #809cb0;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: not-allowed;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  margin-top: 10px;
+}
+
+/*end of choose quiz set, begin quiz, answer quiz, answer history*/

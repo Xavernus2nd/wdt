@@ -35,8 +35,16 @@
     <section class="body-container">
     <?php 
     session_start();
-    $_SESSION['StudentUsername'] = 'alya';
-    include 'answerhistory.php';
+    $username = $_SESSION['StudentUsername'];
+    if(!isset($_SESSION['StudentUsername'])) {
+        ?> <script>
+            window.alert("Please log in to access this page.");
+            window.location.href = 'index.php'; //redirect to main homepage
+        </script>
+        <?php
+    } else {
+        include 'answerhistory.php';
+    }
     ?>
     </section>
     <footer>
