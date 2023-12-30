@@ -53,8 +53,8 @@ echo '</table>
     <form action='question.php' method='post'><tr>
       <input type='hidden' name='setID' value='<?php echo $setID;?>'>
       <input type='hidden' name='mode' value='<?php echo $mode;?>'>
-      <td><button class="button2">Retake</button></td>
+      <td><button class="button2">RETAKE</button></td>
     </form>
-    <td><button class="button2">Home</button></td> <!-- link to student's homepage -->
+    <td><button class="button2">HOME</button></td> <!-- link to student's homepage -->
   </tr></table>
 </div>
