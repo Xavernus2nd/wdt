@@ -1,5 +1,4 @@
 <?php
-include 'connection.php';
 date_default_timezone_set("Asia/Kuala_Lumpur"); //Malaysia timezone
 
 $set = $_POST['setID'];
@@ -58,7 +57,7 @@ $trialID = mysqli_insert_id($DBconn);
 
 <!--begin button-->
 <div class="beginbutton-container">
-<form method="post" action="quizquestion.php">
+<form method="post" action="question.php">
     <input type="hidden" name="setID" value="<?php echo $set;?>">
     <input type="hidden" name="trialID" value="<?php echo $trialID;?>">
     <input type="hidden" name="mode" value="<?php echo $mode;?>">
@@ -66,7 +65,7 @@ $trialID = mysqli_insert_id($DBconn);
     <button type="submit" name="beginquiz" class="button2" id="beginButton">BEGIN</button> <!--button to start quiz-->
 </form>
 <!--exit button-->
-<form method="post" action="quizquestion.php">
+<form method="post" action="question.php">
     <input type="hidden" name="setID" value="<?php echo $set;?>">
     <input type="hidden" name="trialID" value="<?php echo $trialID;?>">
     <button type="submit" name="exit" class="button2" id="beginButton">EXIT</button> <!--button to delete trial-->

@@ -34,6 +34,7 @@
     
     <section class="body-container">
     <?php 
+    include 'connection.php';
     session_start();
     $username = $_SESSION['StudentUsername'];
     if(!isset($_SESSION['StudentUsername'])) {

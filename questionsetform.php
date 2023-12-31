@@ -1,5 +1,4 @@
 <?php
-include 'connection.php';
 $topic = $_GET['topicID'];
 $_SESSION['topicID'] = $topic;
 $SQLtopic = "SELECT TopicTitle FROM topic WHERE TopicID = '$topic';";
@@ -42,14 +41,14 @@ if ($numset > 0) {
                   <td>$setname</td>
                   <td>$numques</td>
                   <td>
-                    <form action='question.php' method='post'>
+                    <form action='quizquestion.php' method='post'>
                         <input type='hidden' name='setID' value='$set'>
                         <input type='hidden' name='mode' value='Practice'>
                         <button class='mode-button'>Practice</button>
                     </form>
                   </td>
                   <td>
-                    <form action='question.php' method='post'>
+                    <form action='quizquestion.php' method='post'>
                         <input type='hidden' name='setID' value='$set'>
                         <input type='hidden' name='mode' value='Timed'>
                         <button class='mode-button'>Timed</button>
@@ -60,8 +59,8 @@ if ($numset > 0) {
     echo "<br><br></table></div>";
 } else {
     echo "<script>
-        alert('No question sets');
-        window.location.href = 'index.php'; //redirect to homepage
+        alert('Sorry, no question sets available for this topic.');
+        window.location.href = 'index.php'; //redirect to student homepage
     </script>";
 }
 ?>

@@ -17,12 +17,14 @@
         <?php
         include "connection.php";
         $SQLselect = "SELECT * FROM topic;";
-        $run = mysqli_query($DBconn, $SQLselect);
+        $run = mysqli_query($DBconn, $SQLselect);        
         if (mysqli_num_rows($run) > 0) {
             while ($data = mysqli_fetch_array($run)) {
-                echo '<a href="questionset.php?topicID='.$data['TopicID'].'">'.$data['TopicTitle'].'</a>';
+                echo '<a href="questionset.php?topicID='.$data['TopicID'].'">'.$data['TopicTitle'].'</a>';                
                 }
-        } ?>        
+        }
+        ?>
+        
         </div>
     </li>
     <li><a href="#Result">News</a></li>
@@ -31,22 +33,32 @@
     </nav>
 
     <h1>Form 4 SPM Mathematics Quiz</h1>
-    
-    <!--question set begin menu-->
+    <!--questions and answers, calculate score, delete trial-->
     <section class="body-container">
-    <?php
+    <?php 
+    include 'connection.php';
     session_start();
     $username = $_SESSION['StudentUsername'];
     if(!isset($_SESSION['StudentUsername'])) {
+        //ensure user is logged in
         ?> <script>
             window.alert("Please log in to access this page.");
             window.location.href = 'index.php'; //redirect to main homepage
         </script>
-        <?php
+    <?php
     } else {
-        include 'questionsetbegin.php';
+        if (isset($_POST['answer'])) {
+            include 'score.php';
+        } 
+        if (isset($_POST['exit'])) {
+            include 'deletetrial.php';
+        }
+        else {
+            include 'printquestion.php';
+        }
     }
-    ?> </section>
+    ?>
+    </section>
     <footer>
     <p>Copyright 2023 © Group 12</p>
     <p>Disclaimer: We are not responsible for any damages.</p>

@@ -1,6 +1,5 @@
 <?php
 //delete trial id when student exit the question without submitting
-include 'connection.php';
 $set = $_POST['setID'];
 $trialID = $_POST['trialID'];
 $username = $_SESSION['StudentUsername'];

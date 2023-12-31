@@ -1,5 +1,4 @@
 <?php
-include 'connection.php';
 $trialID = $_POST['trialID'];
 $setID = $_POST['setID'];
 $mode = $_POST['mode'];
@@ -50,11 +49,11 @@ echo '</table>
 <!--retake and home button-->
 <div class="resultbutton-container">
   <table class="resultbutton-table">
-    <form action='question.php' method='post'><tr>
+    <form action='quizquestion.php' method='post'><tr>
       <input type='hidden' name='setID' value='<?php echo $setID;?>'>
       <input type='hidden' name='mode' value='<?php echo $mode;?>'>
-      <td><button class="button2">RETAKE</button></td>
+      <td><button class="button2">Retake</button></td>
     </form>
-    <td><button class="button2">HOME</button></td> <!-- link to student's homepage -->
+    <td><button class="button2">Home</button></td> <!-- link to student's homepage -->
   </tr></table>
 </div>

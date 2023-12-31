@@ -7,8 +7,15 @@ $currentQuestionNum = $_POST['quesNo'];
 //sql to get number questions - Q1, Q2, Q3
 $SQLnumques = "SELECT * FROM question WHERE SetID = '$set';";
 $runSQLnumques = mysqli_query($DBconn, $SQLnumques);
-
 ?>
+
+<script>
+    //submit form automatically
+    function submitForm() {
+        document.getElementById('directoryForm').submit();
+    }
+</script>
+
 <table border="1">
     <?php
     while ($data = mysqli_fetch_array($runSQLnumques)) {
@@ -27,7 +34,7 @@ $runSQLnumques = mysqli_query($DBconn, $SQLnumques);
         <input type="hidden" name="mode" value="<?php echo $mode;?>">
         <input type="hidden" name="quesNo" value="<?php echo $quesnum;?>">
         <input type="hidden" name="beginquiz" value="">
-        <button onclick="directForm()" <?php if ($quesnum == $currentQuestionNum) echo "style='background-color: rgba(71, 168, 237, 0.25); font-weight: bold; color: black;'"; ?>>
+        <button onclick="submitForm()" <?php if ($quesnum == $currentQuestionNum) echo "style='background-color: rgba(71, 168, 237, 0.25); font-weight: bold; color: black;'"; ?>>
         <?php
         if ($num > 0) {
             //if the question is answered
@@ -40,10 +47,3 @@ $runSQLnumques = mysqli_query($DBconn, $SQLnumques);
     }
     ?>
 </table>
-
-<script>
-    //submit form automatically
-    function submitForm() {
-        document.getElementById('directoryForm').submit();
-    }
-</script>

@@ -1,5 +1,4 @@
 <?php
-include 'connection.php';
 date_default_timezone_set('Asia/Kuala_Lumpur'); //Malaysia timezone
 
 $set = $_POST['setID'];
@@ -118,7 +117,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             } ?>
             <div class="questiondirect-object">
                 <div class="question-object">
-                    <form action="quizquestion.php" method="post">
+                    <form action="question.php" method="post">
                         Question <?php echo $currentQuestionNum; ?><br>
                         <input type="hidden" name="quesNo" value="<?php echo $currentQuestionNum;?>">
                         <input type="hidden" name="trialID" value="<?php echo $trialID;?>">
@@ -207,7 +206,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
                 <div class="submitexit-object">
                     <!--submit button-->
-                    <form action="quizquestion.php" method="post">
+                    <form action="question.php" method="post">
                         <input type="hidden" name="setID" value="<?php echo $set; ?>">
                         <input type="hidden" name="trialID" value="<?php echo $trialID; ?>">
                         <input type="hidden" name="timeTaken" value="<?php echo $timeTaken; ?>">
@@ -217,7 +216,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <!--need to calculate number of questions answered, so need sql to count number of questions answered where student_answer ques id == question ques id-->
                     </form>
                     <!--exit button-->
-                    <form onsubmit="return confirm('Do you want to exit the quiz? \nYour attempt will not be saved.');" method="post" action="quizquestion.php">
+                    <form onsubmit="return confirm('Do you want to exit the quiz? \nYour attempt will not be saved.');" method="post" action="question.php">
                         <input type="hidden" name="setID" value="<?php echo $set;?>">
                         <input type="hidden" name="trialID" value="<?php echo $trialID;?>">
                         <button type="submit" name="exit">EXIT</button>

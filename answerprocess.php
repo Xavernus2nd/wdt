@@ -38,7 +38,7 @@
         $run = mysqli_query($DBconn, $sql);
         if($run) {
             ?>
-            <form id="redirectForm" action="quizquestion.php" method="post">
+            <form id="redirectForm" action="question.php" method="post">
                 <input type="hidden" name="setID" value="<?php echo $set; ?>">
                 <input type="hidden" name="trialID" value="<?php echo $trialID; ?>">
                 <input type="hidden" name="mode" value="<?php echo $mode; ?>">

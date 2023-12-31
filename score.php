@@ -1,5 +1,4 @@
 <?php
-include 'connection.php';
 $setID = $_POST['setID'];
 $trialID = $_POST['trialID'];
 $timeTaken = $_POST['timeTaken'];
