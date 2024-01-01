@@ -7,7 +7,7 @@ $currentQuestionNum = $_POST['quesNo'];
 $trialID = $_POST['trialID'];
 $username = $_SESSION['StudentUsername'];
 
-//getting the questions from question set
+//getting the current question from question set
 $SQLquestion = "SELECT * FROM question INNER JOIN question_set ON question.SetID = question_set.SetID INNER JOIN topic ON question_set.TopicID = topic.TopicID WHERE question.SetID = '$set' AND question.QuestionNumber = '$currentQuestionNum';";
 $run=mysqli_query($DBconn, $SQLquestion);
 $data = mysqli_fetch_array($run);
@@ -89,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                         headers: {
                                             "Content-Type": "application/x-www-form-urlencoded",
                                         },
-                                        body: "countdown_timer=" + remainingTime,
+                                        body: "countdown_timer=" + remainingTime
                                     });
                                 } else {                                
                                     alert ("Time is up! Your answers will be submitted automatically.");
@@ -160,7 +160,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="prevnext-object">
                     <tr>
                         <?php
-                        //previous and next button
+                        //calculate previous and next question number
                         $nextQuestionNum = $currentQuestionNum + 1;
                         $prevQuestionNum = $currentQuestionNum - 1;
                 
@@ -201,7 +201,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 document.getElementById('navigationForm').submit();
                             }
                         </script>";
-
                     ?>
                 </div>
                 <div class="submitexit-object">
@@ -212,8 +211,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <input type="hidden" name="timeTaken" value="<?php echo $timeTaken; ?>">
                         <input type="hidden" name="mode" value="<?php echo $mode; ?>">                            
                         <button name='answer' id='submit'>SUBMIT</button> 
-                        <!--when all questions havent answered, it disables this button-->
-                        <!--need to calculate number of questions answered, so need sql to count number of questions answered where student_answer ques id == question ques id-->
+                        <!--when all questions havent answered, it disables this button-->            
                     </form>
                     <!--exit button-->
                     <form onsubmit="return confirm('Do you want to exit the quiz? \nYour attempt will not be saved.');" method="post" action="question.php">

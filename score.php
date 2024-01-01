@@ -8,10 +8,9 @@ $count = 0;
 $i = 0;
 
 //counting number of questions within the set
-$SQLnum = "SELECT COUNT(QuestionID) FROM question WHERE SetID = '$setID';";
+$SQLnum = "SELECT COUNT(QuestionID) as total FROM question WHERE SetID = '$setID';";
 $runSQLnum = mysqli_query($DBconn, $SQLnum);
-$dataSQLnum = mysqli_fetch_array($runSQLnum);
-$totalques = $dataSQLnum["COUNT(QuestionID)"];
+$totalques = mysqli_fetch_array($runSQLnum)["total"];
 
 //get IsCorrect, if 1 then count++
 $SQLcorrect = "SELECT * FROM student_answer WHERE TrialID = $trialID";
