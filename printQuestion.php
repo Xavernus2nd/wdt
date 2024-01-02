@@ -1,6 +1,5 @@
 <?php
 date_default_timezone_set('Asia/Kuala_Lumpur'); //Malaysia timezone
-
 $set = $_POST['setID'];
 $mode = $_POST['mode'];
 $currentQuestionNum = $_POST['quesNo'];
@@ -22,7 +21,7 @@ $SQLcount = "SELECT COUNT(StudentAnswer) as count FROM student_answer WHERE Tria
 $runSQLcount = mysqli_query($DBconn, $SQLcount);
 $count = mysqli_fetch_assoc($runSQLcount)['count'];
 
-//get answer from student_answer table
+//get answer for current question from student_answer table
 $SQLanswer = "SELECT * FROM student_answer WHERE TrialID=$trialID AND QuestionID=$data[QuestionID];";
 $runanswer = mysqli_query($DBconn, $SQLanswer);
 if (mysqli_num_rows($runanswer) > 0) {
@@ -30,8 +29,8 @@ if (mysqli_num_rows($runanswer) > 0) {
     $answer = $answerData['StudentAnswer'];
 } else {
     $answer = null;
-}
-?>
+} ?>
+
 <script>
     function checkAnsweredQues() {
         var answeredQues = <?php echo $count;?>;
@@ -52,7 +51,7 @@ if (mysqli_num_rows($runanswer) > 0) {
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['save'])){
         //when the student click save answer 
-        include 'answerprocess.php';
+        include 'answerProcess.php';
     } else {
         //printing topic and set name
         echo "<div class='topic-container'>";
@@ -84,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     setTimeout(updateTimer, 1000); //update timer every 1 second
                                     remainingTime--;
                                     //update session countdown timer value
-                                    fetch("counttime.php", {
+                                    fetch("countTime.php", {
                                         method: "POST",
                                         headers: {
                                             "Content-Type": "application/x-www-form-urlencoded",
@@ -94,12 +93,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 } else {                                
                                     alert ("Time is up! Your answers will be submitted automatically.");
                                     //update session countdown timer value to 0 when time finishes
-                                    fetch("counttime.php", {
+                                    fetch("countTime.php", {
                                         method: "POST",
                                         headers: {
                                             "Content-Type": "application/x-www-form-urlencoded",
                                         },
-                                        body: "countdown_timer=0",
+                                        body: "countdown_timer=0"
                                     });
                                     //automatically submit the form
                                     document.getElementById("submit").disabled = false;
@@ -117,7 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             } ?>
             <div class="questiondirect-object">
                 <div class="question-object">
-                    <form action="question.php" method="post">
+                    <form action="" method="post">
                         Question <?php echo $currentQuestionNum; ?><br>
                         <input type="hidden" name="quesNo" value="<?php echo $currentQuestionNum;?>">
                         <input type="hidden" name="trialID" value="<?php echo $trialID;?>">
@@ -149,7 +148,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="directory-container">
                     <div class="scroll-div">
                         <?php
-                            include 'quesdirectory.php'; 
+                            include 'quesDirectory.php'; 
                         ?>
                     </div>
                 </div>
@@ -205,7 +204,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
                 <div class="submitexit-object">
                     <!--submit button-->
-                    <form action="question.php" method="post">
+                    <form onsubmit="return confirm('Are you sure to submit the quiz? \nYou will not be able to change your answers.');" action="question.php" method="post">
                         <input type="hidden" name="setID" value="<?php echo $set; ?>">
                         <input type="hidden" name="trialID" value="<?php echo $trialID; ?>">
                         <input type="hidden" name="timeTaken" value="<?php echo $timeTaken; ?>">

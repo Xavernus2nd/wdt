@@ -11,8 +11,9 @@ $run = mysqli_query($DBconn, $sql);
 
 //present the answer in table form
 echo '
-<div class="result-container">
-    <table class="tableset" border="1">
+<div class="answerhistory-container">
+<div class="answerhistory-scroll">
+    <table class="answerhistory-table" border="1">
         <tr>
             <th id="num">No.</th>
             <th id="ques">Question</th>
@@ -20,40 +21,40 @@ echo '
             <th id="correctAns">Correct Answer</th>
         </tr>';
 
-while ($data = mysqli_fetch_assoc($run)) {
-    $question = $data['Question'];
-    $stdAns = $data['StudentAnswer'];
-    $correctAns = $data['Answer'];
-    $valid = $data['IsCorrect']; 
-    $num++;
+        while ($data = mysqli_fetch_assoc($run)) {
+          $question = $data['Question'];
+          $stdAns = $data['StudentAnswer'];
+          $correctAns = $data['Answer'];
+          $valid = $data['IsCorrect']; 
+          $num++;
+          //add css class for the table row according to the value of $valid or $stdAns
+          $rowClass = ($stdAns === NULL) ? 'no-answer' : ($valid ? 'correct' : 'wrong');
 
-    //add css class for the table row according to the value of $valid or $stdAns
-    $rowClass = ($stdAns === NULL) ? 'no-answer' : ($valid ? 'correct' : 'wrong');
-
-    echo "<tr class='$rowClass'>
-              <td>$num</td>
-              <td>$question</td>
-              <td>";
-              if ($stdAns === NULL) {
-                echo "-";
-              } else {
-                echo "$stdAns";
-              }
-    echo "    </td>
-              <td>$correctAns</td>
-          </tr>";
-}
-echo '</table>
+          echo "<tr class='$rowClass'>
+                  <td>$num</td>
+                  <td>$question</td>
+                  <td>";
+                  if ($stdAns === NULL) {
+                    echo "-";
+                  } else {
+                    echo "$stdAns";
+                  }
+                  echo "</td>
+                  <td>$correctAns</td>
+                </tr>";
+        }
+    echo '</table>
+    </div>
 </div>';
 ?>
 <!--retake and home button-->
 <div class="resultbutton-container">
   <table class="resultbutton-table">
-    <form action='quizquestion.php' method='post'><tr>
+    <form action='quizQuestion.php' method='post'>
       <input type='hidden' name='setID' value='<?php echo $setID;?>'>
       <input type='hidden' name='mode' value='<?php echo $mode;?>'>
       <td><button class="button2">Retake</button></td>
     </form>
     <td><button class="button2">Home</button></td> <!-- link to student's homepage -->
-  </tr></table>
+  </table>
 </div>

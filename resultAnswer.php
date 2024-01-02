@@ -20,8 +20,8 @@
         $run = mysqli_query($DBconn, $SQLselect);
         if (mysqli_num_rows($run) > 0) {
             while ($data = mysqli_fetch_array($run)) {
-                echo '<a href="questionset.php?topicID='.$data['TopicID'].'">'.$data['TopicTitle'].'</a>';                
-                }
+                echo '<a href = "questionSet.php?topicID='.$data['TopicID'].'">'.$data['TopicTitle'].'</a>';                
+            }
         } ?>
         </div>
     </li>
@@ -44,7 +44,8 @@
         </script>
         <?php
     } else {
-        include 'answerhistory.php';
+        //include 'result.php';
+        include 'answerHistory.php';
     }
     ?>
     </section>

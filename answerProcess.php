@@ -79,5 +79,4 @@ if (mysqli_num_rows($runanswer) > 0) {
 } else {
     //insert 
     insertAns($data);
-}
-?>
+} ?>

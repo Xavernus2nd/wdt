@@ -1,5 +1,4 @@
 <?php
-//delete trial id when student exit the question without submitting
 $set = $_POST['setID'];
 $trialID = $_POST['trialID'];
 $username = $_SESSION['StudentUsername'];
@@ -12,5 +11,5 @@ $runSQLdeleteans = mysqli_query($DBconn, $SQLdeleteans);
 $SQLdeletetrial = "DELETE FROM trial WHERE TrialID = '$trialID';";
 $runSQLdeletetrial = mysqli_query($DBconn, $SQLdeletetrial);
 echo '<script>alert (You have exited the quiz);</script>';
-echo '<script>window.location.href="index.php";</script>';
+echo '<script>window.location.href="index.php";</script>'; //to students homepage
 ?>
