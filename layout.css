@@ -130,8 +130,14 @@ footer {
 
 body{
     background-color: lightcyan;
-
 }
+
+/*body container section yeah*/
+.body-container {
+    width: 1580px;
+    float: right;
+}
+
 
 .loginTop, .profileTop{
     position: absolute;
