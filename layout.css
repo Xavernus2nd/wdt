@@ -138,6 +138,12 @@ body{
     float: right;
 }
 
+/*welcome paragraph*/
+.body-paragraph {
+    text-align: center;
+    padding: 20px;
+}
+
 
 .loginTop, .profileTop{
     position: absolute;
