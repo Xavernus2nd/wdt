@@ -33,24 +33,22 @@
     <h1>Form 4 SPM Mathematics Quiz</h1>
     <!--question set form-->
     <section class="body-container">
-    <?php
-    include 'connection.php';
-    session_start();
-    $username = $_SESSION['StudentUsername'];
-    if(!isset($username)) { ?>
-        <script>
-            window.alert("Please log in to access this page.");
-            window.location.href = 'index.php'; //redirect to main homepage
-        </script>
-    <?php
-    } else {
-        include 'questionSetForm.php';
-    } ?>
+        <?php
+        include 'connection.php';
+        session_start();
+        $username = $_SESSION['StudentUsername'];
+        if(!isset($username)) { ?>
+            <script>
+                window.alert("Please log in to access this page.");
+                window.location.href = 'index.php'; //redirect to main homepage
+            </script>
+        <?php
+        } else {
+            include 'questionSetForm.php';
+        } ?>
     </section>
     <footer>
-    <p>Copyright 2023 © Group 12</p>
-    <p>Disclaimer: We are not responsible for any damages.</p>
-    <p>Contact Admin bingojeans@gmail.com for any inquiries.</p>
+        <?php include 'footer.php'; ?>
     </footer>
 </body>
 </html>
