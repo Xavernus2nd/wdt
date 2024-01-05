@@ -330,255 +330,261 @@ h1 {
   /* end of approve qs, manage qs, add qs and manage topic*/
   
   /*choose quiz set, begin quiz, answer quiz, answer history*/
-  /*question set form and answer history*/
-  .tableset {
+/*question set form and answer history*/
+.tableset {
   border-collapse: collapse;
   width: 95%;
-  }
-  
-  .tableset th, .tableset td {
-  border: 1px solid #ddd;
-  padding: 10px;
-  text-align: center;
-  }
-  
-  .tableset th {
-  background-color: #f2f2f2;
-  font-size: 24px;
-  }
-  
-  .tableset td {
-  font-size: 22px;
-  }
-  
-  .tableset #setname {
-  width: 50%;
-  }
-  
-  .tableset #quesnum, #mode {
-  width: 15%;
-  }
-  
-  .tableset #num {
-  width: 10%;
-  }
-  
-  .resultbutton-container {
-  width: 95%;
-  margin-top: 10px;
-  }
-  
-  .resultbutton-table {
-  float: right;
-  }
-  
-  /*question set begin*/
-  .setinfo {
-  width: 70%;
-  font-size: 24px;
-  }
-  
-  .setinfo th{
-  width: 20%;
-  text-align: left;
-  }
-  
-  .beginbutton-container {
-  text-align: center;
-  width: 50%;
-  height: 20px;
-  }
-  
-  .beginbutton-container button {
-  margin-right: 10px;
-  display: inline-block;
-  }
-  
-  /*answerhistory*/
-  /*setting background color for answer history */
-  .wrong {
-  background-color: rgba(240, 26, 48, 0.75);
-  }
-  
-  .correct {
-  background-color: rgba(0, 120, 92, 0.75);
-  } 
-  
-  .no-answer {
-  background-color: rgba(128, 126, 121, 0.75);
-  }
-  
-  .answerhistory-container {
-  border-style: solid;
-  border-width: 2px;
-  width: 95%;
-  height: 300px;
-  margin: auto;
-  }
-  
-  .answerhistory-scroll {
-  width: 100%;
-  height: 300px;
-  overflow: hidden;
-  overflow-y: scroll;
-  }
-  
-  .answerhistory-table {
-  width: 100%;
-  border-collapse: collapse;
-  border-color: #000000;
-  font-size: 24px;
-  }
-  
-  .answerhistory-table th, .answerhistory-table td {
-  padding: 10px;
-  text-align: center;
-  }
-  
-  .answerhistory-table #num {
-  width: 5%;
-  }
-  
-  .answerhistory-table #ques {
-  width: 65%;
-  }
-  
-  /*print question */
-  .topic-container p {
-  margin: 0px;
-  }
-  
-  .question-object {
-  width: 91.8%;
-  height: 290px;
-  font-size: 22px;
-  background-color: rgba(125, 217, 245, 0.5);
-  border: solid;
-  border-width: 2px;
-  padding: 5px;
-  }
-  
-  .answer-container tr td{
-  height: 60px;
-  width: 300px;
-  }
-  
-  .answer-container input {
-  cursor: pointer;
-  }
-  
-  .answer-container {
-  padding: 10px;
-  margin: 10px;
-  }
-  
-  .questiondirect-object {
-  height: 300px;
-  display: flex;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  }
-  
-  .save-button {
-  width: 150px;
-  background-color: #4c87af;
-  margin: 5px;
-  color: white;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  cursor:pointer;
-  }
-  
-  .directory-container {
-  border-style: solid;
-  border-color: #103147;
-  border-width: 2px;
-  width: 150px;
-  float: right;
-  height: 300px;
-  }
-  
-  .directory-container button {
-  width: 120px;
-  background-color: #4c87af;
-  color: white;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  cursor:pointer;
-  }
-  
-  .scroll-div {
-  width: 150px;
-  height: 300px;
-  overflow: hidden;
-  overflow-y: scroll;
-  }
-  
-  .prevnext-object button {
-  width: 40px;
-  margin-left: 10px;
-  background-color: #4c87af;
-  color: white;
-  padding: 8px 16px;
-  margin: 5px;
-  border: none;
-  border-radius: 4px;
-  cursor:pointer;
-  font-weight: bold;
-  font-size: 20px;
-  }
-  
-  .prevnext-object button:hover, .directory-container button:hover, .save-button:hover, .submitexit-object button:hover, .button2:hover {
-  background-color: #47a8ed;
-  }
-  
-  .empty-button {
-  margin: 5px;
-  width: 30px;
-  margin-left: 10px;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  }
-  
-  .prevnext-object {
-  display: flex;
-  }
-  
-  .submitexit-object {
-  display: flex;
-  float: right;
-  }
-  
-  .submitexit-object button, .mode-button, .button2 {
-  margin: 5px;
-  width: 120px;
-  background-color: #4c87af;
-  color: white;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  cursor:pointer;
-  }
-  
-  .submitexit-object button:disabled {
-  margin: 5px;
-  width: 120px;
-  background-color: #809cb0;
-  color: white;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  cursor: not-allowed;
-  }
-  
-  .button-container {
-  display: flex;
-  justify-content: space-between;
-  height: 40px;
-  margin-top: 10px;
-  }
-  
-  /*end of choose quiz set, begin quiz, answer quiz, answer history*/
+}
+
+.tableset th, .tableset td {
+border: 1px solid #ddd;
+padding: 10px;
+text-align: center;
+}
+
+.tableset th {
+background-color: #f2f2f2;
+font-size: 24px;
+}
+
+.tableset td {
+font-size: 22px;
+}
+
+.tableset #setname {
+width: 50%;
+}
+
+.tableset #quesnum, #mode {
+width: 15%;
+}
+
+.tableset #num {
+width: 10%;
+}  
+
+.resultbutton-container {
+width: 95%;
+margin-top: 10px;
+}
+
+.resultbutton-table {
+float: right;
+}
+
+/*question set begin*/
+.setinfo {
+width: 70%;
+font-size: 24px;
+}
+
+.setinfo th{
+width: 20%;
+text-align: left;
+}
+
+.beginbutton-container {
+text-align: center;
+width: 50%;
+height: 20px;
+}
+
+.beginbutton-container button {
+margin-right: 10px;
+display: inline-block;
+}
+
+/*answerhistory*/
+/*setting background color for answer history */
+.wrong {
+background-color: rgba(240, 26, 48, 0.75);
+}
+
+.correct {
+background-color: rgba(0, 120, 92, 0.75);
+} 
+
+.no-answer {
+background-color: rgba(128, 126, 121, 0.75);
+}
+
+.answerhistory-container {
+border-style: solid;
+border-width: 2px;
+width: 95%;
+height: 300px;
+margin: auto;
+}
+
+.answerhistory-scroll {
+width: 100%;
+height: 300px;
+overflow: hidden;
+overflow-y: scroll;
+}
+
+.answerhistory-table {
+width: 100%;
+border-collapse: collapse;
+border-color: #000000;
+font-size: 24px;
+}
+
+.answerhistory-table th, .answerhistory-table td {
+padding: 10px;
+text-align: center;
+}
+
+.answerhistory-table #num {
+width: 5%;
+}
+
+.answerhistory-table #ques {
+width: 65%;
+}
+
+/*print question */
+.topic-container p {
+margin: 0px;
+}
+
+.question-object {
+width: 91.8%;
+height: 330px;
+font-size: 22px;
+background-color: rgba(125, 217, 245, 0.5);
+border: solid;
+border-width: 2px;
+padding: 5px;
+}
+
+.answer-object{
+height: 80px;
+width: 200px;
+}
+
+.answer-container input {
+cursor: pointer;
+}
+
+.answer-container {
+margin: 5px;
+height: 60px;
+width: 1350px;
+}
+
+.answer-label, .answer-input {
+width: 10px;
+text-align: center;
+}
+
+.questiondirect-object {
+height: 350px;
+display: flex;
+margin-top: 10px;
+margin-bottom: 10px;
+}
+
+.save-button {
+width: 150px;
+background-color: #4c87af;
+margin: 5px;
+color: white;
+padding: 8px 16px;
+border: none;
+border-radius: 4px;
+cursor:pointer;
+}
+
+.directory-container {
+border-style: solid;
+border-color: #103147;
+border-width: 2px;
+width: 150px;
+float: right;
+height: 340px;
+}
+
+.directory-container button {
+width: 120px;
+background-color: #4c87af;
+color: white;
+padding: 8px 16px;
+border: none;
+border-radius: 4px;
+cursor:pointer;
+}
+
+.scroll-div {
+width: 150px;
+height: 340px;
+overflow: hidden;
+overflow-y: scroll;
+}
+
+.prevnext-object button {
+width: 40px;
+margin-left: 10px;
+background-color: #4c87af;
+color: white;
+padding: 8px 16px;
+margin: 5px;
+border: none;
+border-radius: 4px;
+cursor:pointer;
+font-weight: bold;
+font-size: 20px;
+}
+
+.prevnext-object button:hover, .directory-container button:hover, .save-button:hover, .submitexit-object button:hover, .button2:hover {
+background-color: #47a8ed;
+}
+
+.empty-button {
+margin: 5px;
+width: 30px;
+margin-left: 10px;
+padding: 8px 16px;
+border: none;
+border-radius: 4px;
+}
+
+.prevnext-object {
+display: flex;
+}
+
+.submitexit-object {
+display: flex;
+float: right;
+}
+
+.submitexit-object button, .mode-button, .button2 {
+margin: 5px;
+width: 120px;
+background-color: #4c87af;
+color: white;
+padding: 8px 16px;
+border: none;
+border-radius: 4px;
+cursor:pointer;
+}
+
+.submitexit-object button:disabled {
+margin: 5px;
+width: 120px;
+background-color: #809cb0;
+color: white;
+padding: 8px 16px;
+border: none;
+border-radius: 4px;
+cursor: not-allowed;
+}
+
+.button-container {
+display: flex;
+justify-content: space-between;
+height: 40px;
+margin-top: 10px;
+}
+
+/*end of choose quiz set, begin quiz, answer quiz, answer history*/

@@ -127,16 +127,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 
                         <table class="answer-container">
                             <tr>
-                                <td><input type="radio" name="studAns" <?php if ($answer == $data['OptionA']) {?> checked="checked" <?php } ?> value="<?php echo $data['OptionA'];?>" required="required">
-                                a. <?php echo $data['OptionA'];?><br></td>
-                                <td><input type="radio" name="studAns" <?php if ($answer == $data['OptionB']) {?> checked="checked" <?php } ?> value="<?php echo $data['OptionB'];?>" required="required">
-                                b. <?php echo $data['OptionB'];?><br></td>
+                                <td class="answer-input"><input type="radio" name="studAns" <?php if ($answer == $data['OptionA']) {?> checked="checked" <?php } ?> value="<?php echo $data['OptionA'];?>" required="required"></td>
+                                <td class="answer-label">a. </td>
+                                <td class="answer-object"><?php echo $data['OptionA'];?><br></td>
+
+                                <td class="answer-input"><input type="radio" name="studAns" <?php if ($answer == $data['OptionB']) {?> checked="checked" <?php } ?> value="<?php echo $data['OptionB'];?>" required="required"></td>
+                                <td class="answer-label">b. </td>
+                                <td class="answer-object"><?php echo $data['OptionB'];?><br></td>
                             </tr>
                             <tr>
-                                <td><input type="radio" name="studAns" <?php if ($answer == $data['OptionC']) {?> checked="checked" <?php } ?> value="<?php echo $data['OptionC'];?>" required="required">
-                                c. <?php echo $data['OptionC'];?><br></td>
-                                <td><input type="radio" name="studAns" <?php if ($answer == $data['OptionD']) {?> checked="checked" <?php } ?> value="<?php echo $data['OptionD'];?>" required="required">
-                                d. <?php echo $data['OptionD'];?><br></td>
+                                <td class="answer-input"><input type="radio" name="studAns" <?php if ($answer == $data['OptionC']) {?> checked="checked" <?php } ?> value="<?php echo $data['OptionC'];?>" required="required"></td>
+                                <td class="answer-label">c. </td>
+                                <td class="answer-object"><?php echo $data['OptionC'];?><br></td>
+
+                                <td class="answer-input"><input type="radio" name="studAns" <?php if ($answer == $data['OptionD']) {?> checked="checked" <?php } ?> value="<?php echo $data['OptionD'];?>" required="required"></td>
+                                <td class="answer-label">d. </td>
+                                <td class="answer-object"><?php echo $data['OptionD'];?><br></td>
                             </tr>
                         </table>
                         <br>
