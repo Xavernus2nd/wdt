@@ -19,5 +19,5 @@
         </div>
     </li>
     <li><a href="#Result">Result</a></li> <!-- modify result link-->
-    <li><a href="contactus.php">Contact Us</a></li>
+    <li><a href="contactUs.php">Contact Us</a></li>
 </ul>

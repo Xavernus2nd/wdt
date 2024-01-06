@@ -11,16 +11,16 @@
     <div id="logo"></div>
 
     <nav>
-        <?php include 'navbar.php';?>
+        <?php include 'navigation.php';?>
     </nav>
 
     <h1>Form 4 SPM Mathematics Quiz</h1>
 
-    <?php include 'loginprofile.php';?>
-
+    <?php include 'loginB.php';?>
+    
     <footer>
         <?php include 'footer.php'; ?>
     </footer>
-    
+
 </body>
 </html>

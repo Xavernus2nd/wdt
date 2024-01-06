@@ -1,5 +1,5 @@
 <ul id='navlist'>
-    <li><a href="studenthome.php">Home</a></li>
+    <li><a href="homeS.php">Home</a></li>
     <li class="dropdown">
         <a href="javascript:void(0)" class="dropbtn">Quiz</a>
         <div class="dropdown-content">
@@ -17,5 +17,5 @@
         </div>
     </li>
     <li><a href="#Result">Result</a></li> <!-- modify result link -->
-    <li><a href="contactus.php">Contact Us</a></li>
+    <li><a href="contactUsS.php">Contact Us</a></li>
 </ul>
