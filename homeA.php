@@ -26,9 +26,7 @@
 
 <!-- Logout only for admin -->
 <div class="loginTop">
-    <div class="dropdown-register">
-        <a href="logout.php" id="logout">Logout</a>
-    </div>
+    <a href="logout.php" id="logout">Logout</a>
 </div>
 
 <footer>
