@@ -1,339 +1,361 @@
 h1 {
-    height: 92px; 
-    background-color: #427ef5;
-    margin-top: 0;
-    margin-left: 92px;
-    text-align: center;
-    line-height: 93px; /* Set line-height equal to the height of the container */
-    position: relative;
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
-  }
+  height: 92px; 
+  background-color: #427ef5;
+  margin-top: 0;
+  margin-left: 92px;
+  text-align: center;
+  line-height: 93px; /* Set line-height equal to the height of the container */
+  position: relative;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+nav {
+  list-style-type: none;
+  left: 0;
+  padding: 0;
+  width: 100px;
+  background-color:skyblue;
+  position: absolute;
+  display:block;
+  top: 100px;
+  height: 86%;
+  font-weight: bold;
+  font-size: large;
+  overflow-x: hidden;
+}
+
+#navlist {
+  width: 100%;
+  padding: 0;
+  display: block;
+  flex-direction: column;
+}
+
+#navlist ul,
+#navlist li {
+  list-style-type: none;
+  left: 0;
+  width: 98px;
+  height: 86%;
+  display: block;
+  align-items: center;
+  padding-left: 0;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+#navlist a {
+  list-style-type: none;
+  left: 0;
+  width: 96px;
+  height: 86%;
+  display: block;
+  align-items: center;
+  padding-left: 0;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  text-decoration:none ;
+  color: black;
+  border-left: 4px solid blue;
+  text-transform: uppercase;
+}
+
+#logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px; /* Adjust the width as needed for a square */
+  height: 100px; /* Set the height to match the width for a square */
+  background: url('QuizLogo.png') 0 0 no-repeat;
+  background-size: cover; /* Ensures the background image covers the entire container */
+}
+
+li a, .dropbtn {
+  display: block;
+  color: rgb(136, 37, 37);
+  text-align: center;
+  padding: 0;
+  text-decoration: none;
+}
   
-  nav {
-    list-style-type: none;
-    left: 0;
-    padding: 0;
-    width: 100px;
-    background-color:skyblue;
-    position: absolute;
-    display:block;
-    top: 100px;
-    height: 85%;
-    font-weight: bold;
-    font-size: large;
-  }
+li a:hover, .dropdown:hover .dropbtn {
+  background-color: rgb(160, 156, 156);
+}
   
-  #navlist {
-    width: 100%;
-    padding: 0;
-    display: block;
-    flex-direction: column;
-  }
+li.dropdown {
+  display: block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color:white;
+  min-width: 50px;
+  font-size: 13px;
+}
   
-  #navlist ul,
-  #navlist li {
-    list-style-type: none;
-    left: 0;
-    width: 98px;
-    height: 85%;
-    display: block;
-    align-items: center;
-    padding-left: 0;
-    padding-top: 30px;
-    padding-bottom: 30px;
-  }
+.dropdown-content a {
+  color: black;
+  padding:0;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+
+}
   
-  #navlist a {
-    list-style-type: none;
-    left: 0;
-    width: 96px;
-    height: 85%;
-    display: block;
-    align-items: center;
-    padding-left: 0;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    text-decoration:none ;
-    color: black;
-    border-left: 4px solid blue;
-    text-transform: uppercase;
-  }
+.dropdown-content a:hover {background-color: grey ;}
   
-  #logo {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100px; /* Adjust the width as needed for a square */
-    height: 100px; /* Set the height to match the width for a square */
-    background: url('QuizLogo.png') 0 0 no-repeat;
-    background-size: cover; /* Ensures the background image covers the entire container */
-  }
-  
-  li a, .dropbtn {
-    display: block;
-    color: rgb(136, 37, 37);
-    text-align: center;
-    padding: 0;
-    text-decoration: none;
-  }
-    
-  li a:hover, .dropdown:hover .dropbtn {
-    background-color: rgb(160, 156, 156);
-  }
-    
-  li.dropdown {
-    display: block;
-  }
-  
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color:white;
-    min-width: 50px;
-    font-size: 15px;
-  }
-    
-  .dropdown-content a {
-    color: black;
-    padding:0;
-    text-decoration: none;
-    display: block;
-    text-align: center;
-  
-  }
-    
-  .dropdown-content a:hover {background-color: grey ;}
-    
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-  
-  .dropdown-register {
-    display: none;
-    position: absolute;
-    background-color: white;
-    max-width: 200px; /* Set a maximum width */
-    padding: 2px;
-    font-size: 10px;
-    text-align: center; /* Center the text horizontally */
-    border: #000000;
-  }
-  
-  .dropdown-register a {
-    color: black;
-    padding: 10px;
-    font-size: large;
-    text-decoration: none;
-    display: block;
-  }
-  
-  .dropdown-register a:hover {
-    background-color: grey;
-  }
-  
-  .dropdown:hover .dropdown-register {
-    display: block;
-  }
-  
-  
-  .welcome {
-    color: rgb(45, 231, 95);
-    margin-left: 100px;
-    align-items: center;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-    text-align: center;
-  }
-  
-  footer {
-    text-align: justify;
-    padding: 3px;
-    background-color: rgb(120, 117, 117);
-    color: white;
-    padding: 10px; /* Padding around the content inside the footer */
-    position: absolute;
-    width: 91%; /* Full width of the viewport */
-    bottom: 0; /* Stick to the bottom of the viewport */
-    margin-left: 100px;
-  }
-  
-  body{
-    background-color: lightcyan;
-  }
-  
-  /*body container section yeah*/
-  .body-container {
-    width: 1580px;
-    float: right;
-  }
-  
-  /*welcome paragraph*/
-  .body-paragraph {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  
-  .loginTop, .profileTop{
-    position: absolute;
-    top: 40px; /* Adjust the top position as needed */
-    right: 60px; /* Adjust the right position as needed */
-    border: 2px solid black;
-    border-radius: 12px;
-    padding: 5px;
-    font-size: large;
-    z-index: 1;
-  }
-  
-  .body-lp {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  
-  .body-section {
-    max-width: 1400px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  /*these i added myself for my part u guys see if u want to use or not - reyes*/
-  .table {
-    margin-left: 10px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border-collapse: collapse;
-    width: 90%;
-    border: 1px solid #000000;
-    font-size: 18px;
-    text-align: center;
-  }
-  
-  .table th, .table td {
-    padding: 15px;
-    border: 1px solid #000000;  
-  }
-  
-  .button{ /* buttons see u guys want to use this or not, can change the class if dw*/
-    background-color: #4c87af;
-    color: white;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    cursor:pointer;
-  }
-  
-  .button:hover{
-    background-color:#417cbb;
-  }
-  
-  .select{ /* this also*/
-    padding: 8px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-right: 10px;
-  }
-  
-  /*for approve qs, manage qs, add qs and manage topic*/
-  .approve{ 
-    background-color: #4CAF50;
-    color: white;
-    padding: 8px 16px;
-    margin: 5px;
-    border: none;
-    border-radius: 4px;
-    cursor:pointer;
-  }
-  
-  .approve:hover{
-    background-color:#45a049;
-  }
-  
-  .reject{
-    background-color: #af4c4c;
-    color: white;
-    padding: 8px 16px;
-    margin: 5px;
-    border: none;
-    border-radius: 4px;
-    cursor:pointer;
-  }
-  
-  .reject:hover{
-    background-color: #ac4141;
-  }
-  
-  .aqset{
-    margin-left:100px;
-    margin-right:100px;
-    margin-bottom:20px;
-    width: 85%;
-    background-color: rgb(152, 238, 247);
-    border: 1px solid #000000;
-    padding: 10px;
-    font-size: 18px;
-  }      
-  
-  .aqnav{
-    display:flex;
-    justify-content: end;
-    margin-bottom:10px;
-    margin-right:90px;
-    padding: 10px;
-  }
-  
-  .aqnav form{
-    margin-left: 10px;
-  }
-  
-  .approveinfotable{
-    margin-left: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border-collapse: collapse;
-    width: 85%;
-    border: 1px solid #5f5f5f;
-    font-size: 18px;
-    text-align: center;
-  }
-  .approveinfotable th, .approveinfotable td {
-    padding: 15px;  
-    border: 1px solid #5f5f5f;
-  }
-  
-  .csvinfo{
-    display:flex;
-    justify-content: left;
-    width: 50%;
-    margin-left: 350px;
-    border: 2px solid #ddd;
-    padding: 20px;
-  }
-  
-  .aqbox{
-    margin-left:100px;
-    margin-right:100px;
-    margin-bottom:20px;
-    width: 85%;
-    background-color: rgb(224, 255, 255);
-    border: 1px solid #000000;
-    padding: 10px;
-    font-size: 18px;
-  }      
-  /* end of approve qs, manage qs, add qs and manage topic*/
-  
-  /*choose quiz set, begin quiz, answer quiz, answer history*/
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-register {
+  display: none;
+  position: absolute;
+  background-color: white;
+  max-width: 200px; /* Set a maximum width */
+  padding: 2px;
+  font-size: 10px;
+  text-align: center; /* Center the text horizontally */
+  border: #000000;
+}
+
+.dropdown-register a {
+  color: black;
+  padding: 10px;
+  font-size: large;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-register a:hover {
+  background-color: grey;
+}
+
+.dropdown:hover .dropdown-register {
+  display: block;
+}
+
+
+.welcome {
+  color: rgb(45, 231, 95);
+  margin-left: 100px;
+  align-items: center;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  text-align: center;
+}
+
+footer {
+  text-align: justify;
+  background-color: rgb(120, 117, 117);
+  color: white;
+  padding: 10px; /* Padding around the content inside the footer */
+  width: 91%; /* Full width of the viewport */
+  bottom: 0; /* Stick to the bottom of the viewport */
+  margin-left: 100px;
+  position: fixed;
+
+
+}
+
+body{
+  background-color: lightcyan;
+}
+
+/*body container section yeah*/
+.body-container {
+  width: 1580px;
+  float: right;
+}
+
+/*welcome paragraph*/
+.body-paragraph {
+  text-align: center;
+  padding: 20px;
+}
+
+/* the button in right side top for login or others button */
+.loginTop, .profileTop{
+  position: absolute;
+  top: 40px; /* Adjust the top position as needed */
+  right: 60px; /* Adjust the right position as needed */
+  border: 2px solid black;
+  border-radius: 12px;
+  padding: 5px;
+  font-size: large;
+  z-index: 1;
+}
+
+/* login and register form */
+.body-lp {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (max-height:450px){
+  .navlist {padding-top: 15px;}
+  .navlist a {font-size: small;}
+}
+
+
+.body-section {
+  width: 1400px;
+  float: right;
+  margin-left: 100px;
+}
+
+
+/** side by side images for contact us */
+.imagescolumn {
+  float: left;
+  width: 20%;
+  padding: 5px;
+  text-align: center;
+
+}
+
+/* Clearfix (clear floats) */
+.imagesrow::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/*these i added myself for my part u guys see if u want to use or not - reyes*/
+.table {
+  margin-left: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-collapse: collapse;
+  width: 90%;
+  border: 1px solid #000000;
+  font-size: 18px;
+  text-align: center;
+}
+
+.table th, .table td {
+  padding: 15px;
+  border: 1px solid #000000;  
+}
+
+.button{ /* buttons see u guys want to use this or not, can change the class if dw*/
+  background-color: #4c87af;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor:pointer;
+}
+
+.button:hover{
+  background-color:#417cbb;
+}
+
+.select{ /* this also*/
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+/*for approve qs, manage qs, add qs and manage topic*/
+.approve{ 
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 16px;
+  margin: 5px;
+  border: none;
+  border-radius: 4px;
+  cursor:pointer;
+}
+
+.approve:hover{
+  background-color:#45a049;
+}
+
+.reject{
+  background-color: #af4c4c;
+  color: white;
+  padding: 8px 16px;
+  margin: 5px;
+  border: none;
+  border-radius: 4px;
+  cursor:pointer;
+}
+
+.reject:hover{
+  background-color: #ac4141;
+}
+
+.aqset{
+  margin-left:100px;
+  margin-right:100px;
+  margin-bottom:20px;
+  width: 85%;
+  background-color: rgb(152, 238, 247);
+  border: 1px solid #000000;
+  padding: 10px;
+  font-size: 18px;
+}      
+
+.aqnav{
+  display:flex;
+  justify-content: end;
+  margin-bottom:10px;
+  margin-right:90px;
+  padding: 10px;
+}
+
+.aqnav form{
+  margin-left: 10px;
+}
+
+.approveinfotable{
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-collapse: collapse;
+  width: 85%;
+  border: 1px solid #5f5f5f;
+  font-size: 18px;
+  text-align: center;
+}
+.approveinfotable th, .approveinfotable td {
+  padding: 15px;  
+  border: 1px solid #5f5f5f;
+}
+
+.csvinfo{
+  display:flex;
+  justify-content: left;
+  width: 50%;
+  margin-left: 350px;
+  border: 2px solid #ddd;
+  padding: 20px;
+}
+
+.aqbox{
+  margin-left:100px;
+  margin-right:100px;
+  margin-bottom:20px;
+  width: 85%;
+  background-color: rgb(224, 255, 255);
+  border: 1px solid #000000;
+  padding: 10px;
+  font-size: 18px;
+}      
+/* end of approve qs, manage qs, add qs and manage topic*/
+
+/*choose quiz set, begin quiz, answer quiz, answer history*/
 /*question set form and answer history*/
 .tableset {
-  border-collapse: collapse;
-  width: 95%;
+border-collapse: collapse;
+width: 95%;
 }
 
 .tableset th, .tableset td {
