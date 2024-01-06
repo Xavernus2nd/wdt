@@ -14,12 +14,10 @@
     <div id="logo"></div>
 
     <nav>
-        <?php include 'navbar.php';?>
+        <?php include 'navigation.php';?>
     </nav>
 
     <h1>Form 4 SPM Mathematics Quiz</h1>
-
-    <?php include 'loginb.php';?>
 
     <footer>
         <?php include 'footer.php'; ?>
@@ -27,7 +25,7 @@
 
 <section class='body-lp'>    
 <h2>Register</h2>
-    <form action="registerprocess.php" method="post">
+    <form action="registerProcess.php" method="post">
         <label for="fname">Full Name:</label>
         <input type="text" maxlength="20" id="fname" name="fname" required><br>
         <br>
@@ -57,6 +55,11 @@
 <a href="login.php">Log In here</a>
 
 </section>
+
+    <!-- Login and Profile Containers -->
+    <div class="loginTop">
+        <a href="login.php" id="login">Login</a>
+    </div>
 
 </body>
 </html>
