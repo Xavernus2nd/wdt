@@ -18,7 +18,7 @@ nav {
   position: absolute;
   display:block;
   top: 100px;
-  height: 86%;
+  height: 100%;
   font-weight: bold;
   font-size: large;
   overflow-x: hidden;
@@ -36,7 +36,7 @@ nav {
   list-style-type: none;
   left: 0;
   width: 98px;
-  height: 86%;
+  height: 100%;
   display: block;
   align-items: center;
   padding-left: 0;
@@ -48,7 +48,7 @@ nav {
   list-style-type: none;
   left: 0;
   width: 96px;
-  height: 86%;
+  height: 100%;
   display: block;
   align-items: center;
   padding-left: 0;
