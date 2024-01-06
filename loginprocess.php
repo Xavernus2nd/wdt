@@ -12,15 +12,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     switch ($identity) {
         case 'Student':
             $table = 'student';
-            $redirectPage = 'studenthome.php'; // Redirect to the student home page
+            $redirectPage = 'homeS.php'; // Redirect to the student home page
             break;
         case 'Teacher':
             $table = 'teacher';
-            $redirectPage = 'teacherhome.php'; // Redirect to the teacher home page
+            $redirectPage = 'homeT.php'; // Redirect to the teacher home page
             break;
         case 'Admin':
             $table = 'admin';
-            $redirectPage = 'adminhome.php'; // Redirect to the admin home page
+            $redirectPage = 'homeA.php'; // Redirect to the admin home page
             break;
         default:
             // Handle unknown user type
