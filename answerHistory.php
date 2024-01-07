@@ -54,7 +54,7 @@ echo '
       <input type='hidden' name='setID' value='<?php echo $setID;?>'>
       <input type='hidden' name='mode' value='<?php echo $mode;?>'>
       <td><button class="button2">Retake</button></td>
-    </form>
-    <td><button class="button2">Home</button></td> <!-- link to student's homepage -->
+    </form>  
+    <td><button onclick="location.href='homeS.php';" class="button2">Home</button></td> <!-- link to student's homepage -->
   </table>
 </div>

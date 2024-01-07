@@ -57,7 +57,7 @@ function insertAns($data) {
     } else {
         $correct = 0;
     }
-    $sql="INSERT INTO student_answer(TrialID, QuestionID, StudentAnswer, IsCorrect) VALUES ($trialID, $quesID, $stdAns, $correct)";
+    $sql="INSERT INTO student_answer(TrialID, QuestionID, StudentAnswer, IsCorrect) VALUES ($trialID, $quesID, '$stdAns', $correct)";
     return runSQL($sql, $data);
 }
 

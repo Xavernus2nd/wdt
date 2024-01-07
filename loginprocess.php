@@ -1,6 +1,7 @@
 <?php
 // Include the database connection file
 require_once('connection.php');
+session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve username, password, and identity from the form
@@ -13,14 +14,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         case 'Student':
             $table = 'student';
             $redirectPage = 'homeS.php'; // Redirect to the student home page
+            $_SESSION['StudentUsername'] = $username;
             break;
         case 'Teacher':
             $table = 'teacher';
             $redirectPage = 'homeT.php'; // Redirect to the teacher home page
+            $_SESSION['TeacherUsername'] = $username;
             break;
         case 'Admin':
             $table = 'admin';
             $redirectPage = 'homeA.php'; // Redirect to the admin home page
+            $_SESSION['AdminUsername'] = $username;
             break;
         default:
             // Handle unknown user type

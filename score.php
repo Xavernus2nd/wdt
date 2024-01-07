@@ -28,7 +28,7 @@ $score = round(($count/$totalques) *100);
 $SQLupdate = "UPDATE trial SET Score = $score, TimeTaken = '$timeTaken' WHERE TrialID = $trialID;";
 $runSQLupdate = mysqli_query($DBconn, $SQLupdate);
 ?>
-<form id="resultForm" action="resultanswer.php" method="POST">
+<form id="resultForm" action="resultAnswer.php" method="POST">
     <input type="hidden" name="trialID" value="<?php echo $trialID;?>">
     <input type="hidden" name="setID" value="<?php echo $setID;?>">
     <input type="hidden" name="mode" value="<?php echo $mode;?>">

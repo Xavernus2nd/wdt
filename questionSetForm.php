@@ -60,6 +60,6 @@ if ($numset > 0) {
 } else {
     echo "<script>
         alert('Sorry, no question set available for this topic.');
-        window.location.href = 'index.php'; //redirect to student homepage
+        window.location.href = 'homeS.php'; //redirect to student homepage
     </script>";
 } ?>
