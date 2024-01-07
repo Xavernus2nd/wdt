@@ -42,13 +42,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    // Insert the user into the database
     if ($identity === 'Student') {
         // Insert the student with optional classID
         $insertUserSql = "INSERT INTO $table ({$identity}Username, {$identity}FullName, {$identity}Password, ClassID) VALUES ('$username', '$fullname', '$password', $classID)";
-
+    
         $insertUserResult = $DBconn->query($insertUserSql);
-
+    
         // Check if the student record was inserted successfully
         if (!$insertUserResult) {
             // Handle error or log the issue
@@ -58,9 +57,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         // Insert the teacher without classID
         $insertUserSql = "INSERT INTO $table ({$identity}Username, {$identity}FullName, {$identity}Password) VALUES ('$username', '$fullname', '$password')";
-
+    
         $insertUserResult = $DBconn->query($insertUserSql);
-
+    
         // Check if the teacher record was inserted successfully
         if (!$insertUserResult) {
             // Handle error or log the issue
@@ -68,6 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit();
         }
     }
+    
 
     // Redirect to a success page or login page
     header("Location: $redirectPage");
