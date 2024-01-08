@@ -54,7 +54,7 @@ $Topiclists = mysqli_fetch_all($TopicQuery, MYSQLI_ASSOC);
                     <th>Question Set Name</th>
                     <th>Number of Questions</th>
                     <th>Submitted By</th>
-                    <th>Actions</th>
+                    <th colspan='2'>Actions</th>
                 </tr>"; //echos the table headers
         foreach($questionSets as $questionSet){
             echo"<tr>
@@ -62,6 +62,9 @@ $Topiclists = mysqli_fetch_all($TopicQuery, MYSQLI_ASSOC);
                     <td>$questionSet[SetName]</td>
                     <td>$questionSet[NoOfQuestions]</td>
                     <td>$questionSet[TeacherUsername]</td>
+                    <td>
+                        <button action='' method='post' onclick=\"window.location.href='viewQuestionSet.php?TopicID=$questionSet[TopicID]&QuestionSetID=$questionSet[SetID]'\" class='button'>View Question Set</button>
+                    </td>
                     <td>
                         <form action='' method='post' onsubmit='return confirm(\"Are you sure you want to delete this question set?\");'>
                             <input type='hidden' name='DeleteSetID' value='$questionSet[SetID]'>   
