@@ -7,17 +7,17 @@
     <link rel="stylesheet" href="layout.css">
 </head>
 <body>    
-    <div id="logo"></div>
+    <header>
+        <div id = "logo"></div>
+        <h1>Form 4 SPM Mathematics Quiz</h1>
+        <?php include 'loginB.php';?>
+    </header>
 
     <nav>
-        <?php
-        include 'navigation.php';?> 
-        
+        <?php include 'navigation.php';?> 
     </nav>
 
-    <h1>Form 4 SPM Mathematics Quiz</h1>
-
-<div class="body-container">
+<section class="body-container">
     <h2 style="font-size: 30px;text-shadow: 2px 2px 4px #000000;">Welcome To Form 4 SPM Mathematics Quiz!</h2>
     <p style="font-size: 18px;font-family: 'Sofia', sans-serif;">This interactive quiz has been crafted to test your knowledge and understanding of the Form 4 level Mathematics curriculum.<br> Whether you're a student preparing for the SPM examination or someone eager to challenge their mathematical prowess, this quiz is designed to engage and assess your skills.</p>
 
@@ -34,9 +34,7 @@
 
 
         <!-- include a home file for the content of home?-->
-</div>
-
-    <?php include 'loginB.php';?>
+</section>
 
     <footer>
         <?php include 'footer.php'; ?>

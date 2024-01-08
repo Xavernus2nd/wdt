@@ -212,12 +212,6 @@ body{
   .navlist a {font-size: small;}
 }
 
-.body-section {
-  width: 1400px;
-  float: right;
-  margin-left: 100px;
-}
-
 /** side by side images for contact us */
 .imagescolumn {
   float: left;

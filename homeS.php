@@ -5,18 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mathematics Quiz</title>
     <link rel="stylesheet" href="layout.css">
-
-
 </head>
+
 <body>
-<div id="logo"></div>
+    <header>
+        <div id="logo"></div>
+        <h1>Form 4 SPM Mathematics Quiz</h1>
+        <?php include 'profileBS.php';?>
+    </header>
 
 <nav>
     <?php include 'nStudent.php';?>
 </nav>
-
-<h1>Form 4 SPM Mathematics Quiz</h1>
-
 
 <section class="body-container">
 
@@ -34,8 +34,6 @@
 <h2 style="font-size: 15px; font-family: 'Lucida Console', 'Courier New', monospace; text-align:center; ">Good luck, and may your mathematical journey be both rewarding and enlightening!</h2>
 
 </section>
-
-<?php include 'profileBS.php';?>
 
 
 <footer>
