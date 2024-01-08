@@ -7,13 +7,15 @@
     <link rel="stylesheet" href="layout.css">
 </head>
 <body>
-    <div id="logo"></div>
+    <header>
+        <div id="logo"></div>
+        <h1>Form 4 SPM Mathematics Quiz</h1>
+        <?php include 'profileBS.php';?>
+    </header>
+    
     <nav>
         <?php include 'nStudent.php';?>
     </nav>
-
-    <h1>Form 4 SPM Mathematics Quiz</h1>
-    <?php include 'profileBS.php';?>
 
     <!--question set begin menu-->
     <section class="body-container">

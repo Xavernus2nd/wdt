@@ -9,13 +9,17 @@
 </head>
 
 <body>
-    <div id="logo"></div>
+    <header>
+        <div id="logo"></div>
+        <h1>Form 4 SPM Mathematics Quiz</h1>
+        <div class="loginTop">
+            <a href="register.php" id="register">Register</a>
+        </div>
+    </header>
 
     <nav>
         <?php include 'navigation.php';?>
     </nav>
-
-    <h1>Form 4 SPM Mathematics Quiz</h1>
 
     <section class="body-lp">
     <h2>Login</h2>
@@ -43,15 +47,6 @@
     <a href="register.php">Register here</a>
 
     </section>
-
-
-    <!-- Login and Profile Containers -->
-    <div class="loginTop">
-        <a href="register.php" id="register">Register</a>
-    </div>
-
-
-
     <footer>
         <?php include 'footer.php'; ?>
     </footer>

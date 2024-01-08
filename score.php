@@ -1,82 +1,39 @@
 <?php
-require_once('connection.php'); // Include the database connection file
-session_start();
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve registration data from the form
-    $username = isset($_POST['username']) ? $_POST['username'] : '';
-    $fullname = isset($_POST['fullname']) ? $_POST['fullname'] : '';
-    $password = isset($_POST['password']) ? $_POST['password'] : '';
-    $identity = isset($_POST['identity']) ? $_POST['identity'] : '';
-    $classID = isset($_POST['ClassID']) ? $_POST['ClassID'] : null;
+$setID = $_POST['setID'];
+$trialID = $_POST['trialID'];
+$timeTaken = $_POST['timeTaken'];
+$mode = $_POST['mode'];
+$username = $_SESSION['StudentUsername'];
+$count = 0;
+$i = 0;
 
-    // Validate input data (you may want to perform more validation)
-    if (empty($username) || empty($fullname) || empty($password) || empty($identity)) {
-        // Redirect back to the registration form with an error message
-        header("Location: register.php?error=emptyfields");
-        exit();
+//counting number of questions within the set
+$SQLnum = "SELECT COUNT(QuestionID) as total FROM question WHERE SetID = '$setID';";
+$runSQLnum = mysqli_query($DBconn, $SQLnum);
+$totalques = mysqli_fetch_array($runSQLnum)["total"];
+
+//get IsCorrect, if 1 then count++
+$SQLcorrect = "SELECT * FROM student_answer WHERE TrialID = $trialID";
+$runSQLcorrect = mysqli_query($DBconn, $SQLcorrect);
+
+while($result = mysqli_fetch_array($runSQLcorrect)) {
+    if ($result['IsCorrect'] == 1) {
+        $count++;
     }
-
-    // Select the appropriate table based on the user's identity
-    switch ($identity) {
-        case 'Student':
-            $table = 'student';
-            $redirectPage = 'homeS.php'; // Redirect to the student home page
-            break;
-        case 'Teacher':
-            $table = 'teacher';
-            $redirectPage = 'homeT.php'; // Redirect to the teacher home page
-            break;
-        default:
-            // Handle unknown user type
-            header("Location: register.php?error=unknownidentity");
-            exit();
-    }
-
-    // Check if the username is already taken
-    $checkUsernameSql = "SELECT * FROM $table WHERE {$identity}Username = '$username'";
-    $checkUsernameResult = $DBconn->query($checkUsernameSql);
-
-    if ($checkUsernameResult->num_rows > 0) {
-        // Redirect back to the registration form with an error message
-        header("Location: register.php?error=usernametaken");
-        exit();
-    }
-
-    if ($identity === 'Student') {
-        // Insert the student with optional classID
-        $insertUserSql = "INSERT INTO student (StudentUsername, StudentFullName, StudentPassword, ClassID) VALUES ('$username', '$fullname', '$password', $classID)";
-        $insertUserResult = mysqli_query($DBconn, $insertUserSql);
-    
-        // Check if the student record was inserted successfully
-        if (!$insertUserResult) {
-            // Handle error or log the issue
-            header("Location: register.php?error=studentinserterror");
-            exit();
-        } else {
-            $_SESSION['StudentUsername'] = $username;
-        }
-    } else {
-        // Insert the teacher without classID
-        $insertUserSql = "INSERT INTO $table ({$identity}Username, {$identity}FullName, {$identity}Password) VALUES ('$username', '$fullname', '$password')";    
-        $insertUserResult = $DBconn->query($insertUserSql);
-    
-        // Check if the teacher record was inserted successfully
-        if (!$insertUserResult) {
-            // Handle error or log the issue
-            header("Location: register.php?error=teacherinserterror");
-            exit();
-        } else {
-            $_SESSION['TeacherUsername'] = $username;
-        }
-    }    
-
-    // Redirect to a success page or login page
-    header("Location: $redirectPage");
-    
-    exit();
-} else {
-    // If someone tries to access this page directly, redirect them to the registration form
-    header("Location: register.php");
-    exit();
 }
+
+$score = round(($count/$totalques) *100);
+
+//storing score and time taken into trial table 
+$SQLupdate = "UPDATE trial SET Score = $score, TimeTaken = '$timeTaken' WHERE TrialID = $trialID;";
+$runSQLupdate = mysqli_query($DBconn, $SQLupdate);
 ?>
+<form id="resultForm" action="resultAnswer.php" method="POST">
+    <input type="hidden" name="trialID" value="<?php echo $trialID;?>">
+    <input type="hidden" name="setID" value="<?php echo $setID;?>">
+    <input type="hidden" name="mode" value="<?php echo $mode;?>">
+</form>
+<script>
+    //submit form automatically
+    document.getElementById("resultForm").submit();
+</script>
