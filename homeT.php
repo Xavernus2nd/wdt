@@ -18,7 +18,7 @@
 <h1>Form 4 SPM Mathematics Quiz</h1>
 
 
-<section class="body-section">
+<section class="body-container">
 
 <h2 style="font-size: 30px;text-shadow: 2px 2px 4px #000000;">Welcome To Form 4 SPM Mathematics Quiz!</h2>
 

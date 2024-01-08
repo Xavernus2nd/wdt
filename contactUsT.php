@@ -18,7 +18,7 @@
 <h1>Form 4 SPM Mathematics Quiz</h1>
 
 
-<section class="body-section"> <!--css line 207-->
+<section class="body-container"> <!--css line 207-->
 
 <?php include 'CU.php';?>
 
