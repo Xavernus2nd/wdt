@@ -1,28 +1,28 @@
 <?php
 date_default_timezone_set('Asia/Kuala_Lumpur'); //Malaysia timezone
-$set = $_POST['setID'];
-$mode = $_POST['mode'];
+$SetID = $_POST['SetID'];
+$Mode = $_POST['Mode'];
 $currentQuestionNum = $_POST['quesNo'];
-$trialID = $_POST['trialID'];
-$username = $_SESSION['StudentUsername'];
+$TrialID = $_POST['TrialID'];
+$StudentUsername = $_SESSION['StudentUsername'];
 
 //getting the current question from question set
-$SQLquestion = "SELECT * FROM question INNER JOIN question_set ON question.SetID = question_set.SetID INNER JOIN topic ON question_set.TopicID = topic.TopicID WHERE question.SetID = '$set' AND question.QuestionNumber = '$currentQuestionNum';";
+$SQLquestion = "SELECT * FROM question INNER JOIN question_set ON question.SetID = question_set.SetID INNER JOIN topic ON question_set.TopicID = topic.TopicID WHERE question.SetID = '$SetID' AND question.QuestionNumber = '$currentQuestionNum';";
 $run=mysqli_query($DBconn, $SQLquestion);
 $data = mysqli_fetch_array($run);
 
 //count total question
-$SQLtotal = "SELECT COUNT(Question) as total FROM question WHERE SetID = '$set';";
+$SQLtotal = "SELECT COUNT(Question) as total FROM question WHERE SetID = '$SetID';";
 $runSQLtotal = mysqli_query($DBconn, $SQLtotal);
 $totalques = mysqli_fetch_assoc($runSQLtotal)['total'];
 
 //count current number of questions answered
-$SQLcount = "SELECT COUNT(StudentAnswer) as count FROM student_answer WHERE TrialID = '$trialID';";
+$SQLcount = "SELECT COUNT(StudentAnswer) as count FROM student_answer WHERE TrialID = '$TrialID';";
 $runSQLcount = mysqli_query($DBconn, $SQLcount);
 $count = mysqli_fetch_assoc($runSQLcount)['count'];
 
 //get answer for current question from student_answer table
-$SQLanswer = "SELECT * FROM student_answer WHERE TrialID=$trialID AND QuestionID=$data[QuestionID];";
+$SQLanswer = "SELECT * FROM student_answer WHERE TrialID = $TrialID AND QuestionID = $data[QuestionID];";
 $runanswer = mysqli_query($DBconn, $SQLanswer);
 if (mysqli_num_rows($runanswer) > 0) {
     $answerData = mysqli_fetch_array($runanswer);
@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         //question, answer and question directory
         if(isset($data["Question"])) {
-            if ($mode == 'Timed') {
+            if ($Mode == 'Timed') {
                 //timer if mode is timed
                 echo '<div class="topic-container" id="timer" style="font-size: 22px;">Timer: </div>';
                 $countdown_timer = isset($_SESSION['countdown_timer']) ? $_SESSION['countdown_timer'] : 1800; //1800 is 30 mins
@@ -110,19 +110,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         updateTimer();                    
                     });
                 </script>';
-                $timeTaken = 1800 - $countdown_timer;
+                $TimeTaken = 1800 - $countdown_timer;
             } else {
-                $timeTaken = null;
+                $TimeTaken = null;
             } ?>
             <div class="questiondirect-object">
                 <div class="question-object">
                     <form action="" method="post">
                         Question <?php echo $currentQuestionNum; ?><br>
                         <input type="hidden" name="quesNo" value="<?php echo $currentQuestionNum;?>">
-                        <input type="hidden" name="trialID" value="<?php echo $trialID;?>">
+                        <input type="hidden" name="TrialID" value="<?php echo $TrialID;?>">
                         <input type="hidden" name="quesID" value="<?php echo $data['QuestionID'];?>">
-                        <input type="hidden" name="setID" value="<?php echo $data['SetID'];?>">
-                        <input type="hidden" name="mode" value="<?php echo $mode;?>">
+                        <input type="hidden" name="SetID" value="<?php echo $data['SetID'];?>">
+                        <input type="hidden" name="Mode" value="<?php echo $Mode;?>">
                         <?php echo $data['Question'];?> <br>
                 
                         <table class="answer-container">
@@ -173,9 +173,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         if ($prevQuestionNum >= 1) {
                             ?>
                             <form id='navigationForm' method='post' action=''>
-                            <input type="hidden" name="setID" value="<?php echo $set;?>">
-                            <input type="hidden" name="trialID" value="<?php echo $trialID;?>">
-                            <input type="hidden" name="mode" value="<?php echo $mode;?>">
+                            <input type="hidden" name="SetID" value="<?php echo $SetID;?>">
+                            <input type="hidden" name="TrialID" value="<?php echo $TrialID;?>">
+                            <input type="hidden" name="Mode" value="<?php echo $Mode;?>">
                             <input type="hidden" name="quesNo" value="<?php echo $prevQuestionNum;?>">
                             <input type="hidden" name="beginquiz" value="">
                             <td><button class="prev-button" onclick="submitForm()">&#706;</button></td>
@@ -188,9 +188,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         if ($nextQuestionNum <= $totalques ) {
                             ?>
                             <form id='navigationForm' method='post' action=''>
-                            <input type="hidden" name="setID" value="<?php echo $set;?>">
-                            <input type="hidden" name="trialID" value="<?php echo $trialID;?>">
-                            <input type="hidden" name="mode" value="<?php echo $mode;?>">
+                            <input type="hidden" name="SetID" value="<?php echo $SetID;?>">
+                            <input type="hidden" name="TrialID" value="<?php echo $TrialID;?>">
+                            <input type="hidden" name="Mode" value="<?php echo $Mode;?>">
                             <input type="hidden" name="quesNo" value="<?php echo $nextQuestionNum;?>">
                             <input type="hidden" name="beginquiz" value="">
                             <td><button class="next-button" onclick="submitForm()">&#707;</button></td>
@@ -211,17 +211,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="submitexit-object">
                     <!--submit button-->
                     <form onsubmit="return confirm('Are you sure to submit the quiz? \nYou will not be able to change your answers.');" action="question.php" method="post">
-                        <input type="hidden" name="setID" value="<?php echo $set; ?>">
-                        <input type="hidden" name="trialID" value="<?php echo $trialID; ?>">
-                        <input type="hidden" name="timeTaken" value="<?php echo $timeTaken; ?>">
-                        <input type="hidden" name="mode" value="<?php echo $mode; ?>">                            
+                        <input type="hidden" name="SetID" value="<?php echo $SetID; ?>">
+                        <input type="hidden" name="TrialID" value="<?php echo $TrialID; ?>">
+                        <input type="hidden" name="TimeTaken" value="<?php echo $TimeTaken; ?>">
+                        <input type="hidden" name="Mode" value="<?php echo $Mode; ?>">                            
                         <button name='answer' id='submit'>SUBMIT</button> 
                         <!--when all questions havent answered, it disables this button-->            
                     </form>
                     <!--exit button-->
                     <form onsubmit="return confirm('Do you want to exit the quiz? \nYour attempt will not be saved.');" method="post" action="question.php">
-                        <input type="hidden" name="setID" value="<?php echo $set;?>">
-                        <input type="hidden" name="trialID" value="<?php echo $trialID;?>">
+                        
+                        <input type="hidden" name="TrialID" value="<?php echo $TrialID;?>">
                         <button type="submit" name="exit">EXIT</button>
                     </form>
                 </div>

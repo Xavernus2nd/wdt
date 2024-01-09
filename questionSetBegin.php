@@ -1,8 +1,8 @@
 <?php
 date_default_timezone_set("Asia/Kuala_Lumpur"); //Malaysia timezone
-$set = $_POST['setID'];
-$mode = $_POST['mode'];
-$username = $_SESSION['StudentUsername'];
+$SetID = $_POST['SetID'];
+$Mode = $_POST['Mode'];
+$StudentUsername = $_SESSION['StudentUsername'];
 $quesnum = 1;
 $_POST['currentQuestionNum'] = $quesnum;
 $_SESSION['quiz'] = date("Y-m-d h:i:s");
@@ -14,14 +14,14 @@ if (isset($_SESSION['countdown_timer'])) {
 }
 
 //fetch set information
-$SQLset = "SELECT * FROM question_set INNER JOIN topic ON question_set.TopicID = topic.TopicID where question_set.SetID ='$set';";
+$SQLset = "SELECT * FROM question_set INNER JOIN topic ON question_set.TopicID = topic.TopicID where question_set.SetID ='$SetID';";
 $run=mysqli_query($DBconn, $SQLset);
 $data=mysqli_fetch_array($run);
 
 //insert trial information into trial table
-$SQLinsert = "INSERT INTO trial (StudentUsername, SetID, QuizType, DateTime) VALUES ('$username', '$set', '$mode', '$timestamp');";
+$SQLinsert = "INSERT INTO trial (StudentUsername, SetID, QuizType, DateTime) VALUES ('$StudentUsername', '$SetID', '$Mode', '$timestamp');";
 $runinsert = mysqli_query($DBconn, $SQLinsert);
-$trialID = mysqli_insert_id($DBconn);
+$TrialID = mysqli_insert_id($DBconn);
 ?>
 
 <!--display set information and instruction-->
@@ -36,10 +36,10 @@ $trialID = mysqli_insert_id($DBconn);
     </tr>
     <tr>
         <th>Mode:</th>
-        <td><?php echo $mode;?></td>
+        <td><?php echo $Mode;?></td>
     </tr>
     <?php
-    if ($mode === 'Timed') {
+    if ($Mode === 'Timed') {
         echo "<tr>
                 <th>Total Time:</th> 
                 <td>30 minutes</td>
@@ -55,23 +55,22 @@ $trialID = mysqli_insert_id($DBconn);
 <div class="beginbutton-container">
     <!--begin button-->
     <form method="post" action="question.php">
-        <input type="hidden" name="setID" value="<?php echo $set;?>">
-        <input type="hidden" name="trialID" value="<?php echo $trialID;?>">
-        <input type="hidden" name="mode" value="<?php echo $mode;?>">
+        <input type="hidden" name="SetID" value="<?php echo $SetID;?>">
+        <input type="hidden" name="TrialID" value="<?php echo $TrialID;?>">
+        <input type="hidden" name="Mode" value="<?php echo $Mode;?>">
         <input type="hidden" name="quesNo" value="<?php echo $_POST['currentQuestionNum'];?>">
         <button type="submit" name="beginquiz" class="button2" id="beginButton">BEGIN</button> <!--button to start quiz-->
     </form>
     <!--exit button-->
     <form method="post" action="question.php">
-        <input type="hidden" name="setID" value="<?php echo $set;?>">
-        <input type="hidden" name="trialID" value="<?php echo $trialID;?>">
+        <input type="hidden" name="SetID" value="<?php echo $SetID;?>">
+        <input type="hidden" name="TrialID" value="<?php echo $TrialID;?>">
         <button type="submit" name="exit" class="button2" id="beginButton">EXIT</button> <!--button to delete trial-->
     </form>
 </div>
 
 <!--script to print instructions for each mode-->
 <script>
-    instruct('<?php echo $mode;?>');
     function instruct(mode) {
         var instructions = '';
         if(mode==='Practice') {
@@ -81,4 +80,5 @@ $trialID = mysqli_insert_id($DBconn);
         }
         document.getElementById("instruction").innerHTML = instructions;
     }
+    instruct('<?php echo $Mode;?>');
 </script>
