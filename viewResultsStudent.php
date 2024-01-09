@@ -30,10 +30,6 @@
     </div>
 
     <div>
-    <th>Name</th>
-    </div>
-
-    <div>
     <th>Class</th>
     </div>
 
@@ -47,6 +43,10 @@
 
     <div>
     <th>Date</th>
+    </div>
+
+    <div>
+        <th>Time</th>
     </div>
 
     <div>
@@ -65,7 +65,7 @@ include("sessionStudent.php");
 $studentUsername = $_SESSION['StudentUsername'];
 
 
-$sql = "SELECT a.StudentFullName, a.StudentUsername, b.ClassName, c.SetName, d.Score, d.DateTime, d.Comment, d.TrialID, d.QuizType, d.SetID
+$sql = "SELECT a.StudentFullName, a.StudentUsername, b.ClassName, c.SetName, d.Score, d.DateTime, d.Comment, d.TrialID, d.QuizType, d.SetID, Date(Datetime) AS Date, Time(Datetime) AS Time
 FROM student AS a 
 LEFT JOIN class AS b ON a.ClassID = b.ClassID 
 LEFT JOIN trial AS d ON d.StudentUsername = a.StudentUsername
@@ -84,13 +84,11 @@ if ($result) {
         echo '<td>' . $row['ClassName'] . '</td>';
         echo '<td>' . $row['SetName'] . '</td>';
         echo '<td>' . $row['Score'] . '</td>';
-        echo '<td>' . $row['DateTime'] . '</td>';
+        echo '<td>' . $row['Date'] . '</td>';
+        echo '<td>' . $row['Time'] . '</td>';
         echo '<td>' . $row['Comment'] . '</td>';
-        echo '<form id="resultForm" action="viewResultsSpecific.php" method="POST">';
-        echo '<input type="hidden" name="TrialID" value="' . $row['TrialID'] . '">';
-        echo '<input type="hidden" name="SetID" value="' . $row['SetID'] . '">';
-        echo '<input type="hidden" name="QuizType" value="' . $row['QuizType'] . '">';
-        echo '<input type="hidden" name="StudentUsername" value="' . $row['StudentUsername'] . '">';
+        echo '<form id="resultForm" action="resultAnswer.php" method="POST">';
+        echo '<input type="hidden" name="trialID" value="' . $row['TrialID'] . '">';
         echo '<td><button type="submit" name="view_specific">View</button></td>';
         echo '</form>';
         echo '</tr>';
