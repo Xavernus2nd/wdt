@@ -24,7 +24,6 @@ nav {
   height: 100%;
   font-weight: bold;
   font-size: large;
-  overflow-x: hidden;
 }
 
 #navlist {
@@ -44,7 +43,7 @@ nav {
   align-items: center;
   padding-left: 0;
   padding-top: 30px;
-  padding-bottom: 30px;
+  padding-bottom: 5px;
 }
 
 #navlist a {
