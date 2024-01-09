@@ -2,16 +2,20 @@
 //file checking part
 include 'connection.php';
 if (isset($_POST['import'])){
-    $targetdir = "CSV/";
-    $targetfile = $targetdir . basename($_FILES["fileToUpload"]["name"]);
+    $targetfile = "CSV/" . $_FILES["fileToUpload"]["name"];
     $filetype = strtolower(pathinfo($targetfile,PATHINFO_EXTENSION));
+    $alert = "";
     if ($filetype != "csv"){
-        die("Only CSV files are allowed.");
+        echo "<script>alert('Only CSV files are allowed.');</script>";
+        header("Refresh:0; url=addQuestionSet.php");
+        die();
     }
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $targetfile)){
-        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+        echo "<script>alert('The file \"". $_FILES["fileToUpload"]["name"]. "\" has been uploaded.');</script>";
     } else {
-        die("Sorry, there was an error uploading your file.");
+        echo "<script>alert('Sorry, there was an error uploading your file.');</script>";
+        header("Refresh:0; url=addQuestionSet.php");
+        die();
     }
     //Question Set Part
     //Question Set Name 
@@ -30,17 +34,20 @@ if (isset($_POST['import'])){
     //Question insertion part  
     $file = fopen($targetfile, "r");
     $counter = 1;
+    $alert = "";
     while (($data = fgetcsv($file)) ==! FALSE){
         $import = "INSERT INTO Question VALUES ('DEFAULT', '$SetID', '$data[0]', '$data[1]', '$data[2]', '$data[3]', '$data[4]', '$data[5]', '$data[6]')";
         if(mysqli_query($DBconn, $import)){
-            echo "<br>Record $counter added successfully.";
+            $alert = $alert . "Record $counter added successfully." . "\\n";
             $counter++;
         }
         else{
-            echo "An error occured while adding record $counter." ."<br>".mysqli_error($DBconn);
+            $alert = $alert . "An error occured while adding record $counter." . "\\n";
             $counter++;
         }
     }
+    echo "<script>alert('$alert');</script>";
     fclose($file);
+    header("Refresh:0; url=addQuestionSet.php");
 }
 ?>
