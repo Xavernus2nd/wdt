@@ -18,6 +18,6 @@
         ?>
         </div>
     </li>
-    <li><a href="#Result">Result</a></li> <!-- modify result link-->
+    <li><a href="viewResultsStudent.php">Result</a></li> <!-- modify result link-->
     <li><a href="contactUs.php">Contact Us</a></li>
 </ul>
