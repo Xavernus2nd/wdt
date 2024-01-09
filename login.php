@@ -26,11 +26,11 @@
     <h2>Login</h2>
     <form action="loginProcess.php" method="post">
         <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required><br>
+        <input type="text" maxlength="10" minlength='4' id="username" name="username" required pattern="[a-z0-9]+" title="Please enter only lowercase alphanumeric characters" placeholder="(4-10characters;a-z;0-9)"><br>
         <br>
 
         <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br>
+        <input type="password" id="password" minlength='6' maxlength='15' name="password" required placeholder="(length:6-25)"><br>
         <br>
 
         <label for="identity">Are you a:</label>
@@ -48,6 +48,7 @@
     <a href="register.php">Register here</a>
 
 </section>
+
 
 <footer>
     <?php include 'footer.php'; ?>

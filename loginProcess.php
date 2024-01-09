@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['AdminUsername'] = $username;
             break;
         default:
-            // Handle unknown user type
+            // unknown user type
             header("Location: login.php?error=2");
             exit();
     }
@@ -61,4 +61,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header("Location: login.php");
     exit();
 }
+
+
+//alert
+if (isset($_GET['error']) && $_GET['error'] == 1) {
+    echo '<script>alert("Invalid login. Please try again.");</script>';
+}
+
+
 ?>

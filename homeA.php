@@ -9,6 +9,13 @@
 </head>
 <body>
 
+<script>
+    // Display an alert when the page loads
+    window.onload = function() {
+        alert('Login successfully!Its a go! Begin your operation whenever youre ready!');
+    };
+</script>
+
 <header>
 <div id = "logo"></div>
     <h1>Form 4 SPM Mathematics Quiz</h1>

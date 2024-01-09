@@ -5,18 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mathematics Quiz</title>
     <link rel="stylesheet" href="layout.css">
-</head>
+    
 
+</head>
 <body>
-    <header>
-        <div id="logo"></div>
-        <h1>Form 4 SPM Mathematics Quiz</h1>
-        <?php include 'profileBS.php';?>
-    </header>
+
+<script>
+    // Display an alert when the page loads
+    window.onload = function() {
+        alert('Login successfully!Its a go! Begin your operation whenever youre ready!');
+    };
+</script>
+
+<header>
+<div id = "logo"></div>
+    <h1>Form 4 SPM Mathematics Quiz</h1>
+    <?php include 'profileBS.php';?>
+</header>
 
 <nav>
     <?php include 'nStudent.php';?>
 </nav>
+
 
 <section class="body-container">
 
@@ -39,5 +49,6 @@
 <footer>
     <?php include 'footer.php'; ?>
 </footer>
+
 </body>
 </html>
