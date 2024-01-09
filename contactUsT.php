@@ -1,3 +1,5 @@
+<?php include 'sessionTeacher.php'?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,16 +9,22 @@
     <title>MQ Contact Us</title>
     <link rel="stylesheet" href="layout.css">
 
+
 </head>
+
+
 <body>
-<div id="logo"></div>
+
+<header>
+    <div id="logo"></div>
+    <h1>Form 4 SPM Mathematics Quiz</h1>
+    <?php include 'profileBT.php';?>
+
+</header>
 
 <nav>
-    <?php include 'nTeacher.php';?>
+    <?php include 'nTeacher.php';?> 
 </nav>
-
-<h1>Form 4 SPM Mathematics Quiz</h1>
-
 
 <section class="body-container"> <!--css line 207-->
 
@@ -25,7 +33,6 @@
 
 </section>
 
-<?php include 'profileBT.php';?>
 
 
 <footer>

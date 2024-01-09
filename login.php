@@ -9,19 +9,20 @@
 </head>
 
 <body>
-    <header>
-        <div id="logo"></div>
-        <h1>Form 4 SPM Mathematics Quiz</h1>
-        <div class="loginTop">
-            <a href="register.php" id="register">Register</a>
-        </div>
-    </header>
 
-    <nav>
-        <?php include 'navigation.php';?>
-    </nav>
+<header>
+<div id = "logo"></div>
+    <h1>Form 4 SPM Mathematics Quiz</h1>
+    <div class="loginTop">
+        <a href="register.php" id="register">Register</a>
+    </div>
+</header>
 
-    <section class="body-lp">
+<nav>
+    <?php include 'navigation.php';?> 
+</nav>
+
+<section class="body-lp">
     <h2>Login</h2>
     <form action="loginProcess.php" method="post">
         <label for="username">Username:</label>
@@ -46,10 +47,11 @@
     <p>Have not registered?</p>
     <a href="register.php">Register here</a>
 
-    </section>
-    <footer>
-        <?php include 'footer.php'; ?>
-    </footer>
+</section>
+
+<footer>
+    <?php include 'footer.php'; ?>
+</footer>
     
 </body>
 </html>

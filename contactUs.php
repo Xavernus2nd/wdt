@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,32 +7,28 @@
     <link rel="stylesheet" href="layout.css">
 
 </head>
+
 <body>
-<div id="logo"></div>
+
+<header>
+    <div id="logo"></div>
+    <h1>Form 4 SPM Mathematics Quiz</h1>
+    <?php include 'loginB.php';?>
+</header>
 
 <nav>
-    <?php include 'navigation.php';?>
+    <?php include 'navigation.php';?> 
 </nav>
-
-<h1>Form 4 SPM Mathematics Quiz</h1>
-
 
 <section class="body-container"> <!--css line 207-->
 
 <?php include 'CU.php';?>
 
-
 </section>
-
-
-
-</section>
-
-<?php include 'loginB.php';?>
-
 
 <footer>
     <?php include 'footer.php'; ?>
 </footer>
+
 </body>
 </html>

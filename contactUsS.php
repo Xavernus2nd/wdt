@@ -1,3 +1,5 @@
+<?php include 'sessionStudent.php'?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,29 +9,31 @@
     <title>MQ Contact Us</title>
     <link rel="stylesheet" href="layout.css">
 
+
 </head>
+
 <body>
-<div id="logo"></div>
+
+<header>
+    <div id="logo"></div>
+    <h1>Form 4 SPM Mathematics Quiz</h1>
+    <?php include 'profileBS.php';?>
+
+</header>
 
 <nav>
-    <?php include 'nStudent.php';?>
+    <?php include 'nStudent.php';?> 
 </nav>
-
-<h1>Form 4 SPM Mathematics Quiz</h1>
-
 
 <section class="body-container"> <!--css line 205-->
 
 <?php include 'CU.php';?>
 
-
 </section>
-
-<?php include 'profileBS.php';?>
-
 
 <footer>
     <?php include 'footer.php'; ?>
 </footer>
+
 </body>
 </html>

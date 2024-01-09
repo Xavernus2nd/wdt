@@ -6,28 +6,28 @@
     <title>MQ Register</title>
     <link rel="stylesheet" href="layout.css">
 
-
-
-
 </head>
 <body>
-    <div id="logo"></div>
 
-    <nav>
-        <?php include 'navigation.php';?>
-    </nav>
 
+<header>
+<div id = "logo"></div>
     <h1>Form 4 SPM Mathematics Quiz</h1>
+    <!-- Login and Profile Containers -->
+    <div class="loginTop">
+        <a href="login.php" id="login">Login</a>
+    </div>
+</header>
 
-    <footer>
-        <?php include 'footer.php'; ?>
-    </footer>
+<nav>
+    <?php include 'navigation.php';?> 
+</nav>
 
 <section class='body-lp'>    
 <h2>Register</h2>
     <form action="registerProcess.php" method="post">
-        <label for="fname">Full Name:</label>
-        <input type="text" maxlength="20" id="fname" name="fname" required><br>
+        <label for="fullname">Full Name:</label>
+        <input type="text" maxlength="20" id="fullname" name="fullname" required><br>
         <br>
 
         <label for="username">Username:</label>
@@ -45,8 +45,8 @@
         <label for="Teacher">Teacher</label><br>
         <br>
 
-        <label for="ClassID">Join Class (ID):</label>
-        <input type="text" inputmode="numeric" pattern="\d*" maxlength="10" id="ClassID" name="ClassID"><br>
+        <label for="classID">Join Class (ID):</label>
+        <input type="text" inputmode="numeric" pattern="\d*" maxlength="10" id="classID" name="classID"><br>
         <br>
 
         <button type="submit">Register</button>
@@ -56,10 +56,9 @@
 
 </section>
 
-    <!-- Login and Profile Containers -->
-    <div class="loginTop">
-        <a href="login.php" id="login">Login</a>
-    </div>
+<footer>
+    <?php include 'footer.php'; ?>
+</footer>
 
 </body>
 </html>

@@ -1,3 +1,7 @@
+<?php include 'sessionAdmin.php'?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,16 +10,21 @@
     <title>Mathematics Quiz</title>
     <link rel="stylesheet" href="layout.css">
 
-
 </head>
 <body>
-<div id="logo"></div>
+
+<header>
+<div id = "logo"></div>
+    <h1>Form 4 SPM Mathematics Quiz</h1>
+<!-- Logout only for admin -->
+    <div class="loginTop">
+        <a href="logout.php" id="logout">Logout</a>
+    </div>
+</header>
 
 <nav>
-    <?php include 'nAdmin.php';?>
+    <?php include 'nAdmin.php';?> 
 </nav>
-
-<h1>Form 4 SPM Mathematics Quiz</h1>
 
 
 <section class="body-container">
@@ -27,13 +36,10 @@
 
 </section>
 
-<!-- Logout only for admin -->
-<div class="loginTop">
-    <a href="logout.php" id="logout">Logout</a>
-</div>
 
 <footer>
     <?php include 'footer.php'; ?>
 </footer>
+
 </body>
 </html>

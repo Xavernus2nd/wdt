@@ -1,3 +1,6 @@
+<?php include 'sessionTeacher.php'?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,13 +12,17 @@
 
 </head>
 <body>
-<div id="logo"></div>
+
+
+<header>
+<div id = "logo"></div>
+    <h1>Form 4 SPM Mathematics Quiz</h1>
+    <?php include 'profileBT.php';?>
+</header>
 
 <nav>
     <?php include 'nTeacher.php';?>
 </nav>
-
-<h1>Form 4 SPM Mathematics Quiz</h1>
 
 
 <section class="body-container">
@@ -33,11 +40,10 @@
 
 </section>
 
-<?php include 'profileBT.php';?>
-
 
 <footer>
     <?php include 'footer.php'; ?>
 </footer>
+
 </body>
 </html>
