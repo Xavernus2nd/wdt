@@ -57,10 +57,6 @@
     <div>
     <th>Comment</th>
     </div>
-
-    <div>
-        <th>Delete</th>
-    </div>
     
 </tr>
 
@@ -103,7 +99,6 @@ if ($result) {
         echo '<input type="submit" value="Update">';
         echo '</form>';
         echo '</td>';
-        echo "<td><a href='deleteResultsTeacher.php?id=".$row['TrialID']."'>Delete</a></td>";
         echo '</tr>';
     }
 } else {
