@@ -3,5 +3,5 @@
     <li><a href="manageTopic.php">Manage Topic</a></li>
     <li><a href="approveQuestionSet.php">Approve Question Set</a></li>
     <li><a href="manageQuestionSetAdmin.php">Manage Question Set</a></li>
-    <li><a href="manageClassAdmin.php">Manage Class</a></li> <!-- modify manage class link-->
+    <li><a href="manageClassAdmin.php">Manage Class</a></li> 
 </ul>
