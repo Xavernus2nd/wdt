@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Results</title>
+    <link rel="stylesheet" href="viewResults.css">
+    <link rel="stylesheet" href="layout.css">
+</head>
+<body>
+
+<header>
+        <div id="logo"></div>
+        <h1>Form 4 SPM Mathematics Quiz</h1>
+        <?php include 'profileBS.php';?>
+</header>
+
+<nav>
+    <?php include 'nStudent.php'; ?>
+</nav>
+
+<section class="body-container">
+
+<table id = View_Results_Student>
+
+<tr>
+
+    <div>
+    <th>No.</th>
+    </div>
+
+    <div>
+    <th>Name</th>
+    </div>
+
+    <div>
+    <th>Class</th>
+    </div>
+
+    <div>
+    <th>Question Set Name</th>
+    </div>
+
+    <div>
+    <th>Score</th>
+    </div>
+
+    <div>
+    <th>Date</th>
+    </div>
+
+    <div>
+    <th>Comment</th>
+    </div>
+    
+    <div>
+    <th>View More</th>
+    </div>
+</tr>
+
+
+<?php
+include("connection.php");
+include("sessionStudent.php");
+$studentUsername = $_SESSION['StudentUsername'];
+
+
+$sql = "SELECT a.StudentFullName, a.StudentUsername, b.ClassName, c.SetName, d.Score, d.DateTime, d.Comment, d.TrialID, d.QuizType, d.SetID
+FROM student AS a 
+LEFT JOIN class AS b ON a.ClassID = b.ClassID 
+LEFT JOIN trial AS d ON d.StudentUsername = a.StudentUsername
+LEFT JOIN question_set AS c ON c.SetID = d.SetID
+WHERE d.Score IS NOT NULL AND d.DateTime IS NOT NULL AND a.StudentUsername = '$studentUsername'";
+
+
+$result = mysqli_query($DBconn, $sql);
+
+if ($result) {
+    $i = 1;
+    while ($row = mysqli_fetch_array($result)) {
+        echo '<tr>';
+        echo '<td>' . $i++ . '</td>';
+        echo '<td>' . $row['StudentFullName'] . '</td>';
+        echo '<td>' . $row['ClassName'] . '</td>';
+        echo '<td>' . $row['SetName'] . '</td>';
+        echo '<td>' . $row['Score'] . '</td>';
+        echo '<td>' . $row['DateTime'] . '</td>';
+        echo '<td>' . $row['Comment'] . '</td>';
+        echo '<form id="resultForm" action="viewResultsSpecific.php" method="POST">';
+        echo '<input type="hidden" name="TrialID" value="' . $row['TrialID'] . '">';
+        echo '<input type="hidden" name="SetID" value="' . $row['SetID'] . '">';
+        echo '<input type="hidden" name="QuizType" value="' . $row['QuizType'] . '">';
+        echo '<input type="hidden" name="StudentUsername" value="' . $row['StudentUsername'] . '">';
+        echo '<td><button type="submit" name="view_specific">View</button></td>';
+        echo '</form>';
+        echo '</tr>';
+    }
+} else {
+    echo "Error: " . mysqli_error($DBconn);
+}
+
+?>
+
+</table>
+</section>
+
+<footer>
+    <?php include 'footer.php'; ?>
+</footer>
+</body>
+</html>
