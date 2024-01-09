@@ -1,16 +1,18 @@
 <?php
-include "sessionAdmin.php";
 include "connection.php";
-
+include "sessionAdmin.php";
 // Retrieve unapproved question set data from the database
-$SetToBeApproved = mysqli_fetch_all(mysqli_query($DBconn, "SELECT * FROM Question_Set WHERE SetApprovalStatus = 'PENDING'"), MYSQLI_ASSOC);
+$TopicTitles = mysqli_fetch_all(mysqli_query($DBconn, "SELECT * FROM Topic"), MYSQLI_ASSOC);
+if(isset($_GET['TopicID'])){
+    $TopicTitleSelected =  mysqli_fetch_assoc(mysqli_query($DBconn, "SELECT * FROM Topic WHERE TopicID = '$_GET[TopicID]'") );
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Approve Question Set</title>
+    <title>View Question Set</title>
     <link rel="stylesheet" href="layout.css">
 </head>
 <body>
@@ -23,17 +25,8 @@ $SetToBeApproved = mysqli_fetch_all(mysqli_query($DBconn, "SELECT * FROM Questio
     </header>
     <nav><?php include "nAdmin.php" ?></nav>
     <section class="body-container">
-    <h2>Approve Question Set</h2>
+    <h2>View Question Set</h2>
     <?php
-    // Dropdown to select question set to be approved
-    echo "<label>Question Set:</label>
-    <form action='' method='GET'>
-    <select name='QuestionSetID' class='select' onchange='this.form.submit()'>
-    <option value=''>Select Question Set</option>";
-    foreach($SetToBeApproved as $row){
-        echo "<option value='$row[SetID]'>$row[SetName]</option>";
-    }
-    echo "</select></form><br>";
     // Display question set details
     if(isset($_GET["QuestionSetID"])){
         $QuestionSetID = $_GET["QuestionSetID"];
@@ -86,29 +79,14 @@ $SetToBeApproved = mysqli_fetch_all(mysqli_query($DBconn, "SELECT * FROM Questio
             echo "<form action='' method='GET'> 
             <input type='hidden' name='QuestionSetID' value='$QuestionSetID'>
             <input type='hidden' name='QuestionNumber' value='$currentQuestionIndex'>
+            <input type='hidden' name='TopicID' value='$_GET[TopicID]'>
             <input type='submit' name='action' class='button' value='Previous Question'>
             <input type='submit' name='action' class='button' value='Next Question'>
             </form></div><br>";
-            //displays info table for question set
             echo "<center><table class='approveinfotable'>
             <td>Topic: $QuestionSetTopic[TopicTitle]</td>
             <td>Submitted By: $QuestionSet[TeacherUsername]</td>
             </table><br>";
-            echo "<form action='' method='POST' onsubmit='return confirm(\"Are you sure?\")'>
-            <input type='hidden' name='QuestionSetID' value='$QuestionSetID'>
-            <input type='submit' name='Approve' class='approve' value='Approve Question Set'>
-            <input type='submit' name='Reject' class='reject' value='Reject Question Set'>
-            </form></center></div>";
-            if (isset($_POST['Approve'])){
-                mysqli_query($DBconn, "UPDATE Question_Set SET SetApprovalStatus = 'APPROVED' WHERE SetID = '$QuestionSetID'");
-                echo "<script>alert('Question Set Approved!'); window.location.href='ApproveQuestionSet.php'</script>";
-                exit();
-            }
-            else if (isset($_POST['Reject'])){
-                mysqli_query($DBconn, "UPDATE Question_Set SET SetApprovalStatus = 'REJECTED' WHERE SetID = '$QuestionSetID'");
-                echo "<script>alert('Question Set Rejected!'); window.location.href='ApproveQuestionSet.php'</script>";
-                exit();
-            }
     }
     }
     ?>

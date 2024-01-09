@@ -1,7 +1,6 @@
 <?php
 //file checking part
 include 'connection.php';
-$_SESSION['TeacherUsername']="maow";
 if (isset($_POST['import'])){
     $targetdir = "CSV/";
     $targetfile = $targetdir . basename($_FILES["fileToUpload"]["name"]);
@@ -30,7 +29,6 @@ if (isset($_POST['import'])){
     $SetID = $resultSetID['SetID'];
     //Question insertion part  
     $file = fopen($targetfile, "r");
-    //mysqli_begin_transaction($DBconn); IMPLEMENT TRANSACTION IF TIME ALLOWS
     $counter = 1;
     while (($data = fgetcsv($file)) ==! FALSE){
         $import = "INSERT INTO Question VALUES ('DEFAULT', '$SetID', '$data[0]', '$data[1]', '$data[2]', '$data[3]', '$data[4]', '$data[5]', '$data[6]')";

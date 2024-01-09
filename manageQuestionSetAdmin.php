@@ -1,7 +1,7 @@
 <?php
-session_start();
+include 'sessionAdmin.php'; //session script
 include 'connection.php'; //connection script
-include 'deleteQuestionSet.php'; //includes the deletion script
+include 'deleteQuestionSetAdmin.php'; //includes the deletion script
 if(isset($_POST['selecttopic'])){ //checks for if topic is selected and sets the session
     $SelectedTopicCheck['SelectedTopic']=$_POST['SelectedTopic'];
     if($SelectedTopicCheck['SelectedTopic']=="Not Selected"){
@@ -29,9 +29,16 @@ $Topiclists = mysqli_fetch_all($TopicQuery, MYSQLI_ASSOC);
     <link href='layout.css' rel='stylesheet'>
 </head>
 <body>
-<?php //include 'Loginbutton.php' ?>
-    <div id="container">
-    <h2>View/Manage Question Set</h2>
+    <header>
+        <div id = "logo"></div>
+        <h1>Form 4 SPM Mathematics Quiz</h1>
+        <div class="loginTop">
+            <a href="logout.php" id="logout">Logout</a>
+        </div>
+    </header>
+    <nav><?php include "nAdmin.php" ?></nav>
+    <section class="body-container">
+    <h2>Manage Question Set</h2>
     <form action="" method="post">
         <select name="SelectedTopic" class='select'>
             <option value="Not Selected">Please select a topic</option>
@@ -63,7 +70,7 @@ $Topiclists = mysqli_fetch_all($TopicQuery, MYSQLI_ASSOC);
                     <td>$questionSet[NoOfQuestions]</td>
                     <td>$questionSet[TeacherUsername]</td>
                     <td>
-                        <button action='' method='post' onclick=\"window.location.href='viewQuestionSet.php?TopicID=$questionSet[TopicID]&QuestionSetID=$questionSet[SetID]'\" class='button'>View Question Set</button>
+                        <button action='' method='post' onclick=\"window.location.href='viewQuestionSetAdmin.php?TopicID=$questionSet[TopicID]&QuestionSetID=$questionSet[SetID]'\" class='button'>View Question Set</button>
                     </td>
                     <td>
                         <form action='' method='post' onsubmit='return confirm(\"Are you sure you want to delete this question set?\");'>
@@ -76,6 +83,7 @@ $Topiclists = mysqli_fetch_all($TopicQuery, MYSQLI_ASSOC);
         echo "</table>";
 }
     ?>
-    </div>
+    </section>
+    <footer><?php include "footer.php" ?></footer>
 </body>
 </html>

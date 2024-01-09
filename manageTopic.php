@@ -1,5 +1,5 @@
 <?php
-session_start();
+include 'sessionAdmin.php';
 include 'connection.php';
 include 'editTopic.php';
 include 'deleteTopic.php';
@@ -15,6 +15,15 @@ $topicResult = mysqli_fetch_all($topicQuery, MYSQLI_ASSOC);
     <link rel="stylesheet" href="layout.css">
 </head>
 <body>
+    <header>
+        <div id = "logo"></div>
+        <h1>Form 4 SPM Mathematics Quiz</h1>
+        <div class="loginTop">
+            <a href="logout.php" id="logout">Logout</a>
+        </div>
+    </header>
+    <nav><?php include "nAdmin.php" ?></nav>
+    <section class="body-container">    
     <h2>Manage Topics</h2>
     <center><h2>Topic List</h2></center>
     <?php
@@ -45,5 +54,7 @@ $topicResult = mysqli_fetch_all($topicQuery, MYSQLI_ASSOC);
     }
     echo "</table>";
     ?>
+    </section>
+    <footer><?php include "footer.php" ?></footer>
 </body>
 </html>
