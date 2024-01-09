@@ -15,6 +15,6 @@
             } ?>
         </div>
     </li>
-    <li><a href="#Result">Result</a></li> <!-- modify result link -->
+    <li><a href="#Result">viewResultsStudent.php</a></li> 
     <li><a href="contactUsS.php">Contact Us</a></li>
 </ul>
