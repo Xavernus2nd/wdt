@@ -4,9 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="View_Results.css" rel="stylesheet">
+    <link href="viewResults.css" rel="stylesheet">
+    <link href="layout.css" rel="stylesheet">
 </head>
 <body>
+
+
+<nav>
+    <?php include 'nAdmin.php'; ?>
+</nav>
+
+<section class="body-container">
 
     <table>
         <tr>
@@ -28,7 +36,7 @@ if ($result) {
         echo '<tr>';
         echo '<td>' . $i++ . '</td>';
         echo '<td>' . $row['StudentFullName'] . '</td>';
-        echo "<td><a href='remove_student.php?id=".$row['StudentFullName']."'>Remove</a></td>";
+        echo "<td><a href='removeStudentAdmin.php?StudentUsername=".$row['StudentUsername']."'>Remove</a></td>";
         echo '</tr>';
     }
 } else {
@@ -37,6 +45,23 @@ if ($result) {
 
 ?>
 
+<tfoot>
+    <tr>
+    <td colspan="6">
+        <center>
+    <a href = "addStudentAdmin.php?classID=<?php echo "$_GET[classID]" ?>">Add Student</a>
+</center>
+    </td>
+    </tr>
+    </tfoot>
+
 </table>
+</section>
+<div class="loginTop">
+    <a href="logout.php" id="logout">Logout</a>
+</div>
+<footer>
+    <href href="footer.php"></href>
+</footer>
 </body>
 </html>

@@ -1,6 +1,52 @@
 <?php
+include("connection.php");
+
+if (isset($_POST['TrialID'])) {
+  $trialID = $_POST['TrialID'];
+}
+
+$setID = $_POST['SetID'];
+$mode = $_POST['QuizType'];
+$username = $_POST['StudentUsername'];
+
+$num = 0;
+
+$sql1 = "SELECT * FROM question_set INNER JOIN trial ON question_set.SetID = trial.SetID INNER JOIN topic ON topic.TopicID = question_set.TopicID INNER JOIN student ON student.StudentUsername = trial.StudentUsername WHERE $username = $trialID";
+
+$result1 = mysqli_query($DBconn, $sql1);
+
+if (!$result1) {
+    die("Query failed: " . mysqli_error($DBconn));
+}
+
+while ($row = mysqli_fetch_assoc($result1)) {
+    $TopicTitle = $row['TopicTitle'];
+    $QuestionSet = $row['SetName'];
+    $Mode = $row['QuizType'];
+    $TimeTaken = $row['TimeTaken'];
+    $Date = $row['DateTime'];
+    $Score = $row['Score'];
+    $Grade = $row['Grade'];
+
+    echo '<h2>' . $TopicTitle . '</h2>';
+    echo '<h2>' . $QuestionSet . '</h2>';
+    echo '<h2>' . $Mode . '</h2>';
+    echo '<h2>' . $TimeTaken . '</h2>';
+    echo '<h2>' . $Date . '</h2>';
+    echo '<h2>' . $Score . '</h2>';
+    echo '<h2>' . $Grade . '</h2>';
+}
+
+mysqli_close($DBconn);
+?>
+
+
+
+<?php
 include ("connection.php");
-$trialID = $_POST['TrialID'];
+if (isset($_POST['TrialID'])) {
+  $trialID = $_POST['TrialID'];
+}
 $setID = $_POST['SetID'];
 $mode = $_POST['QuizType'];
 $num = 0;
@@ -56,3 +102,6 @@ echo '</table>
     <td><button class="button2">Home</button></td> <!-- link to student's homepage -->
   </tr></table>
 </div>
+
+</body>
+</html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Class</title>
-    <link rel="stylesheet" href="manage_profile.css"> 
+    <link rel="stylesheet" href="manageProfile.css"> 
 </head>
 <body>
 
@@ -12,7 +12,7 @@
 <?php
 include("connection.php");
 session_start();
-$_SESSION['TeacherUsername'] = "mao";
+$_SESSION['TeacherUsername'] = "maoo";
 
 if(isset($_POST['create_class'])) {
     $classname = $_POST['ClassName']; 
@@ -21,11 +21,11 @@ if(isset($_POST['create_class'])) {
     $result = mysqli_query($DBconn, $sql);
     if($result){
         echo "<script>alert('Class Created!')</script>";
-        echo "<script>window.location.href='Manage_Class_Teacher.php'</script>";
+        echo "<script>window.location.href='manageClassTeacher.php'</script>";
     }
     else{
         echo "<script>alert('Class Creation Failed!')</script>";
-        echo "<script>window.location.href='Manage_Class_Teacher.php'</script>";
+        echo "<script>window.location.href='manageClassTeacher.php'</script>";
     }
     
       
@@ -38,12 +38,12 @@ if(isset($_POST['create_class'])) {
     <div class="content">
     <h1>Create Class</h1>
     <center>
-    <form method="post" action="Create_Class.php">
-        <div class="input-group">
+    <form method="post" action="createClassTeacher.php">
+        <div class="input data">
             <label>Class Name</label>
             <input type="text" name="ClassName" value="">
         </div>
-        <div class="input-group">
+        <div class="input data">
             <button type="submit" class="btn" name="create_class">Create</button>
         </div>
     </form>

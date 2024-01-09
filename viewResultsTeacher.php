@@ -4,10 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Results</title>
-    <link rel="stylesheet" href="View_Results.css">
+    <link rel="stylesheet" href="viewResults.css">
+    <link rel="stylesheet" href="layout.css">
 </head>
 <body>
     
+<header>
+        <div id="logo"></div>
+        <h1>Form 4 SPM Mathematics Quiz</h1>
+        <?php include 'profileBT.php';?>
+</header>
+
+<nav>
+    <?php include 'nTeacher.php'; ?>
+</nav>
+
+<section class="body-container">
+
+
 <table id = View_Results_Student>
 
 <tr>
@@ -37,6 +51,10 @@
     </div>
 
     <div>
+    <th>View More</th>
+    </div>
+
+    <div>
     <th>Comment</th>
     </div>
 
@@ -48,12 +66,10 @@
 
 
 <?php
-session_start();
-$_SESSION['TeacherUsername'] = "mao";
 include("connection.php");
-
+include("sessionTeacher.php");
 $teacherusername = $_SESSION['TeacherUsername'];
-$sql = "SELECT a.StudentFullName, b.ClassName, b.TeacherUsername, c.SetName, d.Score, d.DateTime, d.Comment, d.TrialID
+$sql = "SELECT a.StudentFullName, b.ClassName, b.TeacherUsername, c.SetName, d.Score, d.DateTime, d.Comment, d.TrialID, d.QuizType, d.SetID
 FROM student AS a 
 LEFT JOIN class AS b ON a.ClassID = b.ClassID 
 LEFT JOIN trial AS d ON d.StudentUsername = a.StudentUsername
@@ -74,13 +90,20 @@ if ($result) {
         echo '<td>' . $row['Score'] . '</td>';
         echo '<td>' . $row['DateTime'] . '</td>';
         echo '<td>';
-        echo '<form method="post" action="update_commentteacher.php">';
+        echo '<form id="resultForm" action="viewResultsSpecific.php" method="POST">';
+        echo '<input type="hidden" name="TrialID" value="' . $row['TrialID'] . '">';
+        echo '<input type="hidden" name="SetID" value="' . $row['SetID'] . '">';
+        echo '<input type="hidden" name="QuizType" value="' . $row['QuizType'] . '">';
+        echo '<button type="submit" name="view_specific">View</button></td>';
+        echo '</form>';
+        echo '<td>';
+        echo '<form method="post" action="updateCommentTeacher.php">';
         echo '<input type="hidden" name="TrialID" value="' . $row['TrialID'] . '">';
         echo '<input type="text" name="Comment" value="' . $row['Comment'] . '">';
         echo '<input type="submit" value="Update">';
         echo '</form>';
         echo '</td>';
-        echo "<td><a href='delete.php?id=".$row['TrialID']."'>Delete</a></td>";
+        echo "<td><a href='deleteResultsTeacher.php?id=".$row['TrialID']."'>Delete</a></td>";
         echo '</tr>';
     }
 } else {
@@ -91,5 +114,8 @@ if ($result) {
 
 </table>
 
+<footer>
+    <?php include 'footer.php'; ?>
+</footer>
 </body>
 </html>

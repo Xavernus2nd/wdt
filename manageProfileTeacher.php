@@ -3,16 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Profile</title>
-    <link rel="stylesheet" href="manage_profile.css"> 
+    <title>Manage Profile Teacher</title>
+    <link rel="stylesheet" href="manageProfile.css"> 
+    <link rel="stylesheet" href="layout.css">
 </head>
 <body>
+
+<header>
+        <div id="logo"></div>
+        <h1>Form 4 SPM Mathematics Quiz</h1>
+        <?php include 'profileBT.php';?>
+</header>
+
+<nav>
+    <?php include 'nTeacher.php'; ?>
+</nav>
+
+<section class="body-container">
 
 
 <?php
 include("connection.php");
-session_start();
-$_SESSION['TeacherUsername'] = "mao";
+include ("sessionTeacher.php");
 $sql = "SELECT a.TeacherUsername, a.TeacherFullName, a.TeacherPassword
 FROM teacher as a 
 LEFT JOIN class as b on a.TeacherUsername = b.TeacherUsername 
@@ -40,8 +52,8 @@ if(isset($_POST['update_profile'])) {
 
     if($updateresult = mysqli_query($DBconn, $updatesql)){
         session_write_close();
-        $_SESSION['TeacherUsername'] = $teacherusername; 
         session_start();
+        $_SESSION['TeacherUsername'] = $teacherusername; 
         echo "<script>alert('Update Successful!')</script>";
         echo "<script>window.location.href='manage_profile_teacher.php'</script>";
     }
@@ -56,7 +68,7 @@ if(isset($_POST['update_profile'])) {
 ?>
 
     <div class="content">
-    <h1>Manage Profile</h1>
+    <h1>Manage Teacher Profile</h1>
     <center>
     <form method = "post" action="">
 
@@ -90,5 +102,10 @@ if(isset($_POST['update_profile'])) {
 
 
 </form>
+</section>
+
+<footer>
+    <?php include 'footer.php';?>
+</footer>
 </body>
 </html>

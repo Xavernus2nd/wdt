@@ -3,16 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Profile</title>
-    <link rel="stylesheet" href="manage_profile.css"> 
+    <title>Manage Profile Student</title>
+    <link rel="stylesheet" href="manageProfile.css"> 
+    <link rel="stylesheet" href="layout.css">
 </head>
 <body>
 
+<header>
+        <div id="logo"></div>
+        <h1>Form 4 SPM Mathematics Quiz</h1>
+        <?php include 'profileBS.php';?>
+</header>
+
+<nav>
+    <?php include 'nStudent.php'; ?>
+</nav>
+
+<section class="body-container">
 
 <?php
 include("connection.php");
-session_start();
-$_SESSION['StudentUsername'] = "yun";
+include ("sessionStudent.php");
 $sql = "SELECT a.StudentFullName, a.StudentUsername, a.StudentPassword, b.ClassName, b.ClassID
 FROM student as a 
 LEFT JOIN class as b on a.ClassID = b.ClassID 
@@ -42,14 +53,15 @@ if(isset($_POST['update_profile'])) {
 
     if($updateresult = mysqli_query($DBconn, $updatesql)){
         session_write_close();
-        $_SESSION['StudentUsername'] = $studentusername; 
         session_start();
+        $_SESSION['StudentUsername'] = $studentusername; 
+
         echo "<script>alert('Update Successful!')</script>";
-        echo "<script>window.location.href='manage_profile.php'</script>";
+        echo "<script>window.location.href='manage_profile_student.php'</script>";
     }
     else{
         echo "<script>alert('Update Failed!')</script>";
-        echo "<script>window.location.href='manage_profile.php'</script>";
+        echo "<script>window.location.href='manage_profile_student.php'</script>";
     }
     
       
@@ -58,7 +70,7 @@ if(isset($_POST['update_profile'])) {
 ?>
 
     <div class="content">
-    <h1>Manage Profile</h1>
+    <h1>Manage Student Profile</h1>
     <center>
     <form method = "post" action="">
 
@@ -75,12 +87,12 @@ if(isset($_POST['update_profile'])) {
 
             <div>
                 <label>Class ID</label>
-                <input type="text" class="input" name="ClassID" value="<?php echo $info['ClassID'] ?>">
+                <input type="text" class="input" name="ClassID" value="<?php echo $info['ClassID'] ?>" readonly>
             </div>
 
             <div>
                 <label>Class Name</label>
-                <input type="text" class="input" name="ClassName" value="<?php echo $info['ClassName'] ?>">
+                <input type="text" class="input" name="ClassName" value="<?php echo $info['ClassName'] ?>" readonly>
             </div>
 
             <div>
@@ -98,9 +110,12 @@ if(isset($_POST['update_profile'])) {
 </center>
 
 
-
-
-
 </form>
+
+</section>
+
+<footer>
+    <?php include 'footer.php'; ?>
+</footer>
 </body>
 </html>
