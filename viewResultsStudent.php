@@ -30,10 +30,6 @@
     </div>
 
     <div>
-    <th>Class</th>
-    </div>
-
-    <div>
     <th>Question Set Name</th>
     </div>
 
@@ -80,15 +76,13 @@ if ($result) {
     while ($row = mysqli_fetch_array($result)) {
         echo '<tr>';
         echo '<td>' . $i++ . '</td>';
-        echo '<td>' . $row['StudentFullName'] . '</td>';
-        echo '<td>' . $row['ClassName'] . '</td>';
         echo '<td>' . $row['SetName'] . '</td>';
         echo '<td>' . $row['Score'] . '</td>';
         echo '<td>' . $row['Date'] . '</td>';
         echo '<td>' . $row['Time'] . '</td>';
         echo '<td>' . $row['Comment'] . '</td>';
         echo '<form id="resultForm" action="resultAnswer.php" method="POST">';
-        echo '<input type="hidden" name="trialID" value="' . $row['TrialID'] . '">';
+        echo '<input type="hidden" name="TrialID" value="' . $row['TrialID'] . '">';
         echo '<td><button type="submit" name="view_specific">View</button></td>';
         echo '</form>';
         echo '</tr>';
