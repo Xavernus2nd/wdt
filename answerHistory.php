@@ -1,7 +1,5 @@
 <?php
 $trialID = $_POST['TrialID'];
-//$setID = $_POST['setID'];
-//$mode = $_POST['mode'];
 $num = 0;
 
 include("connection.php");
@@ -18,9 +16,9 @@ if (!$result1) {
 
 while ($row = mysqli_fetch_assoc($result1)) {
     $TopicTitle = $row['TopicTitle'];
-    $setID = $row['SetID'];
+    $SetID = $row['SetID'];
     $QuestionSet = $row['SetName'];
-    $mode = $row['QuizType'];
+    $Mode = $row['QuizType'];
     $TimeTaken = $row['TimeTaken'];
     $Date = $row['Date'];
     $Time = $row['Time'];
@@ -51,16 +49,6 @@ while ($row = mysqli_fetch_assoc($result1)) {
       $Grade = 'F';
     }
 
-    if ($mode == 'practice') {
-      if ($TimeTaken == '00:00:00') {
-        $mode = 'Practice';
-      } else {
-        $mode = 'Quiz';
-      } 
-      $mode = 'Practice';
-    } 
-
-
     echo '<table>';
     echo '<tr>';
     echo '<th><label>Topic Title: </label></th>';
@@ -74,9 +62,9 @@ while ($row = mysqli_fetch_assoc($result1)) {
 
     echo '<tr>';
     echo '<th><label>Mode: </label></th>';
-    echo '<td>' . $mode . '</td>';
+    echo '<td>' . $Mode . '</td>';
 
-    if ($mode != 'Practice') {
+    if ($Mode != 'Practice') {
     echo '<th><label>Time Taken: </label></th>';
     echo '<td>' . $TimeTaken . '</td>';
     echo '</tr>';
@@ -154,15 +142,19 @@ echo '
     echo '</table>
     </div>
 </div>';
-?>
-<!--retake and home button-->
-<div class="resultbutton-container">
-  <table class="resultbutton-table">
-    <form action='quizQuestion.php' method='post'>
-      <input type='hidden' name='setID' value='<?php echo $setID;?>'>
-      <input type='hidden' name='mode' value='<?php echo $mode;?>'>
-      <td><button class="button2">Retake</button></td>
-    </form>  
-    <td><button onclick="location.href='homeS.php';" class="button2">Home</button></td> <!-- link to student's homepage -->
-  </table>
-</div>
+
+if (isset($_SESSION['StudentUsername'])) {
+  ?>
+  <!--retake and home button for students-->
+  <div class="resultbutton-container">
+    <table class="resultbutton-table">
+      <form action='quizQuestion.php' method='post'>
+        <input type='hidden' name='SetID' value='<?php echo $SetID;?>'>
+        <input type='hidden' name='Mode' value='<?php echo $Mode;?>'>
+        <td><button class="button2">Retake</button></td>
+      </form>  
+      <td><button onclick="location.href='homeS.php';" class="button2">Home</button></td> <!-- link to student's homepage -->
+    </table>
+  </div>
+  <?php
+  } ?>
