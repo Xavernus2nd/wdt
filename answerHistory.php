@@ -1,12 +1,14 @@
 <?php
-$TrialID = $_POST['TrialID'];
+$trialID = $_POST['TrialID'];
+//$setID = $_POST['setID'];
+//$mode = $_POST['mode'];
 $num = 0;
 
 include("connection.php");
 
 $num = 0;
 
-$sql1 = "SELECT * FROM question_set INNER JOIN trial ON question_set.SetID = trial.SetID INNER JOIN topic ON topic.TopicID = question_set.TopicID INNER JOIN student ON student.StudentUsername = trial.StudentUsername WHERE trial.TrialID = $TrialID";
+$sql1 = "SELECT topic.TopicTitle, question_set.SetID, question_set.SetName, trial.Comment, trial.QuizType, trial.TimeTaken, trial.Score, Date (DateTime) as Date, Time (DateTime) as Time FROM question_set LEFT JOIN trial ON question_set.SetID = trial.SetID LEFT JOIN topic ON topic.TopicID = question_set.TopicID LEFT JOIN student ON student.StudentUsername = trial.StudentUsername WHERE trial.TrialID = $trialID";
 
 $result1 = mysqli_query($DBconn, $sql1);
 
@@ -16,26 +18,103 @@ if (!$result1) {
 
 while ($row = mysqli_fetch_assoc($result1)) {
     $TopicTitle = $row['TopicTitle'];
-    $SetID = $row['SetID'];
+    $setID = $row['SetID'];
     $QuestionSet = $row['SetName'];
-    $Mode = $row['QuizType'];
+    $mode = $row['QuizType'];
     $TimeTaken = $row['TimeTaken'];
-    $Date = $row['DateTime'];
+    $Date = $row['Date'];
+    $Time = $row['Time'];
     $Score = $row['Score'];
+    $Comment = $row['Comment'];
+
     //$Grade = $row['Grade'];
 
-    echo '<h2>' . $TopicTitle . '</h2>';
-    echo '<h2>' . $QuestionSet . '</h2>';
-    echo '<h2>' . $Mode . '</h2>';
-    echo '<h2>' . $TimeTaken . '</h2>';
-    echo '<h2>' . $Date . '</h2>';
-    echo '<h2>' . $Score . '</h2>';
-    //echo '<h2>' . $Grade . '</h2>';
+    if ($Score >= 90) {
+      $Grade = 'A+';
+    } else if ($Score >= 80) {
+      $Grade = 'A';
+    } else if ($Score >= 70) {
+      $Grade = 'A-';
+    } else if ($Score >= 65) {
+      $Grade = 'B+';
+    } else if ($Score >= 60) {
+      $Grade = 'B';
+    } else if ($Score >= 55) {
+      $Grade = 'C+';
+    } else if ($Score >= 50) {
+      $Grade = 'C';
+    } else if ($Score >= 45) {
+      $Grade = 'D';
+    } else if ($Score >= 40) {
+      $Grade = 'E';
+    } else {
+      $Grade = 'F';
+    }
+
+    if ($mode == 'practice') {
+      if ($TimeTaken == '00:00:00') {
+        $mode = 'Practice';
+      } else {
+        $mode = 'Quiz';
+      } 
+      $mode = 'Practice';
+    } 
+
+
+    echo '<table>';
+    echo '<tr>';
+    echo '<th><label>Topic Title: </label></th>';
+    echo '<td>' . $TopicTitle . '</td>';
+    echo '</tr>';
+
+    echo '<tr>';
+    echo '<th><label>Question Set: </label></th>';
+    echo '<td>' . $QuestionSet . '</td>';
+    echo '</tr>';
+
+    echo '<tr>';
+    echo '<th><label>Mode: </label></th>';
+    echo '<td>' . $mode . '</td>';
+
+    if ($mode != 'Practice') {
+    echo '<th><label>Time Taken: </label></th>';
+    echo '<td>' . $TimeTaken . '</td>';
+    echo '</tr>';
+    }
+    else {
+
+
+    echo '<th></th>';
+    echo '<td></td>';
+    echo '</tr>';
+  }
+    echo '<tr>';
+    echo '<th><label>Date: </label></th>';
+    echo '<td>' . $Date . '</td>';
+
+    echo '<th><label>Time: </label></th>';
+    echo '<td>' . $Time . '</td>';
+    echo '</tr>';
+
+
+    echo '<tr>';
+    echo '<th><label>Score: </label></th>';
+    echo '<td>' . $Score . '</td>';
+
+    echo '<th><label>Grade: </label></th>';
+    echo '<td>' . $Grade . '</td>';
+    echo '</tr>';
+
+    echo '<tr>';
+    echo '<th><label>Comment: </label></th>';
+    echo '<td>' . $Comment . '</td>';
+    echo '</tr>';
 }
 
+echo '</table>';
 //fetch data - if student didn't answer the question, then the student answer will be null
-$sql = "SELECT * FROM question LEFT JOIN student_answer ON question.QuestionID = student_answer.QuestionID AND student_answer.TrialID = $TrialID 
-        WHERE question.SetID IN (SELECT SetID FROM trial WHERE TrialID = $TrialID);";
+$sql = "SELECT * FROM question LEFT JOIN student_answer ON question.QuestionID = student_answer.QuestionID AND student_answer.TrialID = $trialID 
+        WHERE question.SetID IN (SELECT SetID FROM trial WHERE TrialID = $trialID);";
 $run = mysqli_query($DBconn, $sql);
 
 //present the answer in table form
@@ -80,8 +159,8 @@ echo '
 <div class="resultbutton-container">
   <table class="resultbutton-table">
     <form action='quizQuestion.php' method='post'>
-      <input type='hidden' name='SetID' value='<?php echo $SetID;?>'>
-      <input type='hidden' name='Mode' value='<?php echo $Mode;?>'>
+      <input type='hidden' name='setID' value='<?php echo $setID;?>'>
+      <input type='hidden' name='mode' value='<?php echo $mode;?>'>
       <td><button class="button2">Retake</button></td>
     </form>  
     <td><button onclick="location.href='homeS.php';" class="button2">Home</button></td> <!-- link to student's homepage -->
