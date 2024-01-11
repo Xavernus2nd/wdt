@@ -88,7 +88,7 @@ if(isset($_POST['update_profile'])) {
             <br>
             <br>
             <div>
-                <input type="submit" class="btn" name="update_profile" value="Update">
+                <input type="submit" class="button" name="update_profile" value="Update">
             </div>
         </div>
     </form>
