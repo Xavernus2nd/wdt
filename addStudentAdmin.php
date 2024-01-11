@@ -65,7 +65,7 @@ if(isset($_POST['add_student'])){
         <input type="hidden" name="ClassID" value="<?php echo $_GET['classID'] ?>">
 
         <div class="input data">
-            <button type="submit" class="btn" name="add_student">Add</button>
+            <button type="submit" class="button" name="add_student">Add</button>
         </div>
     </form>
     </center>
