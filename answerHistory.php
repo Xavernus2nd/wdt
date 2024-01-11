@@ -85,7 +85,7 @@ while ($row = mysqli_fetch_assoc($result1)) {
 
     echo '<tr>';
     echo '<th><label>Score: </label></th>';
-    echo '<td>' . $Score . '</td>';
+    echo '<td>' . $Score . '%</td>';
 
     echo '<th><label>Grade: </label></th>';
     echo '<td>' . $Grade . '</td>';
