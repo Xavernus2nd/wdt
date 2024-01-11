@@ -671,32 +671,21 @@ body{
     padding: 15px;
 }
 
-#manageProfile h1{
-  font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 15px;
-  text-align: center;
-}
-
-#manageProfile body {
-  font-family: Arial, Helvetica, sans-serif;
-  margin-top: 200px;
-}
-
-
 #manageProfile label{
-  display: inline-block;
-  text-align: right;
-  width: 100px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  text-align: center;
+display: inline-block;
+text-align: right;
+width: 100px;
+padding-top: 10px;
+padding-bottom: 10px;
+text-align: center;
 }
 
 #manageProfile .div_bg{
-  background-color: blanchedalmond;
-  width: 600px;
-  padding-top: 50px;
-  padding-bottom: 50px;
-  border-radius: 10px;
+background-color: blanchedalmond;
+width: 600px;
+padding-top: 50px;
+padding-bottom: 50px;
+border-radius: 10px;
 }
 
 /* End of viewResult, manageClass and manageProfile*/
