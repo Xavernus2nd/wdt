@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             break;
         default:
             // unknown user type
-            header("Location: login.php?error=2");
+            echo "<script>alert('Invalid login, Unknown User Type. Please try again.');window.location.href='login.php'</script>";
             exit();
     }
 
@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     } else {
         // Invalid login, redirect back to the login form with an error message
-        header("Location: login.php?error=1");
+        echo "<script>alert('Invalid login. Please try again.');window.location.href='login.php'</script>";
         exit();
     }
 
@@ -61,12 +61,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header("Location: login.php");
     exit();
 }
-
-
-//alert
-if (isset($_GET['error']) && $_GET['error'] == 1) {
-    echo '<script>alert("Invalid login. Please try again.");</script>';
-}
-
-
-?>
