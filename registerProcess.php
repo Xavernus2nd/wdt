@@ -29,11 +29,9 @@ function registerUser($DBconn, $username, $fullname, $password, $identity, $clas
     switch ($identity) {
         case 'Student':
             $table = 'student';
-            $redirectPage = 'homeS.php'; // Redirect to the student home page
             break;
         case 'Teacher':
             $table = 'teacher';
-            $redirectPage = 'homeT.php'; // Redirect to the teacher home page
             break;
         default:
             // Handle unknown user type
@@ -102,7 +100,7 @@ function registerUser($DBconn, $username, $fullname, $password, $identity, $clas
     }
 
     // Redirect to success page
-    header("Location: $redirectPage?success=1");
+    echo "<script>alert('Register Successfully! Please Proceed with Log in to Access Your Account.');window.location.href='login.php'</script>";
     exit();
 }
 
