@@ -19,7 +19,7 @@
 </nav>
 
 <section class="body-container">
-
+<h2>Manage Class</h2>
 
 <table>
 
