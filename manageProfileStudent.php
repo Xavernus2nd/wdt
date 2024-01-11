@@ -47,7 +47,7 @@ if(isset($_POST['update_profile'])) {
     $classname = $_POST['ClassName'];
     $studentpassword = $_POST['StudentPassword'];
 
-    $updatesql = "UPDATE student AS a SET a.StudentUsername = '$studentusername', a.StudentFullName = '$studentfullname', a.StudentPassword = '$studentpassword' WHERE a.StudentUsername = '$_SESSION[StudentUsername]'";
+    $updatesql = "UPDATE student AS a SET a.StudentUsername = '$studentusername', a.StudentFullName = '$studentfullname', a.StudentPassword = '$studentpassword', b.ClassID = '$classid', b.ClassName = '$classname' WHERE a.StudentUsername = '$_SESSION[StudentUsername]'";
 
 
 
