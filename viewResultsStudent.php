@@ -23,7 +23,7 @@
 
 <h2>View Results Page</h2>
     
-<table class = "table">
+<table class = "viewResult">
 
 <tr>
     <th>No.</th>
