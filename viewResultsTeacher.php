@@ -58,7 +58,7 @@ if ($result) {
         echo '<td>' . $row['StudentFullName'] . '</td>';
         echo '<td>' . $row['ClassName'] . '</td>';
         echo '<td>' . $row['SetName'] . '</td>';
-        echo '<td>' . $row['Score'] . '</td>';
+        echo '<td>' . $row['Score'] . '%</td>';
         echo '<td>' . $row['DateTime'] . '</td>';
         echo '<td>';
         echo '<form id="resultForm" action="viewResultsSpecific.php" method="POST">';
