@@ -8,7 +8,6 @@
     <link href="layout.css" rel="stylesheet">
 </head>
 <body>
-
 <header>
         <div id="logo"></div>
         <h1>Form 4 SPM Mathematics Quiz</h1>
@@ -20,6 +19,8 @@
 </nav>
 
 <section class="body-container">
+
+<h2>Student List</h2>
 
     <table>
         <tr>
