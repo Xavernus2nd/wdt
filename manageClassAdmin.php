@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="manageClass.css" rel="stylesheet">
+    <title>Manage Class</title>
     <link rel="stylesheet" href="layout.css">
 </head>
 <body>
@@ -21,34 +20,17 @@
 <section class="body-container">
 <h2>Manage Class</h2>
 
-<table>
+<table class = "table">
 
 <tr>
-
-    <div>
+    
     <th>Class ID</th>
-    </div>
-
-    <div>
     <th>Class Name</th>
-    </div>
-
-    <div>
     <th>Teacher Name</th>
-    </div>
-
-    <div>
     <th>Student List</th>
-    </div>
-
-    <div>
     <th>Delete</th>
-    </div>
-
-    <div>
     <th>Update</th>
-    </div>
-
+    
 </tr>
 
 <?php
