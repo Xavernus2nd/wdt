@@ -70,7 +70,7 @@ function updateAns($data) {
     } else {
         $correct = 0;
     }
-    $sql = "UPDATE student_answer SET StudentAnswer = $stdAns, IsCorrect = $correct WHERE TrialID = $TrialID AND QuestionID = $quesID";
+    $sql = "UPDATE student_answer SET StudentAnswer = '$stdAns', IsCorrect = $correct WHERE TrialID = $TrialID AND QuestionID = $quesID";
     return runSQL($sql, $data);
 }
     
