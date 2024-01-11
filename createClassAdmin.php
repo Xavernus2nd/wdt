@@ -58,7 +58,7 @@ if(isset($_POST['create_class'])) {
         </div>
 
         <div class="input data">
-            <button type="submit" class="btn" name="create_class">Create</button>
+            <button type="submit" class="button" name="create_class">Create</button>
         </div>
     </form>
     </center>
