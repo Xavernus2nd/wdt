@@ -57,7 +57,7 @@ if ($result) {
         echo '<tr>';
         echo '<td>' . $i++ . '</td>';
         echo '<td>' . $row['SetName'] . '</td>';
-        echo '<td>' . $row['Score'] . '</td>';
+        echo '<td>' . $row['Score'] . '%</td>';
         echo '<td>' . $row['Date'] . '</td>';
         echo '<td>' . $row['Time'] . '</td>';
         echo '<td>' . $row['Comment'] . '</td>';
