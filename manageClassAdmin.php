@@ -54,7 +54,7 @@ while ($row = mysqli_fetch_array($result)) {
     echo '</td>';
     echo '<td><a href="studentListAdmin.php?classID=' . $row['ClassID'] . '&students=' . $row['StudentList'] . '">View and Edit</a></td>';
     echo '<td><a href="deleteClassAdmin.php?id=' . $row['ClassID'] . '">Delete</a></td>';
-    echo '<td><button class="updateBtn" data-id="' . $row['ClassID'] . '">Update</button></td>';
+    echo '<td><button class="button" data-id="' . $row['ClassID'] . '">Update</button></td>';
     echo '</tr>';
     echo '</form>';
 
