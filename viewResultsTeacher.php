@@ -83,7 +83,7 @@ if ($result) {
 ?>
 
 </table>
-
+</section>
 <footer>
     <?php include 'footer.php'; ?>
 </footer>
