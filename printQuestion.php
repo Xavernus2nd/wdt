@@ -55,8 +55,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         //printing topic and set name
         echo "<div class='topic-container'>";
-        echo "<p style='font-size: 26px; font-weight: bold;'>".$data['TopicTitle'].'</p><br>';
-        echo "<p style='font-size: 20px;'>".$data['SetName'].'</p><br>';
+        echo "<p style='font-size: 24px; font-weight: bold;'>".$data['TopicTitle'].'</p><br>';
+        echo "<p style='font-size: 18px;'>".$data['SetName'].'</p><br>';
         echo "</div>";
 
         //question, answer and question directory

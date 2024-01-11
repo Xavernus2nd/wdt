@@ -10,7 +10,7 @@
                         
                 if (mysqli_num_rows($run) > 0) {
                     while ($data = mysqli_fetch_array($run)) {
-                    echo '<a href = "questionset.php?topicID='.$data['TopicID'].'">'.$data['TopicTitle'].'</a>';
+                    echo '<a href = "questionset.php?TopicID='.$data['TopicID'].'">'.$data['TopicTitle'].'</a>';
                 }
             } ?>
         </div>

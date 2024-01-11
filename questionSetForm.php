@@ -56,7 +56,7 @@ if ($numset > 0) {
                   </td>
             </tr>";
     } echo "<br><br></table></div>";
-} else {
+}    else {
     echo "<script>
         alert('Sorry, no question set available for this topic.');
         window.location.href = 'homeS.php'; //redirect to student homepage

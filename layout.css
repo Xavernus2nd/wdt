@@ -397,7 +397,7 @@ body{
   
   /*question set begin*/
   .setinfo {
-  width: 70%;
+  width: 80%;
   font-size: 24px;
   }
   
@@ -469,6 +469,10 @@ body{
   /*print question */
   .topic-container p {
   margin: 0px;
+  }
+
+  .topic-container {
+    height: 70px;
   }
   
   .question-object {
