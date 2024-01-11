@@ -43,6 +43,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if a matching user is found
     if ($result->num_rows == 1) {
         // Successful login, redirect to a welcome page based on user type
+        if ($identity == 'Student') {
+            $_SESSION['StudentUsername'] = $username;
+        } else if ($identity == 'Teacher') {
+            $_SESSION['TeacherUsername'] = $username;
+        } else if ($identity == 'Admin') {
+            $_SESSION['AdminUsername'] = $username;
+        }
         header("Location: $redirectPage");
         exit();
     } else {
