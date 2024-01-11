@@ -70,7 +70,6 @@ if(isset($_POST['update_profile'])) {
 ?>
 
     <div class="content">
-    <h1>Manage Student Profile</h1>
     <center>
     <form method = "post" action="">
 
