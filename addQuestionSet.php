@@ -1,5 +1,5 @@
 <?php
-include 'sessionAdmin.php';
+include 'sessionTeacher.php';
 include 'connection.php';
 include 'importcsv.php';
 $TopicQuery = mysqli_query($DBconn, "SELECT TopicTitle FROM Topic");
