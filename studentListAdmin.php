@@ -9,12 +9,18 @@
 </head>
 <body>
 
-
+<header>
+        <div id="logo"></div>
+        <h1>Form 4 SPM Mathematics Quiz</h1>
+        <?php include 'profileBT.php';?>
+</header>
 <nav>
     <?php include 'nAdmin.php'; ?>
 </nav>
 
 <section class="body-container">
+
+<h2>Student List</h2>
 
     <table>
         <tr>
@@ -61,7 +67,7 @@ if ($result) {
     <a href="logout.php" id="logout">Logout</a>
 </div>
 <footer>
-    <href href="footer.php"></href>
+    <?php include 'footer.php'; ?>
 </footer>
 </body>
 </html>
