@@ -1,3 +1,6 @@
+<?php include 'sessionStudent.php'?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
