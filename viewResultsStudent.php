@@ -63,7 +63,7 @@ if ($result) {
         echo '<td>' . $row['Comment'] . '</td>';
         echo '<form id="resultForm" action="resultAnswer.php" method="POST">';
         echo '<input type="hidden" name="TrialID" value="' . $row['TrialID'] . '">';
-        echo '<td><button type="submit" name="view_specific">View</button></td>';
+        echo '<td><button type="submit" class="button" name="view_specific">View</button></td>';
         echo '</form>';
         echo '</tr>';
     }
