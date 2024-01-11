@@ -20,7 +20,6 @@
 
 <section class="body-container">
 <h2>Manage Profile</h2>
-
 <?php
 include("connection.php");
 include ("sessionTeacher.php");
@@ -65,7 +64,7 @@ if(isset($_POST['update_profile'])) {
  
  }
 ?>
-
+<div id="manageProfile">
     <div class="content">
     <center>
     <form method = "post" action="">
@@ -100,6 +99,7 @@ if(isset($_POST['update_profile'])) {
 
 
 </form>
+    </div>
 </section>
 
 <footer>
