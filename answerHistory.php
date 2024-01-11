@@ -47,7 +47,7 @@ while ($row = mysqli_fetch_assoc($result1)) {
       $Grade = 'F';
     }
 
-    echo '<table>';
+    echo '<table class = "answerHistory">';
     echo '<tr>';
     echo '<th><label>Topic Title: </label></th>';
     echo '<td>' . $TopicTitle . '</td>';
