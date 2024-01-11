@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="layout.css">
 </head>
 <body>
-<div id = "manageProfile"
+<div id = "manageProfile">
 <header>
         <div id="logo"></div>
         <h1>Form 4 SPM Mathematics Quiz</h1>
