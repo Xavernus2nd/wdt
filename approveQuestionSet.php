@@ -100,7 +100,7 @@ $SetToBeApproved = mysqli_fetch_all(mysqli_query($DBconn, "SELECT * FROM Questio
             <input type='submit' name='Reject' class='reject' value='Reject Question Set'>
             </form></center></div>";
             if (isset($_POST['Approve'])){
-                mysqli_query($DBconn, "UPDATE Question_Set SET SetApprovalStatus = 'APPROVED' WHERE SetID = '$QuestionSetID'");
+                mysqli_query($DBconn, "UPDATE Question_Set SET SetApprovalStatus = 'ACCEPTED' WHERE SetID = '$QuestionSetID'");
                 echo "<script>alert('Question Set Approved!'); window.location.href='ApproveQuestionSet.php'</script>";
                 exit();
             }
