@@ -65,13 +65,13 @@ if ($result) {
         echo '<input type="hidden" name="TrialID" value="' . $row['TrialID'] . '">';
         echo '<input type="hidden" name="SetID" value="' . $row['SetID'] . '">';
         echo '<input type="hidden" name="QuizType" value="' . $row['QuizType'] . '">';
-        echo '<button type="submit" name="view_specific">View</button></td>';
+        echo '<button type="submit" class="button" name="view_specific">View</button></td>';
         echo '</form>';
         echo '<td>';
         echo '<form method="post" action="updateCommentTeacher.php">';
         echo '<input type="hidden" name="TrialID" value="' . $row['TrialID'] . '">';
         echo '<input type="text" name="Comment" value="' . $row['Comment'] . '">';
-        echo '<input type="submit" value="Update">';
+        echo '<input type="submit" class="button" value="Update">';
         echo '</form>';
         echo '</td>';
         echo '</tr>';
