@@ -615,3 +615,88 @@ body{
   }
   
   /*end of choose quiz set, begin quiz, answer quiz, answer history*/
+
+/* viewResult, manageClass and manageProfile*/
+#viewResult table, th, td{ 
+      border: 1px solid black;
+      border-collapse: collapse;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 200px;
+      font-size: large;
+      padding: 15px;
+      width: auto;
+      text-align: center;
+  }
+
+#viewResult table{
+      border: 1px solid black;
+      border-collapse: collapse;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 200px;
+}
+
+#viewResult th{
+      font-size: large;
+      padding: 15px;
+      width: auto;
+      text-align: center;
+}
+
+#viewResult td{
+      font-size: large;
+      padding: 15px;
+      width: auto;
+      text-align: center;
+}
+
+  #manageClass table{
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 200px;
+    font-size: large;
+    padding: 15px;
+}
+
+#manageClass th {
+      font-size: large;
+    padding: 15px;
+}
+
+#manageClass td{
+    font-size: large;
+    padding: 15px;
+}
+
+#manageProfile h1{
+  font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 15px;
+  text-align: center;
+}
+
+#manageProfile body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 200px;
+}
+
+
+#manageProfile label{
+  display: inline-block;
+  text-align: right;
+  width: 100px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+#manageProfile .div_bg{
+  background-color: blanchedalmond;
+  width: 600px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  border-radius: 10px;
+}
+
+/* End of viewResult, manageClass and manageProfile*/
