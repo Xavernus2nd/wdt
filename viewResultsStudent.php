@@ -27,7 +27,6 @@
 
 <tr>
     <th>No.</th>
-    <th>Class</th>
     <th>Question Set Name</th>
     <th>Score</th>
     <th>Date</th>
@@ -57,7 +56,6 @@ if ($result) {
     while ($row = mysqli_fetch_array($result)) {
         echo '<tr>';
         echo '<td>' . $i++ . '</td>';
-        echo '<td>' . $row['ClassName'] . '</td>';
         echo '<td>' . $row['SetName'] . '</td>';
         echo '<td>' . $row['Score'] . '</td>';
         echo '<td>' . $row['Date'] . '</td>';
