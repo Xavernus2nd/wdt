@@ -20,6 +20,7 @@
 </nav>
 
 <section class="body-container">
+<h2>Create Class</h2>
 
 <?php
 include("connection.php");
