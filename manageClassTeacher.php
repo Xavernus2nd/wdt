@@ -50,7 +50,7 @@ while ($row = mysqli_fetch_array($result)) {
     echo '<input type="text" name="ClassName" value="' . $row['ClassName'] . '">';
     echo '</td>';
     echo '<td><a href="studentListTeacher.php?classID=' . $row['ClassID'] . '&students=' . $row['StudentList'] . '">View and Edit</a></td>';
-    echo '<td><button class="updateBtn" data-id="' . $row['ClassName'] . '">Update</button></td>';
+    echo '<td><button class="button" data-id="' . $row['ClassName'] . '">Update</button></td>';
     echo '</form>';
     echo '</tr>';
     echo '</tbody>';
