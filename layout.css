@@ -686,13 +686,14 @@ padding-bottom: 50px;
 border-radius: 10px;
 }
 
-.answerHistory td{
+.answerHistory th{
   margin-left: 10px;
   margin-right: 10px;
   margin-bottom: 20px;
-  width: 700px;
-  padding: 10px;
+  text-align: left;
+  width: 110px;
   font-size: large;
   word-wrap: break-word;
 }
+
 /*End of viewResult, manageClass and manageProfile*/
