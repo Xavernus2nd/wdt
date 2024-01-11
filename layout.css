@@ -620,58 +620,58 @@ body{
   /*end of choose quiz set, begin quiz, answer quiz, answer history*/
 
 /* viewResult, manageClass and manageProfile*/
-#viewResult table, th, td{ 
-      border: 1px solid black;
-      border-collapse: collapse;
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 200px;
-      font-size: large;
-      padding: 15px;
-      width: auto;
-      text-align: center;
-  }
+#viewResult table, #viewResult th, #viewResult td{ 
+  border: 1px solid black;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 200px;
+  font-size: large;
+  padding: 15px;
+  width: auto;
+  text-align: center;
+}
 
 #viewResult table{
-      border: 1px solid black;
-      border-collapse: collapse;
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 200px;
+  border: 1px solid black;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 200px;
 }
 
 #viewResult th{
-      font-size: large;
-      padding: 15px;
-      width: auto;
-      text-align: center;
+  font-size: large;
+  padding: 15px;
+  width: auto;
+  text-align: center;
 }
 
 #viewResult td{
-      font-size: large;
-      padding: 15px;
-      width: auto;
-      text-align: center;
+  font-size: large;
+  padding: 15px;
+  width: auto;
+  text-align: center;
 }
 
-  #manageClass table{
-    border: 1px solid black;
-    border-collapse: collapse;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 200px;
-    font-size: large;
-    padding: 15px;
+#manageClass table{
+border: 1px solid black;
+border-collapse: collapse;
+margin-left: auto;
+margin-right: auto;
+margin-top: 200px;
+font-size: large;
+padding: 15px;
 }
 
 #manageClass th {
-      font-size: large;
-    padding: 15px;
+  font-size: large;
+padding: 15px;
 }
 
 #manageClass td{
-    font-size: large;
-    padding: 15px;
+font-size: large;
+padding: 15px;
 }
 
 #manageProfile label{
@@ -691,4 +691,4 @@ padding-bottom: 50px;
 border-radius: 10px;
 }
 
-/* End of viewResult, manageClass and manageProfile*/
+/*End of viewResult, manageClass and manageProfile*/

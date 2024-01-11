@@ -22,7 +22,6 @@
         <?php 
         include 'connection.php';
         include 'sessionStudent.php';
-        //include 'result.php';
         include 'answerHistory.php';
         ?>
     </section>
