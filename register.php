@@ -23,6 +23,17 @@
     <?php include 'navigation.php';?> 
 </nav>
 
+<script>
+function passwordEye() {
+  var x = document.getElementById("password");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
+
 <section class='body-lp'>    
 <h2>Register</h2>
     <form action="registerProcess.php" method="post">
@@ -36,6 +47,7 @@
 
         <label for="password">Password:</label>
         <input type="password" id="password" minlength='6' maxlength='15' name="password" required title='(length:6-25)' placeholder="Enter Your Password"><br>
+        <input type="checkbox" onclick="passwordEye()">Show Password
         <br>
 
         <label for="identity">Are you a:</label>
