@@ -27,7 +27,6 @@
 
 <tr>
     <th>No.</th>
-    <th>Class</th>
     <th>Question Set Name</th>
     <th>Score</th>
     <th>Date</th>
