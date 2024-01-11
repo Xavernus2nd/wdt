@@ -21,6 +21,8 @@
 
 <section class="body-container">
 
+<h2>View Results Page</h2>
+    
 <table id = View_Results_Student>
 
 <tr>
