@@ -39,11 +39,11 @@ function passwordEye() {
     <h2>Login</h2>
     <form action="loginProcess.php" method="post">
         <label for="username">Username:</label>
-        <input type="text" maxlength="10" minlength='4' id="username" name="username" required pattern="[a-z0-9]+" title="(4-10characters;a-z;0-9)" placeholder="Enter Your Username"><br>
+        <input type="text" maxlength="20" id="username" name="username" required placeholder="Enter Your Username"><br>
         <br>
 
         <label for="password">Password:</label>
-        <input type="password" id="password" minlength='6' maxlength='15' name="password" required title="(length:6-25)" placeholder='Enter Your Password'>
+        <input type="password" id="password" minlength='6' maxlength='8' name="password" required placeholder='Enter Your Password'>
         <input type="checkbox" onclick="passwordEye()">Show Password
         <br>
         <br>

@@ -38,15 +38,15 @@ function passwordEye() {
 <h2>Register</h2>
     <form action="registerProcess.php" method="post">
         <label for="fullname">Full Name:</label>
-        <input type="text" maxlength="20" minlength='8' id="fullname" name="fullname" required pattern="[A-Za-z ]+" title="(8-20characters;a-z;A-Z)" placeholder="Enter Your Full Name"><br>
+        <input type="text" maxlength="50" id="fullname" name="fullname" required placeholder="Enter Your Full Name"><br>
         <br>
 
         <label for="username">Username:</label>
-        <input type="text" maxlength="10" minlength='4' id="username" name="username" required pattern="[a-z0-9]+" title="(4-10characters;a-z;0-9)" placeholder="Enter Your Username"><br>
+        <input type="text" maxlength="20" id="username" name="username" required placeholder="Enter Your Username"><br>
         <br>
 
         <label for="password">Password:</label>
-        <input type="password" id="password" minlength='6' maxlength='15' name="password" required title='(length:6-25)' placeholder="Enter Your Password">
+        <input type="password" id="password" minlength='4' maxlength='8' name="password" required placeholder="Enter Your Password">
         <input type="checkbox" onclick="passwordEye()">Show Password
         <br>
         <br>
@@ -59,7 +59,7 @@ function passwordEye() {
         <br>
 
         <label for="classID">Join Class (ID):</label>
-        <input type="text" inputmode="numeric" pattern="\d+" maxlength="4" id="classID" name="classID" autocapitalize title='(4characters;A-Z;0-9)' placeholder="Enter Your Class ID(Optional)"><br>
+        <input type="text" inputmode="numeric" id="classID" name="classID" placeholder="Enter Your Class ID(Optional)"><br>
         <br>
 
         <button type="submit">Register</button>
