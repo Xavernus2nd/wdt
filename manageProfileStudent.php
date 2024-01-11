@@ -111,7 +111,7 @@ if(isset($_POST['update_profile'])) {
 </form>
 
 </section>
-
+    </div>
 <footer>
     <?php include 'footer.php'; ?>
 </footer>
