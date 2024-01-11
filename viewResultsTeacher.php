@@ -21,43 +21,19 @@
 
 <section class="body-container">
 
-
-<table id = View_Results_Student>
+<h2>View Results Page</h2>
+    
+<table class = table>
 
 <tr>
-
-    <div>
     <th>No.</th>
-    </div>
-
-    <div>
     <th>Name</th>
-    </div>
-
-    <div>
     <th>Class</th>
-    </div>
-
-    <div>
     <th>Question Set Name</th>
-    </div>
-
-    <div>
     <th>Score</th>
-    </div>
-
-    <div>
     <th>Date</th>
-    </div>
-
-    <div>
     <th>View More</th>
-    </div>
-
-    <div>
     <th>Comment</th>
-    </div>
-    
 </tr>
 
 
