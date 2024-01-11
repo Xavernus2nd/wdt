@@ -20,7 +20,7 @@
 </nav>
 
 <section class="body-container">
-
+<h2>Manage Profile</h2>
 <?php
 include("connection.php");
 include ("sessionStudent.php");
