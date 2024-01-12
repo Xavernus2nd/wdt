@@ -7,6 +7,7 @@ if(isset($_POST['selecttopic'])){ //checks for if topic is selected and sets the
     $SelectedTopicCheck['SelectedTopic']=$_POST['SelectedTopic'];
     if($SelectedTopicCheck['SelectedTopic']=="Not Selected"){
         echo "<script>alert('Please select a topic');</script>";
+        header("Refresh:0");
     }
     else{
         $_SESSION['SelectedTopic']=$_POST['SelectedTopic'];
