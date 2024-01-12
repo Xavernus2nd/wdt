@@ -28,6 +28,7 @@
     <th>Class ID</th>
     <th>Class Name</th>
     <th>Student List</th>
+    <th>Delete</th>
     <th>Update</th>
 
 </tr>
@@ -50,6 +51,7 @@ while ($row = mysqli_fetch_array($result)) {
     echo '<input type="text" name="ClassName" value="' . $row['ClassName'] . '">';
     echo '</td>';
     echo '<td><a href="studentListTeacher.php?classID=' . $row['ClassID'] . '&students=' . $row['StudentList'] . '">View and Edit</a></td>';
+    echo '<td><a href="deleteClassTeacher.php?id=' . $row['ClassID'] . '">Delete</a></td>';
     echo '<td><button class="button" data-id="' . $row['ClassName'] . '">Update</button></td>';
     echo '</form>';
     echo '</tr>';
