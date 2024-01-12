@@ -41,7 +41,7 @@ if ($result) {
         echo '<tr>';
         echo '<td>' . $i++ . '</td>';
         echo '<td>' . $row['StudentFullName'] . '</td>';
-        echo "<td><a href='removeStudentTeacher.php?StudentUsername=".$row['StudentUsername']."'>Remove</a></td>";
+        echo "<td><a href='removeStudentTeacher.php?StudentUsername=".$row['StudentUsername']."' onclick='return confirm(\"Are you sure you wish to remove this student? This action cannot be reverted\")'>Remove</a></td>";
         echo '</tr>';
     }
 } else {
