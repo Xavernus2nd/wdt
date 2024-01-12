@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Results</title>
-    <link rel="stylesheet" href="viewResults.css">
     <link rel="stylesheet" href="layout.css">
 </head>
 <body>
@@ -28,6 +27,7 @@
 <tr>
     <th>No.</th>
     <th>Question Set Name</th>
+    <th>Mode</th>
     <th>Score</th>
     <th>Date</th>
     <th>Time</th>
@@ -57,10 +57,11 @@ if ($result) {
         echo '<tr>';
         echo '<td>' . $i++ . '</td>';
         echo '<td>' . $row['SetName'] . '</td>';
+        echo '<td>' . $row['QuizType'] . '</td>';
         echo '<td>' . $row['Score'] . '%</td>';
         echo '<td>' . $row['Date'] . '</td>';
         echo '<td>' . $row['Time'] . '</td>';
-        echo '<td>' . $row['Comment'] . '</td>';
+        echo '<td id = "viewResultComment">' . $row['Comment'] . '</td>';
         echo '<form id="resultForm" action="resultAnswer.php" method="POST">';
         echo '<input type="hidden" name="TrialID" value="' . $row['TrialID'] . '">';
         echo '<td><button type="submit" class="button" name="view_specific">View</button></td>';
