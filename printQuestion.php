@@ -63,8 +63,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if(isset($data["Question"])) {
             if ($Mode == 'Timed') {
                 //timer if mode is timed
-                echo '<div class="topic-container" id="timer" style="font-size: 22px;">Timer: </div>';
-                $countdown_timer = isset($_SESSION['countdown_timer']) ? $_SESSION['countdown_timer'] : 1800; //1800 is 30 mins
+                echo '<div id="timer" style="font-size: 22px;">Timer: </div>';
+                $countdown_timer = isset($_SESSION['countdown_timer']) ? $_SESSION['countdown_timer'] : 10; //1800 is 30 mins
 
                 echo '<script>
                     document.addEventListener("DOMContentLoaded", function() {
@@ -210,7 +210,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
                 <div class="submitexit-object">
                     <!--submit button-->
-                    <form onsubmit="return confirm('Are you sure to submit the quiz? \nYou will not be able to change your answers.');" action="question.php" method="post">
+                    <form action="question.php" method="post">
                         <input type="hidden" name="SetID" value="<?php echo $SetID; ?>">
                         <input type="hidden" name="TrialID" value="<?php echo $TrialID; ?>">
                         <input type="hidden" name="TimeTaken" value="<?php echo $TimeTaken; ?>">
@@ -220,7 +220,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </form>
                     <!--exit button-->
                     <form onsubmit="return confirm('Do you want to exit the quiz? \nYour attempt will not be saved.');" method="post" action="question.php">
-                        
                         <input type="hidden" name="TrialID" value="<?php echo $TrialID;?>">
                         <button type="submit" name="exit">EXIT</button>
                     </form>

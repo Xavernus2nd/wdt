@@ -93,7 +93,7 @@ while ($row = mysqli_fetch_assoc($result1)) {
 
     echo '<tr>';
     echo '<th><label>Comment: </label></th>';
-    echo '<td>' . $Comment . '</td>';
+    echo '<td colspan="3">' . $Comment . '</td>';
     echo '</tr>';
 }
 
@@ -105,6 +105,7 @@ $run = mysqli_query($DBconn, $sql);
 
 //present the answer in table form
 echo '
+<div class="answerhistory-section">
 <div class="answerhistory-container">
 <div class="answerhistory-scroll">
     <table class="answerhistory-table" border="1">
@@ -138,7 +139,7 @@ echo '
                 </tr>";
         }
     echo '</table>
-    </div>
+</div>
 </div>';
 
 if (isset($_SESSION['StudentUsername'])) {
@@ -156,3 +157,4 @@ if (isset($_SESSION['StudentUsername'])) {
   </div>
   <?php
   } ?>
+</div>

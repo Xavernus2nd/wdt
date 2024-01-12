@@ -442,6 +442,10 @@ body{
   height: 260px;
   margin-top: 10px;
   }
+
+  .answerhistory-section {
+  min-height: 310px;
+  }
   
   .answerhistory-scroll {
   width: 100%;
@@ -463,11 +467,15 @@ body{
   }
   
   .answerhistory-table #num {
-  width: 5%;
+  width: 3%;
   }
   
   .answerhistory-table #ques {
-  width: 65%;
+  width: 60%;
+  }
+
+  .answerhistory-table #stdAns, .answerhistory-table #correctAns {
+    width: 15%;
   }
   
   /*print question */
