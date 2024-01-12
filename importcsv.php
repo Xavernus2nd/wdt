@@ -24,7 +24,7 @@ if (isset($_POST['import'])){
     $resultTopicID = mysqli_fetch_assoc(mysqli_query($DBconn, "SELECT TopicID FROM Topic WHERE TopicTitle = '$TopicName'"));
     $TopicID = $resultTopicID['TopicID'];
     //Teacher Username from session variable
-    $TeacherUsername = $_SESSION['TeacherUsername']; //remember to change this to session variable
+    $TeacherUsername = $_SESSION['TeacherUsername'];
     $ApprovalStatus = "PENDING";
     $QuestionSetQuery = mysqli_query($DBconn, "INSERT INTO Question_Set VALUES ('DEFAULT', '$QuestionSetName', '$TeacherUsername', '$TopicID', '$ApprovalStatus')");
     //Getting the SetID from the Question_Set table
