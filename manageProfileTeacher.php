@@ -11,7 +11,9 @@
 <header>
         <div id="logo"></div>
         <h1>Form 4 SPM Mathematics Quiz</h1>
-        <?php include 'profileBT.php';?>
+        <div class="loginTop">
+    <a href=logout.php id="logout">Logout</a>
+</div>
 </header>
 
 <nav>
