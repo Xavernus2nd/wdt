@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student List</title>
-    <link href="viewResults.css" rel="stylesheet">
     <link href="layout.css" rel="stylesheet">
 </head>
 <body>
@@ -22,7 +21,7 @@
 
 <h2>Student List</h2>
 
-    <table>
+    <table class = "table">
         <tr>
     <th>No.</th>    
     <th>Student Name</th>
