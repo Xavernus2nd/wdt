@@ -53,12 +53,11 @@ while ($row = mysqli_fetch_array($result)) {
     echo '<input type="text" name="TeacherFullName" value="' . $row['TeacherFullName'] . '">';
     echo '</td>';
     echo '<td><a href="studentListAdmin.php?classID=' . $row['ClassID'] . '&students=' . $row['StudentList'] . '">View and Edit</a></td>';
-    echo '<td><a href="deleteClassAdmin.php?id=' . $row['ClassID'] . '">Delete</a></td>';
+    echo '<td><a href="deleteClassAdmin.php?id=' . $row['ClassID'] . '" onclick = "return confirm(\'Are you sure you wish to delete this class? This action cannot be reverted\')">Delete</a></td>';
     echo '<td><button class="button" data-id="' . $row['ClassID'] . '">Update</button></td>';
     echo '</tr>';
     echo '</form>';
 
-    //add edit class and teachers name
 }
 ?>
 
