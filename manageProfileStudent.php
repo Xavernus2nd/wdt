@@ -23,7 +23,7 @@
 <?php
 include("connection.php");
 include ("sessionStudent.php");
-$sql = "SELECT a.StudentFullName, a.StudentUsername, a.StudentPassword
+$sql = "SELECT a.StudentFullName, a.StudentUsername, a.StudentPassword, b.ClassName, b.ClassID
 FROM student as a 
 LEFT JOIN class as b on a.ClassID = b.ClassID 
 LEFT JOIN trial as c on a.StudentUsername = c.StudentUsername
@@ -42,11 +42,9 @@ $info = mysqli_fetch_assoc($result);
 if(isset($_POST['update_profile'])) {
     $studentusername = $_POST['StudentUsername']; 
     $studentfullname = $_POST['StudentFullName'];
-    $classid = $_POST['ClassID'];
-    $classname = $_POST['ClassName'];
     $studentpassword = $_POST['StudentPassword'];
 
-    $updatesql = "UPDATE student AS a SET a.StudentUsername = '$studentusername', a.StudentFullName = '$studentfullname', a.StudentPassword = '$studentpassword', b.ClassID = '$classid', b.ClassName = '$classname' WHERE a.StudentUsername = '$_SESSION[StudentUsername]'";
+    $updatesql = "UPDATE student AS a SET a.StudentUsername = '$studentusername', a.StudentFullName = '$studentfullname', a.StudentPassword = '$studentpassword' WHERE a.StudentUsername = '$_SESSION[StudentUsername]'";
 
 
 
@@ -75,12 +73,12 @@ if(isset($_POST['update_profile'])) {
     <div class="div_bg">
             <div>
                 <label>Username</label>
-                <input type="text" class="input" name="StudentUsername" value="<?php echo $info['StudentUsername'] ?>">
+                <input type="text" class="input" maxlength="20" name="StudentUsername" placeholder="Enter your new username" required value="<?php echo $info['StudentUsername'] ?>">
             </div>
 
             <div>
                 <label>Full Name</label>
-                <input type="text" class="input" name="StudentFullName" value="<?php echo $info['StudentFullName'] ?>">
+                <input type="text" class="input" name="StudentFullName" placeholder="Enter your full name" required value="<?php echo $info['StudentFullName'] ?>">
             </div>
 
             <div>
@@ -95,7 +93,7 @@ if(isset($_POST['update_profile'])) {
 
             <div>
                 <label>Password</label>
-                <input type="password" class="input" name="StudentPassword" value="<?php echo $info['StudentPassword'] ?>">
+                <input type="password" class="input" minlength="6" maxlength="8" name="StudentPassword" placeholder="Enter your new password" required value="<?php echo $info['StudentPassword'] ?>">
             </div>                      
 
             <br>
