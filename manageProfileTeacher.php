@@ -72,17 +72,17 @@ if(isset($_POST['update_profile'])) {
     <div class="div_bg">
             <div>
                 <label>Username</label>
-                <input type="text" class="input" name="TeacherUsername" value="<?php echo $info['TeacherUsername'] ?>">
+                <input type="text" class="input" maxlength="20" name="TeacherUsername" placeholder="Enter your new username" required value="<?php echo $info['TeacherUsername'] ?>">
             </div>
 
             <div>
                 <label>Full Name</label>
-                <input type="text" class="input" name="TeacherFullName" value="<?php echo $info['TeacherFullName'] ?>">
+                <input type="text" class="input" name="TeacherFullName" placeholder="Enter your full name" required value="<?php echo $info['TeacherFullName'] ?>">
             </div>
 
             <div>
                 <label>Password</label>
-                <input type="password" class="input" name="TeacherPassword" value="<?php echo $info['TeacherPassword'] ?>">
+                <input type="password" class="input" minlength="6" maxlength="8" name="TeacherPassword" placeholder="Enter your new password" required value="<?php echo $info['TeacherPassword'] ?>">
             </div>                      
 
             <br>
