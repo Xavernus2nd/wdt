@@ -23,7 +23,7 @@
 <?php
 include("connection.php");
 include ("sessionStudent.php");
-$sql = "SELECT a.StudentFullName, a.StudentUsername, a.StudentPassword, b.ClassName, b.ClassID
+$sql = "SELECT a.StudentFullName, a.StudentUsername, a.StudentPassword, b.ClassName
 FROM student as a 
 LEFT JOIN class as b on a.ClassID = b.ClassID 
 LEFT JOIN trial as c on a.StudentUsername = c.StudentUsername
@@ -79,11 +79,6 @@ if(isset($_POST['update_profile'])) {
             <div>
                 <label>Full Name</label>
                 <input type="text" class="input" name="StudentFullName" placeholder="Enter your full name" required value="<?php echo $info['StudentFullName'] ?>">
-            </div>
-
-            <div>
-                <label>Class ID</label>
-                <input type="text" class="input" name="ClassID" value="<?php echo $info['ClassID'] ?>" readonly>
             </div>
 
             <div>
