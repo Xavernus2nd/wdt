@@ -23,7 +23,7 @@
 <?php
 include("connection.php");
 include ("sessionStudent.php");
-$sql = "SELECT a.StudentFullName, a.StudentUsername, a.StudentPassword, b.ClassName, b.ClassID
+$sql = "SELECT a.StudentFullName, a.StudentUsername, a.StudentPassword
 FROM student as a 
 LEFT JOIN class as b on a.ClassID = b.ClassID 
 LEFT JOIN trial as c on a.StudentUsername = c.StudentUsername
@@ -56,11 +56,11 @@ if(isset($_POST['update_profile'])) {
         $_SESSION['StudentUsername'] = $studentusername; 
 
         echo "<script>alert('Update Successful!')</script>";
-        echo "<script>window.location.href='manage_profile_student.php'</script>";
+        echo "<script>window.location.href='manageProfileStudent.php'</script>";
     }
     else{
         echo "<script>alert('Update Failed!')</script>";
-        echo "<script>window.location.href='manage_profile_student.php'</script>";
+        echo "<script>window.location.href='manageProfileStudent.php'</script>";
     }
     
       
