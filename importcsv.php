@@ -4,7 +4,6 @@ include 'connection.php';
 if (isset($_POST['import'])){
     $targetfile = "CSV/" . $_FILES["fileToUpload"]["name"];
     $filetype = strtolower(pathinfo($targetfile,PATHINFO_EXTENSION));
-    $alert = "";
     if ($filetype != "csv"){
         echo "<script>alert('Only CSV files are allowed.');</script>";
         header("Refresh:0; url=addQuestionSet.php");
