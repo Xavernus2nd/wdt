@@ -28,7 +28,7 @@ if (isset($_POST['import'])){
     $ApprovalStatus = "PENDING";
     $QuestionSetQuery = mysqli_query($DBconn, "INSERT INTO Question_Set VALUES ('DEFAULT', '$QuestionSetName', '$TeacherUsername', '$TopicID', '$ApprovalStatus')");
     //Getting the SetID from the Question_Set table
-    $resultSetID = mysqli_fetch_assoc(mysqli_query($DBconn, "SELECT SetID FROM Question_Set WHERE SetName = '$QuestionSetName' AND TeacherUsername = '$TeacherUsername'"));
+    $resultSetID = mysqli_fetch_assoc(mysqli_query($DBconn, "SELECT SetID FROM Question_Set ORDER BY SetID DESC LIMIT 1"));
     $SetID = $resultSetID['SetID'];
     //Question insertion part  
     $file = fopen($targetfile, "r");
