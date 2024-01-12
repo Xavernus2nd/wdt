@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if ($Mode == 'Timed') {
                 //timer if mode is timed
                 echo '<div id="timer" style="font-size: 22px;">Timer: </div>';
-                $countdown_timer = isset($_SESSION['countdown_timer']) ? $_SESSION['countdown_timer'] : 10; //1800 is 30 mins
+                $countdown_timer = isset($_SESSION['countdown_timer']) ? $_SESSION['countdown_timer'] : 1800; //30 mins
 
                 echo '<script>
                     document.addEventListener("DOMContentLoaded", function() {
