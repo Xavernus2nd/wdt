@@ -708,4 +708,19 @@ border-radius: 10px;
   word-wrap: break-word;
 }
 
+.answerHistory label{
+position: initial;
+}
+
+
+.answerHistory #answerHistoryComment{
+width: 50%;
+text-align: justify;
+}
+
+.answerHistory #gap{
+  margin-left: 10%;
+  }
+
+
 /*End of viewResult, manageClass and manageProfile*/
