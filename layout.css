@@ -708,10 +708,6 @@ border-radius: 10px;
   word-wrap: break-word;
 }
 
-.answerHistory label{
-position: initial;
-}
-
 
 .answerHistory #answerHistoryComment{
 width: 50%;
