@@ -14,7 +14,7 @@ if(isset($_POST['selecttopic'])){ //checks for if topic is selected and sets the
 }
 if(isset($_SESSION['SelectedTopic'])){ //queries the database for the question sets for the selected topic
     $SelectedTopicId=$_SESSION['SelectedTopic'];
-    $result = mysqli_query($DBconn, "SELECT Question_Set.SetID, Question_Set.SetName, COUNT(Question.QuestionID) AS NoOfQuestions, Question_Set.TeacherUsername, Question_Set.TopicID, Topic.TopicTitle FROM Question_Set INNER JOIN Topic ON Question_Set.TopicID = Topic.TopicID LEFT JOIN Question ON Question_Set.SetID = Question.SetID WHERE Topic.TopicTitle = '$_SESSION[SelectedTopic]' GROUP BY Question_Set.SetID");
+    $result = mysqli_query($DBconn, "SELECT Question_Set.SetID, Question_Set.SetName, COUNT(Question.QuestionID) AS NoOfQuestions, Question_Set.TeacherUsername, Question_Set.TopicID, Topic.TopicTitle FROM Question_Set INNER JOIN Topic ON Question_Set.TopicID = Topic.TopicID LEFT JOIN Question ON Question_Set.SetID = Question.SetID WHERE Topic.TopicTitle = '$_SESSION[SelectedTopic]' AND Question_Set.SetApprovalStatus = 'ACCEPTED' GROUP BY Question_Set.SetID");
     $questionSets = mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
 $TopicQuery = mysqli_query($DBconn, "SELECT TopicTitle FROM Topic");
