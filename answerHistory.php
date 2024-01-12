@@ -63,7 +63,7 @@ while ($row = mysqli_fetch_assoc($result1)) {
     echo '<td>' . $Mode . '</td>';
 
     if ($Mode != 'Practice') {
-    echo '<th><label>Time Taken: </label></th>';
+    echo '<th><label id = "gap">Time Taken: </label></th>';
     echo '<td>' . $TimeTaken . '</td>';
     echo '</tr>';
     }
@@ -78,7 +78,7 @@ while ($row = mysqli_fetch_assoc($result1)) {
     echo '<th><label>Date: </label></th>';
     echo '<td>' . $Date . '</td>';
 
-    echo '<th><label>Time: </label></th>';
+    echo '<th><label id = "gap">Time: </label></th>';
     echo '<td>' . $Time . '</td>';
     echo '</tr>';
 
@@ -87,13 +87,14 @@ while ($row = mysqli_fetch_assoc($result1)) {
     echo '<th><label>Score: </label></th>';
     echo '<td>' . $Score . '%</td>';
 
-    echo '<th><label>Grade: </label></th>';
+    echo '<th><label id = "gap">Grade: </label></th>';
     echo '<td>' . $Grade . '</td>';
     echo '</tr>';
 
     echo '<tr>';
     echo '<th><label>Comment: </label></th>';
-    echo '<td colspan="3">' . $Comment . '</td>';
+    echo '<td id = answerHistoryComment>' . $Comment . '</td>';    
+    echo '<td>'.'</td>';
     echo '</tr>';
 }
 
