@@ -6,9 +6,11 @@ if(isset($_POST['EditTopicTitle'])){
     $editsql = "UPDATE Topic SET TopicTitle = '$EditTopicName' WHERE TopicID = '$EditTopicID'";
     if (mysqli_query($DBconn, $editsql)) {
         echo "<script>alert('Topic editted successfully!');</script>";
+        header("Refresh:0;");
     } 
     else {
         echo "<script>alert('Error updating topic name.');</script>";
+        header("Refresh:0;");
     }
 }
 ?>

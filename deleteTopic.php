@@ -7,9 +7,11 @@ if(isset($_POST['deleteTopic'])){
     $deleteTopicQuery = mysqli_query($DBconn, "DELETE FROM topic WHERE TopicID='$deletetopicID'");
     if ($deleteTopicQuery && $deleteTopicQuestionSetQuery && $deleteTopicQuestionQuery) {
         echo "<script>alert('Topic and all related question set deleted successfully!');</script>";
+        header("Refresh:0;");
     }
     else{
         echo "<script>alert('Error deleting topic.');</script>";
+        header("Refresh:0;");
     }
 }
 ?>

@@ -8,13 +8,16 @@ if(isset($_POST['NewSetName'])){
     $targetSetTeacherName = $checkTeacher['TeacherUsername'];
     if ($TeacherUsername!=$targetSetTeacherName){
         echo "<script>alert('You are not allowed to edit this question set.');</script>";
+        header("Refresh:0;");
     }
     else{
         if (mysqli_query($DBconn, "UPDATE QuestionSet SET SetName = '$NewSetName' WHERE SetID = '$targetSetID' AND TeacherUsername = '$TeacherUsername'")) {
             echo "<script>alert('Question set editted successfully!');</script>";
+            header("Refresh:0;");
         } 
         else {
             echo "<script>alert('Error updating question set name.');</script>";
+            header("Refresh:0;");
         }
     }
 }
