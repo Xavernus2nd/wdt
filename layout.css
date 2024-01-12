@@ -640,6 +640,10 @@ body{
   text-align: center;
 }
 
+.viewResult #viewResultComment{
+  width: 40%;
+}
+
 .viewResult th{
   border: 1px solid #000000;
   font-size: large;
