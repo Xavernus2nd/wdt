@@ -5,10 +5,15 @@ SPM FORM 4 MATHEMATICS QUIZ
 ------------------------------
 
 Developed and Written By:
+
 Reyes Wong Bing Jiun
+
 Nathaniel Ooi Chi Lok
+
 Nur Alya Mastura binti Nor Ridwan
+
 Yuna Hee Min Soon
+
 For AAPP009-4-2-WDT Web Development Project.
 
 PLEASE NOTE:
