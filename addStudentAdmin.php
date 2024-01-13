@@ -9,7 +9,10 @@
 </head>
 <body>
 
-
+<header>
+        <div id="logo"></div>
+        <h1>Form 4 SPM Mathematics Quiz</h1>
+</header>
 <nav>
     <?php include 'nAdmin.php'; ?>
 </nav>
@@ -71,6 +74,9 @@ if(isset($_POST['add_student'])){
     </center>
     </div>
 </section>
+<div class="loginTop">
+    <a href=logout.php id="logout">LogOut</a>
+</div>
 <footer>
     <?php include 'footer.php'; ?>
 </footer>
