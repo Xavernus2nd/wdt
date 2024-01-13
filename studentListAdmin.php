@@ -11,7 +11,6 @@
 <header>
         <div id="logo"></div>
         <h1>Form 4 SPM Mathematics Quiz</h1>
-        <?php include 'profileBT.php';?>
 </header>
 <nav>
     <?php include 'nAdmin.php'; ?>
