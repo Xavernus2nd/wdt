@@ -46,7 +46,7 @@ function passwordEye() {
         <br>
 
         <label for="password">Password:</label>
-        <input type="password" id="password" minlength='4' maxlength='8' name="password" required placeholder="Enter Your Password">
+        <input type="password" id="password" minlength='6' maxlength='8' name="password" required placeholder="Enter Your Password">
         <input type="checkbox" onclick="passwordEye()">Show Password
         <br>
         <br>
