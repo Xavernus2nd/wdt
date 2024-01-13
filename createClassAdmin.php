@@ -68,7 +68,7 @@ if(isset($_POST['create_class'])) {
     </div>
 </section>
     <div class="loginTop">
-    <a href=logout.php id="logout">LogOut</a>
+    <a href=logout.php id="logout">Logout</a>
 </div>
 <footer>
     <?php include 'footer.php'; ?>
