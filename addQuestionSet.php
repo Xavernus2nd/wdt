@@ -1,4 +1,10 @@
 <?php
+if (isset($_POST["import"])) {
+    if($_POST['SelectedTopic'] == "Not Selected"){
+        echo "<script>alert('Please select a topic.')</script>";
+        echo "<script>window.location.href='addQuestionSet.php'</script>";
+    }
+}
 include 'sessionTeacher.php';
 include 'connection.php';
 include 'importcsv.php';
