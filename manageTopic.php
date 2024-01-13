@@ -3,6 +3,7 @@ include 'sessionAdmin.php';
 include 'connection.php';
 include 'editTopic.php';
 include 'deleteTopic.php';
+include 'addTopic.php';
 $topicQuery = mysqli_query($DBconn, "SELECT * FROM topic");
 $topicResult = mysqli_fetch_all($topicQuery, MYSQLI_ASSOC);
 ?>
@@ -54,6 +55,14 @@ $topicResult = mysqli_fetch_all($topicQuery, MYSQLI_ASSOC);
     }
     echo "</table>";
     ?>
+    <center><h2>Add New Topic</h2></center>
+    <center>
+    <form action="" method="post">
+        <label>Topic Name:</label>
+        <input type="text" name="NewTopicTitle" placeholder="Topic Name" required>
+        <button type="submit" name="addTopic" class="button">Add Topic</button>
+    </form>
+    </center>
     </section>
     <footer><?php include "footer.php" ?></footer>
 </body>
