@@ -10,6 +10,8 @@ if (isset($_POST['DeleteSetID'])) {
         header("Refresh:0;");
     }
     else{
+    $deleteStudentAnswerQuery = mysqli_query($DBconn, "DELETE FROM Student_Answer WHERE TrialID IN (SELECT TrialID FROM Trial WHERE SetID='$deleteSetID')");
+    $deleteTrialQuery = mysqli_query($DBconn, "DELETE FROM Trial WHERE SetID='$deleteSetID'");
     $deletequestionQuery = mysqli_query($DBconn, "DELETE FROM Question WHERE SetID='$deleteSetID'");
     $deleteQuestionSetQuery = mysqli_query($DBconn, "DELETE FROM Question_Set WHERE SetID='$deleteSetID'");
     if ($deletequestionQuery && $deleteQuestionSetQuery) {
