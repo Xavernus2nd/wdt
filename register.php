@@ -42,7 +42,7 @@ function passwordEye() {
         <br>
 
         <label for="username">Username:</label>
-        <input type="text" maxlength="20" id="username" name="username" required placeholder="Enter Your Username" pattern="[a-zA-Z][a-zA-Z0-9_]*"><br>
+        <input type="text" maxlength="20" id="username" name="username" required placeholder="Enter Your Username" pattern="[a-zA-Z][a-zA-Z0-9_]*" title="Username must start with an alphabet"><br>
         <br>
 
         <label for="password">Password:</label>
