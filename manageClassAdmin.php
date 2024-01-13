@@ -26,7 +26,7 @@
     
     <th>Class ID</th>
     <th>Class Name</th>
-    <th>Teacher Name</th>
+    <th>Teacher Username</th>
     <th>Student List</th>
     <th>Delete</th>
     <th>Update</th>
@@ -36,7 +36,7 @@
 <?php
 include("connection.php");
 include("sessionAdmin.php");
-$sql = "SELECT class.ClassID, class.TeacherUsername, teacher.TeacherFullName, class.ClassName, GROUP_CONCAT(student.StudentFullName) AS StudentList FROM class LEFT JOIN student ON class.ClassID = student.ClassID LEFT JOIN teacher ON teacher.TeacherUsername = class.TeacherUsername GROUP BY class.ClassID";
+$sql = "SELECT class.ClassID, class.TeacherUsername, class.ClassName, GROUP_CONCAT(student.StudentFullName) AS StudentList FROM class LEFT JOIN student ON class.ClassID = student.ClassID LEFT JOIN teacher ON teacher.TeacherUsername = class.TeacherUsername GROUP BY class.ClassID";
 
 $result = mysqli_query($DBconn, $sql);
 while ($row = mysqli_fetch_array($result)) {
@@ -45,12 +45,11 @@ while ($row = mysqli_fetch_array($result)) {
     echo '<td>';
     echo '<form method="post" action="updateClassAdmin.php">';
     echo '<input type="hidden" name="ClassID" value="' . $row['ClassID'] . '">';
-    echo '<input type="text" name="ClassName" value="' . $row['ClassName'] . '">';
+    echo '<input type="text" name="ClassName" placeholder = "Input Class Name" value="' . $row['ClassName'] . '" required>';
     echo '</td>';
     echo '<td>';
     echo '<form method="post" action="updateTeacherName.php">';
-    echo '<input type="hidden" name="TeacherUsername" value="' . $row['TeacherUsername'] . '">';
-    echo '<input type="text" name="TeacherFullName" value="' . $row['TeacherFullName'] . '">';
+    echo '<input type="text" name="TeacherUsername" placeholder = "Input Teacher Username" value="' . $row['TeacherUsername'] . '" required>';
     echo '</td>';
     echo '<td><a href="studentListAdmin.php?classID=' . $row['ClassID'] . '&students=' . $row['StudentList'] . '">View and Edit</a></td>';
     echo '<td><a href="deleteClassAdmin.php?id=' . $row['ClassID'] . '" onclick = "return confirm(\'Are you sure you wish to delete this class? This action cannot be reverted\')">Delete</a></td>';
@@ -87,3 +86,4 @@ while ($row = mysqli_fetch_array($result)) {
 </footer>
 </body>
 </html>
+
