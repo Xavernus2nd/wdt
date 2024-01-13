@@ -45,7 +45,7 @@ function registerUser($DBconn, $username, $fullname, $password, $identity, $clas
 
     if ($checkUsernameResult->num_rows > 0) {
         // Redirect back to the registration form with an error message
-        header("Location: register.php?error=usernametaken");
+        echo "<script>alert('The Username is Already Taken. Please Choose Another Username.');window.location.href='register.php'</script>";
         exit();
     }
 
@@ -92,9 +92,9 @@ function registerUser($DBconn, $username, $fullname, $password, $identity, $clas
     if (!$insertUserResult) {
         // error or log the issue
         if ($identity === 'Student') {
-            header("Location: register.php?error=studentinserterror");
+            echo "<script>alert('Insert Error. Please Try Again.');window.location.href='register.php'</script>";
         } else {
-            header("Location: register.php?error=teacherinserterror");
+            echo "<script>alert('Insert Error. Please Try Again.');window.location.href='register.php'</script>";
         }
         exit();
     }
@@ -127,24 +127,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
     header("Location: register.php");
     exit();
-}
-
-
-// alert
-
-if (isset($_GET['error']) && $_GET['error'] === 'usernametaken') {
-    echo "<script>alert('The Username is Already Taken. Please Choose Another Username.');</script>";
-}
-
-if (isset($_GET['error']) && $_GET['error'] === 'invalidclassid') {
-    echo "<script>alert('Invalid Class ID.');</script>";
-}
-
-if (isset($_GET['error'])) {
-    $error = $_GET['error'];
-    if ($error === 'studentinserterror' || $error === 'teacherinserterror') {
-        echo "<script>alert('Insert Error. Please Try Again.');</script>";
-    }
 }
 
 ?>
