@@ -11,9 +11,7 @@
 <header>
         <div id="logo"></div>
         <h1>Form 4 SPM Mathematics Quiz</h1>
-        <div class="loginTop">
-    <a href=logout.php id="logout">Logout</a>
-</div>
+        <?php include 'profileBS.php';?>
 </header>
 
 <nav>
@@ -68,11 +66,23 @@ if(isset($_POST['update_profile'])) {
  }
 ?>
 
+<script>
+   function showPassword() {
+       var inputPassword = document.getElementById('passwordInput');
+       if (inputPassword.type === "password") {
+           inputPassword.type = "text";
+       } else {
+           inputPassword.type = "password";
+       }
+   }
+</script>
+
     <div class="content">
     <center>
     <form method = "post" action="">
 
     <div class="div_bg">
+
             <div>
                 <label>Username</label>
                 <input type="text" class="input" maxlength="20" name="StudentUsername" placeholder="Enter your new username" required value="<?php echo $info['StudentUsername'] ?>">
@@ -83,15 +93,18 @@ if(isset($_POST['update_profile'])) {
                 <input type="text" class="input" name="StudentFullName" placeholder="Enter your full name" required value="<?php echo $info['StudentFullName'] ?>">
             </div>
 
+
             <div>
                 <label>Class Name</label>
-                <input type="text" class="input" name="ClassName" value="<?php echo $info['ClassName'] ?>" readonly>
+                <input type="text" class="input" name="ClassName" value=""<?php echo $info['ClassName'] ?>" readonly>
             </div>
 
             <div>
                 <label>Password</label>
-                <input type="password" class="input" minlength="6" maxlength="8" name="StudentPassword" placeholder="Enter your new password" required value="<?php echo $info['StudentPassword'] ?>">
-            </div>                      
+                <input type="password" class="input" id="passwordInput" minlength="6" maxlength="8" name="StudentPassword" placeholder="Enter your new password" required value="<?php echo $info['StudentPassword'] ?>">
+            </div>   
+
+            <input type="checkbox" onclick="showPassword()">Show Password
 
             <br>
             <br>
@@ -100,6 +113,7 @@ if(isset($_POST['update_profile'])) {
             </div>
         </div>
     </form>
+</div>
 </center>
 
 
