@@ -11,9 +11,7 @@
 <header>
         <div id="logo"></div>
         <h1>Form 4 SPM Mathematics Quiz</h1>
-        <div class="loginTop">
-    <a href=logout.php id="logout">Logout</a>
-</div>
+        <?php include 'profileBT.php';?>
 </header>
 
 <nav>
@@ -66,6 +64,18 @@ if(isset($_POST['update_profile'])) {
  
  }
 ?>
+
+<script>
+   function showPassword() {
+       var inputPassword = document.getElementById('passwordInput');
+       if (inputPassword.type === "password") {
+           inputPassword.type = "text";
+       } else {
+           inputPassword.type = "password";
+       }
+   }
+</script>
+
 <div id="manageProfile">
     <div class="content">
     <center>
@@ -84,8 +94,10 @@ if(isset($_POST['update_profile'])) {
 
             <div>
                 <label>Password</label>
-                <input type="password" class="input" minlength="6" maxlength="8" name="TeacherPassword" placeholder="Enter your new password" required value="<?php echo $info['TeacherPassword'] ?>">
+                <input type="password" class="input" id=passwordInput minlength="6" maxlength="8" name="TeacherPassword" placeholder="Enter your new password" required value="<?php echo $info['TeacherPassword'] ?>">
             </div>                      
+
+                <input type="checkbox" onclick="showPassword()">Show Password
 
             <br>
             <br>
