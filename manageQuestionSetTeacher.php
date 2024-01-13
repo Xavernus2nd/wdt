@@ -71,7 +71,7 @@ $Topiclists = mysqli_fetch_all($TopicQuery, MYSQLI_ASSOC);
                     <td>$questionSet[NoOfQuestions]</td>
                     <td>$questionSet[TeacherUsername]</td>
                     <td>
-                        <button action='' method='post' onclick=\"window.location.href='viewQuestionSetTeacher.php?TopicID=$questionSet[TopicID]&QuestionSetID=$questionSet[SetID]'\" class='button'>View Question Set</button>
+                        <button action='' method='post' onclick=\"window.location.href='viewQuestionSetTeacher.php?QuestionSetID=$questionSet[SetID]'\" class='button'>View Question Set</button>
                     </td>
                     <td>
                         <form action='' method='post' onsubmit='return confirm(\"Are you sure you want to rename this question set?\");'>

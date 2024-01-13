@@ -32,23 +32,23 @@ if(isset($_GET['TopicID'])){
         $QuestionSet = mysqli_fetch_assoc(mysqli_query($DBconn, "SELECT * FROM Question_Set WHERE SetID = '$QuestionSetID'"));
         $QuestionSetTopic = mysqli_fetch_assoc(mysqli_query($DBconn, "SELECT TopicTitle FROM Topic WHERE TopicID = '$QuestionSet[TopicID]'"));
         $QuestionNumber = mysqli_fetch_assoc(mysqli_query($DBconn, "SELECT QuestionNumber FROM Question WHERE SetID = '$QuestionSetID'"));
-        $currentQuestionIndex = isset($_GET['QuestionNumber']) ? $_GET['QuestionNumber'] : 0; //checks if current question number is set, if not set to 0   
+        $currentQuestionIndex = isset($_GET['QuestionNumber']) ? $_GET['QuestionNumber'] : 1; //checks if current question number is set, if not set to 0   
         if(!empty($QuestionsFromSet)){
             echo "<div class='aqbox'><center><h2>Question Set: $QuestionSet[SetName]</h2></center>";
             //checks for if action is set and does respective index update
             if(isset($_GET['action'])){
                 if($_GET['action'] == 'Previous Question'){
-                    if($currentQuestionIndex > 0){
+                    if($currentQuestionIndex > 1){
                         $currentQuestionIndex--;
                     }
                 }
                 else if($_GET['action'] == 'Next Question'){
-                    if($currentQuestionIndex < count($QuestionsFromSet)-1){
+                    if($currentQuestionIndex < count($QuestionsFromSet)){
                         $currentQuestionIndex++;
                     }
                 }
             }
-            $currentQuestion = $QuestionsFromSet[$currentQuestionIndex];
+            $currentQuestion = $QuestionsFromSet[$currentQuestionIndex-1];
             echo "<div class='aqset'><h3>Question $currentQuestion[QuestionNumber]</h3>
             <p>$currentQuestion[Question]</p>
             <h4>Answer:</h4><div class='aqset'>";
@@ -65,6 +65,7 @@ if(isset($_GET['TopicID'])){
             //specific question selection box
             echo "<div class='aqnav'><form action='' method='GET'>
             <input type='hidden' name='QuestionSetID' value='$QuestionSetID'>
+            <input type='hidden' name='action' value=''>
             <label>Go to Question:</label>
             <select name='QuestionNumber' class='select' onchange='this.form.submit()'>
             <option value=''>Select Question</option>
@@ -77,7 +78,6 @@ if(isset($_GET['TopicID'])){
             echo "<form action='' method='GET'> 
             <input type='hidden' name='QuestionSetID' value='$QuestionSetID'>
             <input type='hidden' name='QuestionNumber' value='$currentQuestionIndex'>
-            <input type='hidden' name='TopicID' value='$_GET[TopicID]'>
             <input type='submit' name='action' class='button' value='Previous Question'>
             <input type='submit' name='action' class='button' value='Next Question'>
             </form></div><br>";
