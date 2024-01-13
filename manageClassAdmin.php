@@ -79,7 +79,7 @@ while ($row = mysqli_fetch_array($result)) {
 </section>
 
 <div class="loginTop">
-    <a href=logout.php id="logout">LogOut</a>
+    <a href=logout.php id="logout">Logout</a>
 </div>
 
 <footer>
