@@ -38,16 +38,16 @@ if(isset($_POST['add_student'])){
         if ($row2['count'] == 1){
             $result = mysqli_query($DBconn, $query);
             echo "<script>alert('Student added successfully')</script>";
-            echo "<script>window.open('manageClassAdmin.php', '_self')</script>";
+            echo "<script>window.open('addStudentAdmin.php', '_self')</script>";
         }
         else{
             echo "<script>alert('Class does not exist')</script>";
-            echo "<script>window.open('manageClassAdmin.php', '_self')</script>";
+            echo "<script>window.open('addStudentAdmin.php', '_self')</script>";
         }
     }
     else{
         echo "<script>alert('Student does not exist')</script>";
-        echo "<script>window.open('manageClassAdmin.php', '_self')</script>";
+        echo "<script>window.open('addStudentAdmin.php', '_self')</script>";
     }
     //if($result == 1){
     //    echo "<script>alert('Student added successfully')</script>";
@@ -75,7 +75,7 @@ if(isset($_POST['add_student'])){
     </div>
 </section>
 <div class="loginTop">
-    <a href=logout.php id="logout">LogOut</a>
+    <a href=logout.php id="logout">Logout</a>
 </div>
 <footer>
     <?php include 'footer.php'; ?>
