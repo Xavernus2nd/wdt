@@ -11,7 +11,7 @@ if(isset($_POST['NewSetName'])){
         header("Refresh:0;");
     }
     else{
-        if (mysqli_query($DBconn, "UPDATE QuestionSet SET SetName = '$NewSetName' WHERE SetID = '$targetSetID' AND TeacherUsername = '$TeacherUsername'")) {
+        if (mysqli_query($DBconn, "UPDATE question_set SET SetName = '$NewSetName' WHERE SetID = '$targetSetID' AND TeacherUsername = '$TeacherUsername'")) {
             echo "<script>alert('Question set editted successfully!');</script>";
             header("Refresh:0;");
         } 
