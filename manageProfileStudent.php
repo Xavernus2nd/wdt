@@ -96,7 +96,7 @@ if(isset($_POST['update_profile'])) {
 
             <div>
                 <label>Class Name</label>
-                <input type="text" class="input" name="ClassName" value=""<?php echo $info['ClassName'] ?>" readonly>
+                <input type="text" class="input" name="ClassName" value="<?php echo $info['ClassName'] ?>" readonly>
             </div>
 
             <div>
