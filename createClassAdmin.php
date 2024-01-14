@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Class</title>
-    <link rel="stylesheet" href="manageProfile.css"> 
     <link rel="stylesheet" href="layout.css">
 </head>
 <body>
@@ -46,7 +45,7 @@ if(isset($_POST['create_class'])) {
 
 ?>
 
-    <div class="content">
+    <div id = "add_student">
     <h1>Create Class</h1>
     <center>
     <form method="post" action="createClassAdmin.php">
