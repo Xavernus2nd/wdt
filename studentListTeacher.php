@@ -30,10 +30,8 @@
 <?php
 include("connection.php");
 $classID = $_GET['classID'];
-$students = explode(',', $_GET['students']); 
 
-
-$sql = "SELECT * FROM student WHERE ClassID = $classID AND StudentFullName IN ('".implode("','", $students)."')";
+$sql = "SELECT * FROM student WHERE ClassID = $classID";
 $result = mysqli_query($DBconn, $sql);
 if ($result) {
     $i = 1;
@@ -41,7 +39,7 @@ if ($result) {
         echo '<tr>';
         echo '<td>' . $i++ . '</td>';
         echo '<td>' . $row['StudentFullName'] . '</td>';
-        echo "<td><a href='removeStudentTeacher.php?StudentUsername=".$row['StudentUsername']."' onclick='return confirm(\"Are you sure you wish to remove this student? This action cannot be reverted\")'>Remove</a></td>";
+        echo "<td><a href='removeStudentTeacher.php?id=".$row['StudentUsername']."&classid=".$row['ClassID']."' onclick='return confirm(\"Are you sure you wish to remove this student? This action cannot be reverted\")'>Remove</a></td>";
         echo '</tr>';
     }
 } else {
