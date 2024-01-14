@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="manageProfile.css" rel="stylesheet">
+    <title>Add Student</title>
     <link href="layout.css" rel="stylesheet">
 </head>
 <body>
@@ -52,7 +51,7 @@ if(isset($_POST['add_student'])){
 }
 
 ?>
-<div class="add student">
+<div id = "add_student">
     <h1>Add Student</h1>
     <center>
     <form method="post" action="addStudentTeacher.php">
