@@ -1,9 +1,9 @@
 <?php
 $trialID = $_POST['TrialID'];
 $num = 0;
-
 include("connection.php");
 
+//retrieve topic, set, trial data
 $sql1 = "SELECT topic.TopicTitle, question_set.SetID, question_set.SetName, trial.Comment, trial.QuizType, trial.TimeTaken, trial.Score, Date (DateTime) as Date, Time (DateTime) as Time FROM question_set LEFT JOIN trial ON question_set.SetID = trial.SetID LEFT JOIN topic ON topic.TopicID = question_set.TopicID LEFT JOIN student ON student.StudentUsername = trial.StudentUsername WHERE trial.TrialID = $trialID";
 
 $result1 = mysqli_query($DBconn, $sql1);
@@ -23,8 +23,7 @@ while ($row = mysqli_fetch_assoc($result1)) {
     $Score = $row['Score'];
     $Comment = $row['Comment'];
 
-    //$Grade = $row['Grade'];
-
+    //determine grade
     if ($Score >= 90) {
       $Grade = 'A+';
     } else if ($Score >= 80) {
