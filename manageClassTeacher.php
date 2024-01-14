@@ -48,10 +48,10 @@ while ($row = mysqli_fetch_array($result)) {
     echo '<td>';
     echo '<form method="post" action="updateClassTeacher.php">';
     echo '<input type="hidden" name="ClassID" value="' . $row['ClassID'] . '">';
-    echo '<input type="text" name="ClassName" value="' . $row['ClassName'] . '">';
+    echo '<input type="text" name="ClassName" placeholder = "Input Class Name" value="' . $row['ClassName'] . '">';
     echo '</td>';
-    echo '<td><a href="studentListTeacher.php?classID=' . $row['ClassID'] . '&students=' . $row['StudentList'] . '">View and Edit</a></td>';
-    echo '<td><a href="deleteClassTeacher.php?id=' . $row['ClassID'] . '" onclick = "return confirm(\'Are you sure you wish to delete this class? This action cannot be reverted.\')">Delete</a></td>';
+    echo '<td><a href="studentListTeacher.php?classID=' . $row['ClassID'] . '">View and Edit</a></td>';
+    echo '<td><a href="deleteClassTeacher.php?id=' . $row['ClassID'] . '" onclick = "return confirm(\'Are you sure you wish to delete this class? This action cannot be reverted\')">Delete</a></td>';
     echo '<td><button class="button" data-id="' . $row['ClassName'] . '">Update</button></td>';
     echo '</form>';
     echo '</tr>';
