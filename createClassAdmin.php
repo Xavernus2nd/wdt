@@ -28,20 +28,24 @@ if(isset($_POST['create_class'])) {
     $classname = $_POST['ClassName']; 
     $teacherusername = $_POST['TeacherUsername'];
     $sql = "INSERT INTO class (ClassName, TeacherUsername) VALUES ('$classname', '$teacherusername')";
-    $result = mysqli_query($DBconn, $sql);
-    if($result){
-        echo "<script>alert('Class Created!')</script>";
-        echo "<script>window.location.href='manageClassAdmin.php'</script>";
-    }
-    else{
-        echo "<script>alert('Class Creation Failed, Teacher Username not Found!')</script>";
-        echo "<script>window.location.href='manageClassAdmin.php'</script>";
-    }
-    
-      
- 
- }
+    $exist = "SELECT COUNT(1) AS count FROM teacher WHERE TeacherUsername = '$teacherusername'";
 
+    $result1 = mysqli_query($DBconn, $exist);
+
+    $row = mysqli_fetch_assoc($result1);
+
+
+    if ($row['count'] == 1){
+        $result2 = mysqli_query($DBconn, $sql);
+        if ($result2) {
+            echo "<script>alert('Class Created!');window.location.href='manageClassAdmin.php'</script>";
+        } else {
+            echo "Class Creation Failed!: " . mysqli_error($DBconn);
+        }
+    } else {
+        echo "<script>alert('Teacher does not exist!');window.location.href='createClassAdmin.php'</script>";
+    }
+}
 
 ?>
 
