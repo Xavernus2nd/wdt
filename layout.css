@@ -717,5 +717,13 @@ text-align: justify;
   margin-left: 10%;
   }
 
+  #add_student label{
+    display: inline-block;
+    text-align: right;
+    width: 100px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+}
 
 /*End of viewResult, manageClass and manageProfile*/
